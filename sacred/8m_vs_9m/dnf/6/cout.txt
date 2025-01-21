@@ -1,0 +1,387 @@
+[INFO 09:48:43] pymarl Running command 'my_main'
+[INFO 09:48:43] pymarl Started run with ID "6"
+[DEBUG 09:48:43] pymarl Starting Heartbeat
+[DEBUG 09:48:43] my_main Started
+[INFO 09:48:44] my_main Experiment Parameters:
+[INFO 09:48:44] my_main 
+
+{   'action_selector': 'epsilon_greedy',
+    'agent': 'dnf_rnn',
+    'agent_output_type': 'q',
+    'asn_hidden_size': 32,
+    'batch_size': 64,
+    'batch_size_run': 8,
+    'buffer_cpu_only': True,
+    'buffer_size': 5000,
+    'checkpoint_path': '',
+    'core_agent_ratio': 0.7,
+    'core_hidden_dim': 32,
+    'cpu_inference': True,
+    'critic_lr': 0.0005,
+    'double_q': True,
+    'enable_parallel_computing': False,
+    'env': 'sc2',
+    'env_args': {   'continuing_episode': False,
+                    'debug': False,
+                    'difficulty': '7',
+                    'game_version': None,
+                    'heuristic_ai': False,
+                    'heuristic_rest': False,
+                    'map_name': '8m_vs_9m',
+                    'move_amount': 2,
+                    'obs_all_health': True,
+                    'obs_instead_of_state': False,
+                    'obs_last_action': False,
+                    'obs_own_health': True,
+                    'obs_pathing_grid': False,
+                    'obs_terrain_height': False,
+                    'obs_timestep_number': False,
+                    'replay_dir': '',
+                    'replay_prefix': '',
+                    'reward_death_value': 10,
+                    'reward_defeat': 0,
+                    'reward_negative_scale': 0.5,
+                    'reward_only_positive': True,
+                    'reward_scale': True,
+                    'reward_scale_rate': 20,
+                    'reward_sparse': False,
+                    'reward_win': 200,
+                    'seed': 359020921,
+                    'state_last_action': True,
+                    'state_timestep_number': False,
+                    'step_mul': 8},
+    'epsilon_anneal_time': 500000,
+    'epsilon_finish': 0.05,
+    'epsilon_start': 1.0,
+    'evaluate': False,
+    'gain': 0.01,
+    'gamma': 0.99,
+    'grad_norm_clip': 10,
+    'hypernet_embed': 64,
+    'label': 'default_label',
+    'learner': 'nq_learner',
+    'learner_log_interval': 10000,
+    'load_step': 0,
+    'local_results_path': 'results',
+    'log_interval': 10000,
+    'lr': 0.001,
+    'mac': 'dnf_mac',
+    'mixer': 'qmix',
+    'mixing_embed_dim': 32,
+    'name': 'dnf',
+    'obs_agent_id': True,
+    'obs_last_action': True,
+    'optim_alpha': 0.99,
+    'optim_eps': 1e-05,
+    'optimizer': 'adam',
+    'per_alpha': 0.6,
+    'per_beta': 0.4,
+    'q_lambda': False,
+    'repeat_id': 1,
+    'return_priority': False,
+    'rnn_hidden_dim': 64,
+    'run': 'default',
+    'runner': 'parallel',
+    'runner_log_interval': 10000,
+    'save_model': True,
+    'save_model_interval': 2000000,
+    'save_replay': False,
+    'seed': 359020921,
+    't_max': 10050000,
+    'target_update_interval': 200,
+    'td_lambda': 0.7,
+    'test_greedy': True,
+    'test_interval': 10000,
+    'test_nepisode': 32,
+    'thread_num': 12,
+    'use_cuda': True,
+    'use_layer_norm': False,
+    'use_orthogonal': False,
+    'use_per': False,
+    'use_tensorboard': True}
+
+{'state_shape': 179, 'obs_shape': 85, 'n_actions': 15, 'n_agents': 8, 'n_enemies': 9, 'episode_limit': 120, 'n_normal_actions': 6, 'n_allies': 7, 'state_ally_feats_size': 4, 'state_enemy_feats_size': 3, 'obs_component': [4, (9, 5), (7, 5), 1], 'state_component': [32, 27, 120], 'map_type': 'marines'}
+&&&&&&&&&&&&&&&&&&&&&& dnf_rnn 37.719K
+dominators_idx: {}, followers_idx: {} tensor([0., 0., 0., 0., 0., 0.]) tensor([0., 0.])
+ &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& self.batch_device=cpu
+Mixer Size: 
+53.313K
+[INFO 09:48:46] my_main Beginning training for 10050000 timesteps
+[INFO 09:48:46] absl Launching SC2: /root/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 43873 -dataDir /root/StarCraftII/ -tempDir /tmp/sc-anx8xi0_/
+[INFO 09:48:46] absl Launching SC2: /root/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 33833 -dataDir /root/StarCraftII/ -tempDir /tmp/sc-vdke8e8q/
+[INFO 09:48:46] absl Launching SC2: /root/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 35367 -dataDir /root/StarCraftII/ -tempDir /tmp/sc-6a5i3pax/
+[INFO 09:48:46] absl Launching SC2: /root/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 41059 -dataDir /root/StarCraftII/ -tempDir /tmp/sc-hlyxt1y5/
+[INFO 09:48:46] absl Launching SC2: /root/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 36891 -dataDir /root/StarCraftII/ -tempDir /tmp/sc-ufti6n8w/
+[INFO 09:48:46] absl Launching SC2: /root/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 36609 -dataDir /root/StarCraftII/ -tempDir /tmp/sc-4ns17lbf/
+[INFO 09:48:46] absl Launching SC2: /root/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 39953 -dataDir /root/StarCraftII/ -tempDir /tmp/sc-zgwwrfhe/
+[INFO 09:48:46] absl Launching SC2: /root/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 36221 -dataDir /root/StarCraftII/ -tempDir /tmp/sc-t7ivzl6b/
+[INFO 09:48:46] absl Connecting to: ws://127.0.0.1:43873/sc2api, attempt: 0, running: True
+Version: B75689 (SC2.4.10)
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Build: Aug 12 2019 17:16:57
+Command Line: '"/root/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 43873 -dataDir /root/StarCraftII/ -tempDir /tmp/sc-anx8xi0_/'
+Command Line: '"/root/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 33833 -dataDir /root/StarCraftII/ -tempDir /tmp/sc-vdke8e8q/'
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Command Line: '"/root/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 36891 -dataDir /root/StarCraftII/ -tempDir /tmp/sc-ufti6n8w/'
+[INFO 09:48:46] absl Connecting to: ws://127.0.0.1:36891/sc2api, attempt: 0, running: True
+[INFO 09:48:46] absl Connecting to: ws://127.0.0.1:33833/sc2api, attempt: 0, running: True
+[INFO 09:48:46] absl Connecting to: ws://127.0.0.1:35367/sc2api, attempt: 0, running: True
+[INFO 09:48:46] absl Connecting to: ws://127.0.0.1:39953/sc2api, attempt: 0, running: True
+[INFO 09:48:46] absl Connecting to: ws://127.0.0.1:36609/sc2api, attempt: 0, running: True
+Version: B75689 (SC2.4.10)
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Build: Aug 12 2019 17:16:57
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Command Line: '"/root/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 35367 -dataDir /root/StarCraftII/ -tempDir /tmp/sc-6a5i3pax/'
+Command Line: '"/root/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 36221 -dataDir /root/StarCraftII/ -tempDir /tmp/sc-t7ivzl6b/'
+Command Line: '"/root/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 36609 -dataDir /root/StarCraftII/ -tempDir /tmp/sc-4ns17lbf/'
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Command Line: '"/root/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 39953 -dataDir /root/StarCraftII/ -tempDir /tmp/sc-zgwwrfhe/'
+[INFO 09:48:46] absl Connecting to: ws://127.0.0.1:41059/sc2api, attempt: 0, running: True
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Command Line: '"/root/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 41059 -dataDir /root/StarCraftII/ -tempDir /tmp/sc-hlyxt1y5/'
+[INFO 09:48:46] absl Connecting to: ws://127.0.0.1:36221/sc2api, attempt: 0, running: True
+Starting up...
+Starting up...
+Starting up...
+Starting up...
+Starting up...
+Starting up...
+Starting up...
+Startup Phase 1 complete
+Startup Phase 1 complete
+Startup Phase 1 complete
+Starting up...
+Startup Phase 1 complete
+Startup Phase 1 complete
+Startup Phase 1 complete
+Startup Phase 1 complete
+Startup Phase 1 complete
+[INFO 09:48:47] absl Connecting to: ws://127.0.0.1:43873/sc2api, attempt: 1, running: True
+[INFO 09:48:47] absl Connecting to: ws://127.0.0.1:36891/sc2api, attempt: 1, running: True
+[INFO 09:48:47] absl Connecting to: ws://127.0.0.1:33833/sc2api, attempt: 1, running: True
+[INFO 09:48:47] absl Connecting to: ws://127.0.0.1:35367/sc2api, attempt: 1, running: True
+[INFO 09:48:47] absl Connecting to: ws://127.0.0.1:39953/sc2api, attempt: 1, running: True
+[INFO 09:48:47] absl Connecting to: ws://127.0.0.1:36609/sc2api, attempt: 1, running: True
+[INFO 09:48:47] absl Connecting to: ws://127.0.0.1:41059/sc2api, attempt: 1, running: True
+[INFO 09:48:47] absl Connecting to: ws://127.0.0.1:36221/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Startup Phase 2 complete
+Creating stub renderer...
+Creating stub renderer...
+Startup Phase 2 complete
+Creating stub renderer...
+Startup Phase 2 complete
+Creating stub renderer...
+Startup Phase 2 complete
+Creating stub renderer...
+Startup Phase 2 complete
+Creating stub renderer...
+Startup Phase 2 complete
+Creating stub renderer...
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:43873
+Listening on: 127.0.0.1:36891
+Listening on: 127.0.0.1:33833
+Startup Phase 3 complete. Ready for commands.
+Startup Phase 3 complete. Ready for commands.
+Startup Phase 3 complete. Ready for commands.
+Listening on: 127.0.0.1:36609
+Startup Phase 3 complete. Ready for commands.
+Listening on: 127.0.0.1:36221
+Startup Phase 3 complete. Ready for commands.
+Listening on: 127.0.0.1:35367
+Startup Phase 3 complete. Ready for commands.
+Listening on: 127.0.0.1:39953
+Startup Phase 3 complete. Ready for commands.
+Listening on: 127.0.0.1:41059
+Startup Phase 3 complete. Ready for commands.
+[INFO 09:48:48] absl Connecting to: ws://127.0.0.1:43873/sc2api, attempt: 2, running: True
+ConnectHandler: Request from 127.0.0.1:45902 accepted
+ReadyHandler: 127.0.0.1:45902 ready
+[INFO 09:48:48] absl Connecting to: ws://127.0.0.1:36891/sc2api, attempt: 2, running: True
+[INFO 09:48:48] absl Connecting to: ws://127.0.0.1:33833/sc2api, attempt: 2, running: True
+ConnectHandler: Request from 127.0.0.1:52694 accepted
+ReadyHandler: 127.0.0.1:52694 ready
+ConnectHandler: Request from 127.0.0.1:52886 accepted
+ReadyHandler: 127.0.0.1:52886 ready
+[INFO 09:48:48] absl Connecting to: ws://127.0.0.1:35367/sc2api, attempt: 2, running: True
+ConnectHandler: Request from 127.0.0.1:60466 accepted
+ReadyHandler: 127.0.0.1:60466 ready
+[INFO 09:48:48] absl Connecting to: ws://127.0.0.1:39953/sc2api, attempt: 2, running: True
+ConnectHandler: Request from 127.0.0.1:42956 accepted
+ReadyHandler: 127.0.0.1:42956 ready
+[INFO 09:48:48] absl Connecting to: ws://127.0.0.1:36609/sc2api, attempt: 2, running: True
+ConnectHandler: Request from 127.0.0.1:40404 accepted
+ReadyHandler: 127.0.0.1:40404 ready
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+[INFO 09:48:48] absl Connecting to: ws://127.0.0.1:41059/sc2api, attempt: 2, running: True
+ConnectHandler: Request from 127.0.0.1:44502 accepted
+ReadyHandler: 127.0.0.1:44502 ready
+Next launch phase started: 2
+Next launch phase started: 3
+[INFO 09:48:48] absl Connecting to: ws://127.0.0.1:36221/sc2api, attempt: 2, running: True
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+ConnectHandler: Request from 127.0.0.1:36852 accepted
+ReadyHandler: 127.0.0.1:36852 ready
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Using default stable ids, none found at: /root/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Sending ResponseJoinGame
+Game has started.
+Using default stable ids, none found at: /root/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Game has started.
+Using default stable ids, none found at: /root/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Sending ResponseJoinGame
+Game has started.
+Using default stable ids, none found at: /root/StarCraftII/stableid.json
+Sending ResponseJoinGame
+Game has started.
+Using default stable ids, none found at: /root/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Game has started.
+Using default stable ids, none found at: /root/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Sending ResponseJoinGame
+Successfully loaded stable ids: GameData\stableid.json
+Sending ResponseJoinGame
+Sending ResponseJoinGame
+Game has started.
+Using default stable ids, none found at: /root/StarCraftII/stableid.json
+Game has started.
+Using default stable ids, none found at: /root/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Sending ResponseJoinGame
+Sending ResponseJoinGame
+/workspace/feat_pymarl/workspace/src/components/episode_buffer.py:109: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  v = th.tensor(v, dtype=dtype, device=self.device)
+[INFO 09:48:54] my_main t_env: 268 / 10050000
+[INFO 09:48:54] my_main Estimated time left: 2 hours, 11 minutes, 16 seconds. Time passed: 8 seconds
+Avg cost 0.7345564365386963 seconds
+Avg cost 0.4509795904159546 seconds
+Avg cost 0.35640915234883624 seconds
+Avg cost 0.297202467918396 seconds
+Avg cost 0.27274351119995116 seconds
+Avg cost 0.25563093026479083 seconds
+Avg cost 0.24494177954537527 seconds
+Avg cost 0.2341594696044922 seconds
+Avg cost 0.22418461905585396 seconds
+Avg cost 0.22004642486572268 seconds

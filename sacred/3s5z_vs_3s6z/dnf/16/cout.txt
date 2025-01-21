@@ -1,0 +1,335 @@
+[INFO 09:42:37] pymarl Running command 'my_main'
+[INFO 09:42:37] pymarl Started run with ID "16"
+[DEBUG 09:42:37] pymarl Starting Heartbeat
+[DEBUG 09:42:37] my_main Started
+[INFO 09:42:37] my_main Experiment Parameters:
+[INFO 09:42:37] my_main 
+
+{   'action_selector': 'epsilon_greedy',
+    'agent': 'dnf_rnn',
+    'agent_output_type': 'q',
+    'asn_hidden_size': 32,
+    'batch_size': 32,
+    'batch_size_run': 2,
+    'buffer_cpu_only': True,
+    'buffer_size': 2500,
+    'checkpoint_path': '',
+    'core_agent_ratio': 0.7,
+    'core_extractor_layer_norm': False,
+    'core_extractor_type': 'nn',
+    'core_extractor_use_orthogonal': False,
+    'core_hidden_dim': 32,
+    'cpu_inference': True,
+    'critic_lr': 0.0005,
+    'double_q': True,
+    'enable_parallel_computing': False,
+    'env': 'sc2',
+    'env_args': {   'continuing_episode': False,
+                    'debug': False,
+                    'difficulty': '7',
+                    'game_version': None,
+                    'heuristic_ai': False,
+                    'heuristic_rest': False,
+                    'map_name': '3s5z_vs_3s6z',
+                    'move_amount': 2,
+                    'obs_all_health': True,
+                    'obs_instead_of_state': False,
+                    'obs_last_action': False,
+                    'obs_own_health': True,
+                    'obs_pathing_grid': False,
+                    'obs_terrain_height': False,
+                    'obs_timestep_number': False,
+                    'replay_dir': '',
+                    'replay_prefix': '',
+                    'reward_death_value': 10,
+                    'reward_defeat': 0,
+                    'reward_negative_scale': 0.5,
+                    'reward_only_positive': True,
+                    'reward_scale': True,
+                    'reward_scale_rate': 20,
+                    'reward_sparse': False,
+                    'reward_win': 200,
+                    'seed': 407381866,
+                    'state_last_action': True,
+                    'state_timestep_number': False,
+                    'step_mul': 8},
+    'epsilon_anneal_time': 500000,
+    'epsilon_finish': 0.05,
+    'epsilon_start': 1.0,
+    'evaluate': False,
+    'gain': 0.01,
+    'gamma': 0.99,
+    'grad_norm_clip': 10,
+    'hypernet_embed': 64,
+    'label': 'default_label',
+    'learner': 'nq_learner',
+    'learner_log_interval': 10000,
+    'load_step': 0,
+    'local_results_path': 'results',
+    'log_interval': 10000,
+    'lr': 0.001,
+    'mac': 'dnf_mac',
+    'mixer': 'qmix',
+    'mixing_embed_dim': 32,
+    'name': 'dnf',
+    'obs_agent_id': True,
+    'obs_last_action': True,
+    'optim_alpha': 0.99,
+    'optim_eps': 1e-05,
+    'optimizer': 'adam',
+    'per_alpha': 0.6,
+    'per_beta': 0.4,
+    'q_lambda': False,
+    'repeat_id': 1,
+    'return_priority': False,
+    'rnn_hidden_dim': 64,
+    'run': 'default',
+    'runner': 'parallel',
+    'runner_log_interval': 10000,
+    'save_model': True,
+    'save_model_interval': 2000000,
+    'save_replay': False,
+    'seed': 407381866,
+    't_max': 10050000,
+    'target_update_interval': 200,
+    'td_lambda': 0.6,
+    'test_greedy': True,
+    'test_interval': 10000,
+    'test_nepisode': 32,
+    'thread_num': 12,
+    'use_cuda': True,
+    'use_layer_norm': False,
+    'use_orthogonal': False,
+    'use_per': False,
+    'use_tensorboard': True}
+
+{'state_shape': 230, 'obs_shape': 136, 'n_actions': 15, 'n_agents': 8, 'n_enemies': 9, 'episode_limit': 170, 'n_normal_actions': 6, 'n_allies': 7, 'state_ally_feats_size': 7, 'state_enemy_feats_size': 6, 'obs_component': [4, (9, 8), (7, 8), 4], 'state_component': [56, 54, 120], 'map_type': 'stalkers_and_zealots'}
+&&&&&&&&&&&&&&&&&&&&&& dnf_rnn 36.175K
+&&&&&&&&&&&&&&&&&&&&&& nn 36.175K
+dominators_idx: {}, followers_idx: {} tensor([0., 0., 0., 0., 0., 0.]) tensor([0., 0.])
+ &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& self.batch_device=cpu
+Mixer Size: 
+63.105K
+[INFO 09:42:42] my_main Beginning training for 10050000 timesteps
+[INFO 09:42:42] absl Launching SC2: /root/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 43323 -dataDir /root/StarCraftII/ -tempDir /tmp/sc-vq1gplfg/
+[INFO 09:42:42] absl Launching SC2: /root/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 43297 -dataDir /root/StarCraftII/ -tempDir /tmp/sc-tem72o3g/
+[INFO 09:42:42] absl Connecting to: ws://127.0.0.1:43323/sc2api, attempt: 0, running: True
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Command Line: '"/root/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 43323 -dataDir /root/StarCraftII/ -tempDir /tmp/sc-vq1gplfg/'
+[INFO 09:42:42] absl Connecting to: ws://127.0.0.1:43297/sc2api, attempt: 0, running: True
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Command Line: '"/root/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 43297 -dataDir /root/StarCraftII/ -tempDir /tmp/sc-tem72o3g/'
+Starting up...
+Starting up...
+Startup Phase 1 complete
+Startup Phase 1 complete
+[INFO 09:42:43] absl Connecting to: ws://127.0.0.1:43323/sc2api, attempt: 1, running: True
+[INFO 09:42:43] absl Connecting to: ws://127.0.0.1:43297/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:43323
+Startup Phase 3 complete. Ready for commands.
+Listening on: 127.0.0.1:43297
+Startup Phase 3 complete. Ready for commands.
+[INFO 09:42:44] absl Connecting to: ws://127.0.0.1:43323/sc2api, attempt: 2, running: True
+ConnectHandler: Request from 127.0.0.1:59258 accepted
+ReadyHandler: 127.0.0.1:59258 ready
+[INFO 09:42:44] absl Connecting to: ws://127.0.0.1:43297/sc2api, attempt: 2, running: True
+ConnectHandler: Request from 127.0.0.1:48330 accepted
+ReadyHandler: 127.0.0.1:48330 ready
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Using default stable ids, none found at: /root/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Sending ResponseJoinGame
+Game has started.
+Using default stable ids, none found at: /root/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Sending ResponseJoinGame
+/workspace/feat_pymarl/workspace/src/components/episode_buffer.py:109: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  v = th.tensor(v, dtype=dtype, device=self.device)
+[INFO 09:42:51] my_main t_env: 110 / 10050000
+[INFO 09:42:51] my_main Estimated time left: 2 hours, 29 minutes, 20 seconds. Time passed: 9 seconds
+Avg cost 1.3426148891448975 seconds
+Avg cost 0.8429247140884399 seconds
+Avg cost 0.7115546067555746 seconds
+Avg cost 0.6100234389305115 seconds
+Avg cost 0.5617015838623047 seconds
+Avg cost 0.5090402762095134 seconds
+Avg cost 0.4945233208792551 seconds
+Avg cost 0.47626361250877386 seconds
+Avg cost 0.4661089049445259 seconds
+Avg cost 0.44670612812042243 seconds
+Avg cost 0.4263478192416105 seconds
+Avg cost 0.4095861514409384 seconds
+Avg cost 0.40137786131638753 seconds
+Avg cost 0.3988824231284006 seconds
+Avg cost 0.38997262318929043 seconds
+Avg cost 0.3871507495641709 seconds
+Avg cost 0.3882880771861357 seconds
+Avg cost 0.3826778067482843 seconds
+Avg cost 0.3755431551682322 seconds
+Avg cost 0.37665421962738044 seconds
+Avg cost 0.37268966720217755 seconds
+Avg cost 0.37041499397971417 seconds
+Avg cost 0.36561027817104175 seconds
+Avg cost 0.36256537834803265 seconds
+Avg cost 0.362292594909668 seconds
+Avg cost 0.36342941797696626 seconds
+Avg cost 0.3600735576064498 seconds
+Avg cost 0.35979608127049034 seconds
+Avg cost 0.3576590768222151 seconds
+Avg cost 0.3562313636144002 seconds
+Avg cost 0.3599300922886018 seconds
+Avg cost 0.3578912615776062 seconds
+Avg cost 0.3593792843096184 seconds
+Avg cost 0.3618515309165506 seconds
+Avg cost 0.3589639186859131 seconds
+Avg cost 0.35961342520183986 seconds
+Avg cost 0.36306901880212733 seconds
+Avg cost 0.3639124004464401 seconds
+Avg cost 0.361474416194818 seconds
+Avg cost 0.36170173883438117 seconds
+Avg cost 0.3631989781449481 seconds
+Avg cost 0.3641239745276315 seconds
+Avg cost 0.3632753228032312 seconds
+Avg cost 0.3610770756548102 seconds
+Avg cost 0.3600950717926026 seconds
+Avg cost 0.361813731815504 seconds
+Avg cost 0.35963534801564323 seconds
+Avg cost 0.356562614440918 seconds
+Avg cost 0.3587343887406953 seconds
+Avg cost 0.35627365112304693 seconds
+Avg cost 0.3551159933501599 seconds
+Avg cost 0.35602667239996105 seconds
+Avg cost 0.35506928191994724 seconds
+Avg cost 0.3558851038968122 seconds
+Avg cost 0.35312426740472974 seconds
+Avg cost 0.35369953087397993 seconds
+Avg cost 0.3541126627671092 seconds
+Avg cost 0.35189386482896484 seconds
+Avg cost 0.35062518362271594 seconds
+Avg cost 0.35009626547495537 seconds
+Avg cost 0.34865500106186176 seconds
+Avg cost 0.34731896846525145 seconds
+Avg cost 0.34639101936703653 seconds
+Avg cost 0.34471981972455995 seconds
+Avg cost 0.3449401085193342 seconds
+Avg cost 0.34488407048312114 seconds
+Avg cost 0.3431333783847184 seconds
+Avg cost 0.3415298461914064 seconds
+Avg cost 0.34169210903886454 seconds
+Avg cost 0.34121165616171717 seconds
+Avg cost 0.34145297802669916 seconds
+Avg cost 0.34028540717230915 seconds
+Avg cost 0.3414350895032492 seconds
+Avg cost 0.34221655935854534 seconds
+Avg cost 0.3442683188120525 seconds
+Avg cost 0.34347116319756765 seconds
+Avg cost 0.34480189038561543 seconds
+Avg cost 0.34383724286006057 seconds
+Avg cost 0.34481655495076247 seconds
+Avg cost 0.34614551961421974 seconds
+Avg cost 0.3448522267518221 seconds
+Avg cost 0.3431116836826977 seconds
+Avg cost 0.34185866275465643 seconds
+Avg cost 0.34082096815109264 seconds
+Avg cost 0.34155626016504637 seconds
+[INFO 09:45:41] my_main Updated target network
+Avg cost 0.34130232001459887 seconds
+Avg cost 0.34203252573122933 seconds
+Avg cost 0.341674257408489 seconds
+Avg cost 0.3418229992470046 seconds
+[INFO 09:45:48] my_main Recent Stats | t_env:      10073 | Episode:      208
+battle_won_mean:           0.0000	dead_allies_mean:          8.0000	dead_enemies_mean:         0.0000	ep_length_mean:           55.0000
+episode_in_buffer:       208.0000	epsilon:                   1.0000	grad_norm:                 2.0590	loss_td:                   0.1156
+q_taken_mean:             -0.0237	return_max:                4.7605	return_mean:               4.0240	return_min:                3.2874
+return_std:                0.7365	target_mean:               0.0284	td_error_abs:              0.1156	test_battle_won_mean:      0.0000
+test_dead_allies_mean:     8.0000	test_dead_enemies_mean:    1.7188	test_ep_length_mean:      51.6562	test_return_max:           6.4835
+test_return_mean:          4.5661	test_return_min:           2.4192	test_return_std:           0.9251	
+Avg cost 0.34170930915408676 seconds
+[INFO 09:45:50] my_main t_env: 10180 / 10050000
+[INFO 09:45:50] my_main Estimated time left: 2 days, 1 hours, 28 minutes, 58 seconds. Time passed: 3 minutes, 7 seconds
+Avg cost 0.34152062908633735 seconds
+Avg cost 0.34048578272695135 seconds
+Avg cost 0.34018180190875974 seconds
+Avg cost 0.3387361739544159 seconds
+Avg cost 0.3404969943197151 seconds
+Avg cost 0.3397223949432374 seconds
+Avg cost 0.3393800971434289 seconds
+Avg cost 0.3397188527243479 seconds
+Avg cost 0.34069966547416924 seconds
+Avg cost 0.34115744590759284 seconds
+Avg cost 0.34076058510506513 seconds
+Avg cost 0.34094817731894705 seconds
+Avg cost 0.34231605113131336 seconds
+Avg cost 0.3416376411914826 seconds
+Avg cost 0.3418877533503942 seconds
+Avg cost 0.34250042573461 seconds
+Avg cost 0.341726984933158 seconds
+Avg cost 0.34123201061178143 seconds
+Avg cost 0.34146152286354564 seconds
+Avg cost 0.3415215492248536 seconds
+Avg cost 0.34164709443444613 seconds
+Avg cost 0.3405399428946632 seconds
+Avg cost 0.3403822721633237 seconds
+Avg cost 0.3402032601205927 seconds
+Avg cost 0.33981337547302254 seconds
+Avg cost 0.33904260602490666 seconds
+Avg cost 0.33991994817032783 seconds
+Avg cost 0.338966969716347 seconds
+Avg cost 0.3387252483047358 seconds
+Avg cost 0.3388427595297497 seconds
+Avg cost 0.33829783802190116 seconds
+Avg cost 0.33932819131945013 seconds
+Avg cost 0.3391717643272587 seconds
+Avg cost 0.33949445716796395 seconds
+Avg cost 0.339071481704712 seconds
+Avg cost 0.33849431408776187 seconds
+Avg cost 0.33792589968583725 seconds
+Avg cost 0.33831114880740654 seconds
+Avg cost 0.33872478876927115 seconds
+Avg cost 0.3388915025270903 seconds
+Avg cost 0.33900451114159513 seconds
+Avg cost 0.33793751579342474 seconds
+Avg cost 0.33828193621527886 seconds
+Avg cost 0.3376459381473599 seconds
+Avg cost 0.3377699092582421 seconds
+Avg cost 0.3375316262245179 seconds
+Avg cost 0.33712725569732005 seconds
+Avg cost 0.3375982218894406 seconds
+Avg cost 0.3375308290659953 seconds
+Avg cost 0.3367161682673864 seconds
+Avg cost 0.33759729067484545 seconds
+Avg cost 0.33727288581955606 seconds

@@ -1,0 +1,136 @@
+{
+  "battle_won_mean": [
+    0.0
+  ],
+  "battle_won_mean_T": [
+    188
+  ],
+  "dead_allies_mean": [
+    5.0
+  ],
+  "dead_allies_mean_T": [
+    188
+  ],
+  "dead_enemies_mean": [
+    0.0
+  ],
+  "dead_enemies_mean_T": [
+    188
+  ],
+  "ep_length_mean": [
+    23.5
+  ],
+  "ep_length_mean_T": [
+    188
+  ],
+  "epsilon": [
+    1.0
+  ],
+  "epsilon_T": [
+    188
+  ],
+  "return_max": [
+    {
+      "dtype": "float64",
+      "py/object": "numpy.float64",
+      "value": 2.2641509433962264
+    }
+  ],
+  "return_max_T": [
+    188
+  ],
+  "return_mean": [
+    {
+      "dtype": "float64",
+      "py/object": "numpy.float64",
+      "value": 1.6415094339622642
+    }
+  ],
+  "return_mean_T": [
+    188
+  ],
+  "return_min": [
+    {
+      "dtype": "float64",
+      "py/object": "numpy.float64",
+      "value": 1.3584905660377358
+    }
+  ],
+  "return_min_T": [
+    188
+  ],
+  "return_std": [
+    {
+      "dtype": "float64",
+      "py/object": "numpy.float64",
+      "value": 0.33487244055280846
+    }
+  ],
+  "return_std_T": [
+    188
+  ],
+  "test_battle_won_mean": [
+    0.0
+  ],
+  "test_battle_won_mean_T": [
+    188
+  ],
+  "test_dead_allies_mean": [
+    2.90625
+  ],
+  "test_dead_allies_mean_T": [
+    188
+  ],
+  "test_dead_enemies_mean": [
+    0.03125
+  ],
+  "test_dead_enemies_mean_T": [
+    188
+  ],
+  "test_ep_length_mean": [
+    60.28125
+  ],
+  "test_ep_length_mean_T": [
+    188
+  ],
+  "test_return_max": [
+    {
+      "dtype": "float64",
+      "py/object": "numpy.float64",
+      "value": 2.0754716981132075
+    }
+  ],
+  "test_return_max_T": [
+    188
+  ],
+  "test_return_mean": [
+    {
+      "dtype": "float64",
+      "py/object": "numpy.float64",
+      "value": 0.17099056603773585
+    }
+  ],
+  "test_return_mean_T": [
+    188
+  ],
+  "test_return_min": [
+    {
+      "dtype": "float64",
+      "py/object": "numpy.float64",
+      "value": 0.0
+    }
+  ],
+  "test_return_min_T": [
+    188
+  ],
+  "test_return_std": [
+    {
+      "dtype": "float64",
+      "py/object": "numpy.float64",
+      "value": 0.3937460974169053
+    }
+  ],
+  "test_return_std_T": [
+    188
+  ]
+}

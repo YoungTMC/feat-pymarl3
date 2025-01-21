@@ -1,0 +1,461 @@
+[INFO 22:19:09] pymarl Running command 'my_main'
+[INFO 22:19:09] pymarl Started run with ID "5"
+[DEBUG 22:19:09] pymarl Starting Heartbeat
+[DEBUG 22:19:09] my_main Started
+[INFO 22:19:10] my_main Experiment Parameters:
+[INFO 22:19:10] my_main 
+
+{   'action_selector': 'epsilon_greedy',
+    'agent': 'dnf_rnn',
+    'agent_output_type': 'q',
+    'asn_hidden_size': 32,
+    'batch_size': 128,
+    'batch_size_run': 4,
+    'buffer_cpu_only': True,
+    'buffer_size': 5000,
+    'checkpoint_path': '',
+    'core_agent_ratio': 0.7,
+    'core_extractor_layer_norm': False,
+    'core_extractor_type': 'nn',
+    'core_extractor_use_orthogonal': False,
+    'core_hidden_dim': 32,
+    'cpu_inference': True,
+    'critic_lr': 0.0005,
+    'double_q': True,
+    'enable_parallel_computing': False,
+    'env': 'sc2',
+    'env_args': {   'continuing_episode': False,
+                    'debug': False,
+                    'difficulty': '7',
+                    'game_version': None,
+                    'heuristic_ai': False,
+                    'heuristic_rest': False,
+                    'map_name': '8m',
+                    'move_amount': 2,
+                    'obs_all_health': True,
+                    'obs_instead_of_state': False,
+                    'obs_last_action': False,
+                    'obs_own_health': True,
+                    'obs_pathing_grid': False,
+                    'obs_terrain_height': False,
+                    'obs_timestep_number': False,
+                    'replay_dir': '',
+                    'replay_prefix': '',
+                    'reward_death_value': 10,
+                    'reward_defeat': 0,
+                    'reward_negative_scale': 0.5,
+                    'reward_only_positive': True,
+                    'reward_scale': True,
+                    'reward_scale_rate': 20,
+                    'reward_sparse': False,
+                    'reward_win': 200,
+                    'seed': 920869739,
+                    'state_last_action': True,
+                    'state_timestep_number': False,
+                    'step_mul': 8},
+    'epsilon_anneal_time': 100000,
+    'epsilon_finish': 0.05,
+    'epsilon_start': 1.0,
+    'evaluate': False,
+    'gain': 0.01,
+    'gamma': 0.99,
+    'grad_norm_clip': 10,
+    'hypernet_embed': 64,
+    'label': 'default_label',
+    'learner': 'nq_learner',
+    'learner_log_interval': 10000,
+    'load_step': 0,
+    'local_results_path': 'results',
+    'log_interval': 10000,
+    'lr': 0.001,
+    'mac': 'dnf_mac',
+    'mixer': 'qmix',
+    'mixing_embed_dim': 32,
+    'name': 'dnf',
+    'obs_agent_id': True,
+    'obs_last_action': True,
+    'optim_alpha': 0.99,
+    'optim_eps': 1e-05,
+    'optimizer': 'adam',
+    'per_alpha': 0.6,
+    'per_beta': 0.4,
+    'q_lambda': False,
+    'repeat_id': 1,
+    'return_priority': False,
+    'rnn_hidden_dim': 64,
+    'run': 'default',
+    'runner': 'parallel',
+    'runner_log_interval': 10000,
+    'save_model': True,
+    'save_model_interval': 2000000,
+    'save_replay': False,
+    'seed': 920869739,
+    't_max': 5000000,
+    'target_update_interval': 200,
+    'td_lambda': 0.6,
+    'test_greedy': True,
+    'test_interval': 10000,
+    'test_nepisode': 32,
+    'thread_num': 12,
+    'use_cuda': True,
+    'use_layer_norm': False,
+    'use_orthogonal': False,
+    'use_per': False,
+    'use_tensorboard': True}
+
+{'state_shape': 168, 'obs_shape': 80, 'n_actions': 14, 'n_agents': 8, 'n_enemies': 8, 'episode_limit': 120, 'n_normal_actions': 6, 'n_allies': 7, 'state_ally_feats_size': 4, 'state_enemy_feats_size': 3, 'obs_component': [4, (8, 5), (7, 5), 1], 'state_component': [32, 24, 112], 'map_type': 'marines'}
+&&&&&&&&&&&&&&&&&&&&&& dnf_rnn 32.462K
+&&&&&&&&&&&&&&&&&&&&&& nn 32.462K
+dominators_idx: {}, followers_idx: {} tensor([0., 0., 0., 0., 0., 0.]) tensor([0., 0.])
+ &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& self.batch_device=cpu
+Mixer Size: 
+51.201K
+[INFO 22:19:13] my_main Beginning training for 5000000 timesteps
+[INFO 22:19:13] absl Launching SC2: /root/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 43665 -dataDir /root/StarCraftII/ -tempDir /tmp/sc-i0f0g2aa/
+[INFO 22:19:13] absl Launching SC2: /root/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 37725 -dataDir /root/StarCraftII/ -tempDir /tmp/sc-f2saam2x/
+[INFO 22:19:13] absl Launching SC2: /root/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 41263 -dataDir /root/StarCraftII/ -tempDir /tmp/sc-it5ivdoc/
+[INFO 22:19:13] absl Launching SC2: /root/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 39405 -dataDir /root/StarCraftII/ -tempDir /tmp/sc-7x3izrbh/
+[INFO 22:19:13] absl Connecting to: ws://127.0.0.1:43665/sc2api, attempt: 0, running: True
+[INFO 22:19:13] absl Connecting to: ws://127.0.0.1:37725/sc2api, attempt: 0, running: True
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Command Line: '"/root/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 37725 -dataDir /root/StarCraftII/ -tempDir /tmp/sc-f2saam2x/'
+Command Line: '"/root/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 43665 -dataDir /root/StarCraftII/ -tempDir /tmp/sc-i0f0g2aa/'
+[INFO 22:19:13] absl Connecting to: ws://127.0.0.1:39405/sc2api, attempt: 0, running: True
+[INFO 22:19:13] absl Connecting to: ws://127.0.0.1:41263/sc2api, attempt: 0, running: True
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Command Line: '"/root/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 39405 -dataDir /root/StarCraftII/ -tempDir /tmp/sc-7x3izrbh/'
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Command Line: '"/root/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 41263 -dataDir /root/StarCraftII/ -tempDir /tmp/sc-it5ivdoc/'
+Starting up...
+Starting up...
+Starting up...
+Starting up...
+Startup Phase 1 complete
+Startup Phase 1 complete
+Startup Phase 1 complete
+Startup Phase 1 complete
+[INFO 22:19:14] absl Connecting to: ws://127.0.0.1:43665/sc2api, attempt: 1, running: True
+[INFO 22:19:14] absl Connecting to: ws://127.0.0.1:41263/sc2api, attempt: 1, running: True
+[INFO 22:19:14] absl Connecting to: ws://127.0.0.1:37725/sc2api, attempt: 1, running: True
+[INFO 22:19:14] absl Connecting to: ws://127.0.0.1:39405/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Startup Phase 2 complete
+Creating stub renderer...
+Startup Phase 2 complete
+Creating stub renderer...
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:37725
+Startup Phase 3 complete. Ready for commands.
+Listening on: 127.0.0.1:43665
+Listening on: 127.0.0.1:39405
+Startup Phase 3 complete. Ready for commands.
+Startup Phase 3 complete. Ready for commands.
+Listening on: 127.0.0.1:41263
+Startup Phase 3 complete. Ready for commands.
+[INFO 22:19:15] absl Connecting to: ws://127.0.0.1:43665/sc2api, attempt: 2, running: True
+ConnectHandler: Request from 127.0.0.1:44342 accepted
+ReadyHandler: 127.0.0.1:44342 ready
+[INFO 22:19:15] absl Connecting to: ws://127.0.0.1:37725/sc2api, attempt: 2, running: True
+[INFO 22:19:15] absl Connecting to: ws://127.0.0.1:41263/sc2api, attempt: 2, running: True
+ConnectHandler: Request from 127.0.0.1:53878 accepted
+ReadyHandler: 127.0.0.1:53878 ready
+ConnectHandler: Request from 127.0.0.1:44066 accepted
+ReadyHandler: 127.0.0.1:44066 ready
+[INFO 22:19:15] absl Connecting to: ws://127.0.0.1:39405/sc2api, attempt: 2, running: True
+ConnectHandler: Request from 127.0.0.1:47728 accepted
+ReadyHandler: 127.0.0.1:47728 ready
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Using default stable ids, none found at: /root/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Game has started.
+Using default stable ids, none found at: /root/StarCraftII/stableid.json
+Sending ResponseJoinGame
+Successfully loaded stable ids: GameData\stableid.json
+Sending ResponseJoinGame
+Game has started.
+Using default stable ids, none found at: /root/StarCraftII/stableid.json
+Game has started.
+Using default stable ids, none found at: /root/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Sending ResponseJoinGame
+Sending ResponseJoinGame
+/workspace/feat_pymarl/workspace/src/components/episode_buffer.py:109: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  v = th.tensor(v, dtype=dtype, device=self.device)
+[INFO 22:19:20] my_main t_env: 126 / 5000000
+[INFO 22:19:20] my_main Estimated time left: 54 minutes, 25 seconds. Time passed: 6 seconds
+Avg cost 0.9766042232513428 seconds
+Avg cost 0.5946446657180786 seconds
+Avg cost 0.4669279257456461 seconds
+Avg cost 0.40880346298217773 seconds
+Avg cost 0.37239584922790525 seconds
+Avg cost 0.34936638673146564 seconds
+Avg cost 0.3300304412841797 seconds
+Avg cost 0.3178136646747589 seconds
+Avg cost 0.3078609307607015 seconds
+Avg cost 0.3006793260574341 seconds
+Avg cost 0.2947429743680087 seconds
+Avg cost 0.2896851698557536 seconds
+Avg cost 0.2853875160217285 seconds
+Avg cost 0.279795697757176 seconds
+Avg cost 0.27437221209208174 seconds
+Avg cost 0.2713136076927185 seconds
+Avg cost 0.26915282361647663 seconds
+Avg cost 0.2653392420874702 seconds
+Avg cost 0.26205248581735713 seconds
+[INFO 22:19:58] my_main Updated target network
+Avg cost 0.2602364778518677 seconds
+Avg cost 0.2594414097922189 seconds
+Avg cost 0.25855730880390515 seconds
+Avg cost 0.25629603344461194 seconds
+Avg cost 0.25530117750167847 seconds
+Avg cost 0.25320093154907225 seconds
+Avg cost 0.2522534773899959 seconds
+Avg cost 0.2504776230564824 seconds
+Avg cost 0.24824018137795587 seconds
+Avg cost 0.24746798646861112 seconds
+Avg cost 0.24826349417368573 seconds
+Avg cost 0.24691324080190352 seconds
+Avg cost 0.24761733412742615 seconds
+Avg cost 0.24751978932004987 seconds
+Avg cost 0.24788496073554545 seconds
+Avg cost 0.2466915879930769 seconds
+Avg cost 0.246427595615387 seconds
+Avg cost 0.24749040603637698 seconds
+Avg cost 0.24854487494418498 seconds
+Avg cost 0.2497215270996094 seconds
+Avg cost 0.2509704411029816 seconds
+Avg cost 0.25073699253361403 seconds
+[INFO 22:20:15] my_main Recent Stats | t_env:      10060 | Episode:      288
+battle_won_mean:           0.0000	dead_allies_mean:          8.0000	dead_enemies_mean:         0.0000	ep_length_mean:           31.5000
+episode_in_buffer:       288.0000	epsilon:                   1.0000	grad_norm:                 0.7028	loss_td:                   0.0429
+q_taken_mean:             -0.0257	return_max:                2.0625	return_mean:               1.6875	return_min:                1.3125
+return_std:                0.2965	target_mean:               0.0024	td_error_abs:              0.0429	test_battle_won_mean:      0.0000
+test_dead_allies_mean:     0.0000	test_dead_enemies_mean:    0.0000	test_ep_length_mean:     120.0000	test_return_max:           0.0000
+test_return_mean:          0.0000	test_return_min:           0.0000	test_return_std:           0.0000	
+Avg cost 0.25119009472074966 seconds
+[INFO 22:20:16] my_main t_env: 10226 / 5000000
+[INFO 22:20:16] my_main Estimated time left: 7 hours, 41 minutes, 17 seconds. Time passed: 1 minutes, 2 seconds
+Avg cost 0.25198413050451945 seconds
+Avg cost 0.2525628317486156 seconds
+Avg cost 0.25180375311109754 seconds
+Avg cost 0.2524237995562346 seconds
+Avg cost 0.25234692147437565 seconds
+Avg cost 0.25231095155080163 seconds
+Avg cost 0.25295281896785815 seconds
+Avg cost 0.2522910785675049 seconds
+Avg cost 0.25307516490711884 seconds
+Avg cost 0.25291535029044515 seconds
+Avg cost 0.2534125301073182 seconds
+Avg cost 0.2533268177950823 seconds
+Avg cost 0.25401376810940823 seconds
+Avg cost 0.2538588089602334 seconds
+Avg cost 0.2531972475219191 seconds
+Avg cost 0.25294897063025107 seconds
+Avg cost 0.2532356270289016 seconds
+Avg cost 0.2527378598848978 seconds
+Avg cost 0.25285319031262 seconds
+Avg cost 0.2521763963084066 seconds
+Avg cost 0.2519629266526963 seconds
+Avg cost 0.25221440568566317 seconds
+Avg cost 0.25205475733830374 seconds
+Avg cost 0.2515961076274062 seconds
+Avg cost 0.25244791827984703 seconds
+Avg cost 0.25208907267626585 seconds
+Avg cost 0.2515706601350203 seconds
+[INFO 22:20:42] my_main Updated target network
+Avg cost 0.2519700493131364 seconds
+Avg cost 0.25211368815999624 seconds
+Avg cost 0.25237082441647835 seconds
+Avg cost 0.25180613504697186 seconds
+Avg cost 0.2520573332503034 seconds
+Avg cost 0.2514186000823973 seconds
+Avg cost 0.2512368152016086 seconds
+Avg cost 0.2516723081663056 seconds
+Avg cost 0.25204658508300765 seconds
+Avg cost 0.2520210592052603 seconds
+Avg cost 0.2520192533731459 seconds
+Avg cost 0.25261769765689035 seconds
+Avg cost 0.2529641680601165 seconds
+Avg cost 0.253291517855173 seconds
+Avg cost 0.25360483498800357 seconds
+Avg cost 0.2539992528803207 seconds
+Avg cost 0.25432600808698064 seconds
+Avg cost 0.25388551580494834 seconds
+Avg cost 0.2542117834091185 seconds
+Avg cost 0.25437325306153014 seconds
+Avg cost 0.2546318001217311 seconds
+Avg cost 0.2541844058822798 seconds
+Avg cost 0.25355995219686744 seconds
+Avg cost 0.2531150464088685 seconds
+Avg cost 0.2527258903422253 seconds
+Avg cost 0.2530371766341359 seconds
+Avg cost 0.25334957738717384 seconds
+Avg cost 0.25360350510508733 seconds
+Avg cost 0.25322294965082276 seconds
+Avg cost 0.2535599024608881 seconds
+Avg cost 0.25387859344482416 seconds
+Avg cost 0.2541453625896189 seconds
+Avg cost 0.2537430618323531 seconds
+Avg cost 0.2540326743449979 seconds
+Avg cost 0.253626172359173 seconds
+Avg cost 0.25388569831848135 seconds
+Avg cost 0.2542107532609183 seconds
+Avg cost 0.25451382743978046 seconds
+Avg cost 0.2537366218037075 seconds
+Avg cost 0.2540092993220057 seconds
+Avg cost 0.25427367036992843 seconds
+Avg cost 0.2539501190185546 seconds
+Avg cost 0.25370199552604117 seconds
+Avg cost 0.2536978236341897 seconds
+Avg cost 0.2533727235961377 seconds
+Avg cost 0.2525849280150039 seconds
+Avg cost 0.252912992033465 seconds
+Avg cost 0.25266577851059074 seconds
+Avg cost 0.25297758538844206 seconds
+Avg cost 0.25323277962307955 seconds
+[INFO 22:21:15] my_main Updated target network
+Avg cost 0.2529302338759103 seconds
+Avg cost 0.25315370441468277 seconds
+Avg cost 0.2531552119333234 seconds
+Avg cost 0.25335282232703216 seconds
+[INFO 22:21:18] my_main Recent Stats | t_env:      20118 | Episode:      616
+battle_won_mean:           0.0000	dead_allies_mean:          7.9965	dead_enemies_mean:         0.0000	ep_length_mean:           35.0694
+episode_in_buffer:       616.0000	epsilon:                   0.9044	grad_norm:                 0.6399	loss_td:                   0.0270
+q_taken_mean:              0.0724	return_max:                3.7500	return_mean:               1.8757	return_min:                0.7500
+return_std:                0.4832	target_mean:               0.0526	td_error_abs:              0.0270	test_battle_won_mean:      0.0000
+test_dead_allies_mean:     6.9062	test_dead_enemies_mean:    4.4375	test_ep_length_mean:     108.2500	test_return_max:           8.5938
+test_return_mean:          8.1602	test_return_min:           5.6875	test_return_std:           0.7620	
+Avg cost 0.2535195350646971 seconds
+Avg cost 0.25301616477966293 seconds
+[INFO 22:21:20] my_main t_env: 20314 / 5000000
+[INFO 22:21:20] my_main Estimated time left: 8 hours, 45 minutes, 33 seconds. Time passed: 2 minutes, 6 seconds
+Avg cost 0.2531985214778354 seconds
+Avg cost 0.25307510781475867 seconds
+Avg cost 0.25296817533671845 seconds
+Avg cost 0.25285891229792146 seconds
+Avg cost 0.25240940864269534 seconds
+Avg cost 0.252528145113064 seconds
+Process Process-4:
+Process Process-1:
+Process Process-3:
+Process Process-2:
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/root/anaconda3/envs/pymarl/lib/python3.8/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/root/anaconda3/envs/pymarl/lib/python3.8/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/workspace/feat_pymarl/workspace/src/runners/parallel_runner.py", line 258, in env_worker
+    cmd, data = remote.recv()
+  File "/root/anaconda3/envs/pymarl/lib/python3.8/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/root/anaconda3/envs/pymarl/lib/python3.8/multiprocessing/connection.py", line 414, in _recv_bytes
+    buf = self._recv(4)
+  File "/root/anaconda3/envs/pymarl/lib/python3.8/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/root/anaconda3/envs/pymarl/lib/python3.8/multiprocessing/connection.py", line 379, in _recv
+    chunk = read(handle, remaining)
+  File "/root/anaconda3/envs/pymarl/lib/python3.8/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/workspace/feat_pymarl/workspace/src/runners/parallel_runner.py", line 258, in env_worker
+    cmd, data = remote.recv()
+  File "/root/anaconda3/envs/pymarl/lib/python3.8/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/root/anaconda3/envs/pymarl/lib/python3.8/multiprocessing/connection.py", line 414, in _recv_bytes
+    buf = self._recv(4)
+  File "/root/anaconda3/envs/pymarl/lib/python3.8/multiprocessing/connection.py", line 379, in _recv
+    chunk = read(handle, remaining)
+KeyboardInterrupt
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/root/anaconda3/envs/pymarl/lib/python3.8/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/root/anaconda3/envs/pymarl/lib/python3.8/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/workspace/feat_pymarl/workspace/src/runners/parallel_runner.py", line 258, in env_worker
+    cmd, data = remote.recv()
+  File "/root/anaconda3/envs/pymarl/lib/python3.8/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/root/anaconda3/envs/pymarl/lib/python3.8/multiprocessing/connection.py", line 414, in _recv_bytes
+    buf = self._recv(4)
+  File "/root/anaconda3/envs/pymarl/lib/python3.8/multiprocessing/connection.py", line 379, in _recv
+    chunk = read(handle, remaining)
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/root/anaconda3/envs/pymarl/lib/python3.8/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/root/anaconda3/envs/pymarl/lib/python3.8/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/workspace/feat_pymarl/workspace/src/runners/parallel_runner.py", line 266, in env_worker
+    obs = env.get_obs()
+  File "/workspace/feat_pymarl/workspace/src/envs/smac_v1/official/starcraft2.py", line 1132, in get_obs
+    agents_obs = [self.get_obs_agent(i) for i in range(self.n_agents)]
+  File "/workspace/feat_pymarl/workspace/src/envs/smac_v1/official/starcraft2.py", line 1132, in <listcomp>
+    agents_obs = [self.get_obs_agent(i) for i in range(self.n_agents)]
+  File "/workspace/feat_pymarl/workspace/src/envs/smac_v1/official/starcraft2.py", line 1057, in get_obs_agent
+    dist < sight_range and al_unit.health > 0
+KeyboardInterrupt

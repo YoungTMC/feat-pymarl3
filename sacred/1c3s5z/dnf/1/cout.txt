@@ -1,0 +1,289 @@
+[INFO 21:18:13] pymarl Running command 'my_main'
+[INFO 21:18:13] pymarl Started run with ID "1"
+[DEBUG 21:18:13] pymarl Starting Heartbeat
+[DEBUG 21:18:13] my_main Started
+[INFO 21:18:13] my_main Experiment Parameters:
+[INFO 21:18:13] my_main 
+
+{   'action_selector': 'epsilon_greedy',
+    'agent': 'dnf_rnn',
+    'agent_output_type': 'q',
+    'asn_hidden_size': 32,
+    'batch_size': 128,
+    'batch_size_run': 4,
+    'buffer_cpu_only': True,
+    'buffer_size': 5000,
+    'checkpoint_path': '',
+    'core_agent_ratio': 0.7,
+    'core_extractor_layer_norm': False,
+    'core_extractor_type': 'svd',
+    'core_extractor_use_orthogonal': False,
+    'core_hidden_dim': 32,
+    'cpu_inference': True,
+    'critic_lr': 0.0005,
+    'double_q': True,
+    'enable_parallel_computing': False,
+    'env': 'sc2',
+    'env_args': {   'continuing_episode': False,
+                    'debug': False,
+                    'difficulty': '7',
+                    'game_version': None,
+                    'heuristic_ai': False,
+                    'heuristic_rest': False,
+                    'map_name': '1c3s5z',
+                    'move_amount': 2,
+                    'obs_all_health': True,
+                    'obs_instead_of_state': False,
+                    'obs_last_action': False,
+                    'obs_own_health': True,
+                    'obs_pathing_grid': False,
+                    'obs_terrain_height': False,
+                    'obs_timestep_number': False,
+                    'replay_dir': '',
+                    'replay_prefix': '',
+                    'reward_death_value': 10,
+                    'reward_defeat': 0,
+                    'reward_negative_scale': 0.5,
+                    'reward_only_positive': True,
+                    'reward_scale': True,
+                    'reward_scale_rate': 20,
+                    'reward_sparse': False,
+                    'reward_win': 200,
+                    'seed': 748351688,
+                    'state_last_action': True,
+                    'state_timestep_number': False,
+                    'step_mul': 8},
+    'epsilon_anneal_time': 100000,
+    'epsilon_finish': 0.05,
+    'epsilon_start': 1.0,
+    'evaluate': False,
+    'gain': 0.01,
+    'gamma': 0.99,
+    'grad_norm_clip': 10,
+    'hypernet_embed': 64,
+    'label': 'default_label',
+    'learner': 'nq_learner',
+    'learner_log_interval': 10000,
+    'load_step': 0,
+    'local_results_path': 'results',
+    'log_interval': 10000,
+    'lr': 0.001,
+    'mac': 'dnf_mac',
+    'mixer': 'qmix',
+    'mixing_embed_dim': 32,
+    'name': 'dnf',
+    'obs_agent_id': True,
+    'obs_last_action': True,
+    'optim_alpha': 0.99,
+    'optim_eps': 1e-05,
+    'optimizer': 'adam',
+    'per_alpha': 0.6,
+    'per_beta': 0.4,
+    'q_lambda': False,
+    'repeat_id': 1,
+    'return_priority': False,
+    'rnn_hidden_dim': 64,
+    'run': 'default',
+    'runner': 'parallel',
+    'runner_log_interval': 10000,
+    'save_model': True,
+    'save_model_interval': 2000000,
+    'save_replay': False,
+    'seed': 748351688,
+    't_max': 1000000,
+    'target_update_interval': 200,
+    'td_lambda': 0.6,
+    'test_greedy': True,
+    'test_interval': 10000,
+    'test_nepisode': 32,
+    'thread_num': 12,
+    'use_cuda': True,
+    'use_layer_norm': False,
+    'use_orthogonal': False,
+    'use_per': False,
+    'use_tensorboard': True}
+
+{'state_shape': 270, 'obs_shape': 162, 'n_actions': 15, 'n_agents': 9, 'n_enemies': 9, 'episode_limit': 180, 'n_normal_actions': 6, 'n_allies': 8, 'state_ally_feats_size': 8, 'state_enemy_feats_size': 7, 'obs_component': [4, (9, 9), (8, 9), 5], 'state_component': [72, 63, 135], 'map_type': 'colossi_stalkers_zealots'}
+&&&&&&&&&&&&&&&&&&&&&& dnf_rnn 37.903K
+&&&&&&&&&&&&&&&&&&&&&& svd 37.903K
+dominators_idx: {}, followers_idx: {} tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0.])
+ &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& self.batch_device=cpu
+Mixer Size: 
+72.865K
+[INFO 21:18:16] my_main Beginning training for 1000000 timesteps
+[INFO 21:18:16] absl Launching SC2: /root/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 39975 -dataDir /root/StarCraftII/ -tempDir /tmp/sc-0cx6uove/
+[INFO 21:18:16] absl Launching SC2: /root/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 44941 -dataDir /root/StarCraftII/ -tempDir /tmp/sc-j7gvb9ve/
+[INFO 21:18:16] absl Launching SC2: /root/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 42501 -dataDir /root/StarCraftII/ -tempDir /tmp/sc-7ch8pqu2/
+[INFO 21:18:16] absl Launching SC2: /root/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 44111 -dataDir /root/StarCraftII/ -tempDir /tmp/sc-f9x_9weh/
+[INFO 21:18:16] absl Connecting to: ws://127.0.0.1:44111/sc2api, attempt: 0, running: True
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Command Line: '"/root/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 44111 -dataDir /root/StarCraftII/ -tempDir /tmp/sc-f9x_9weh/'
+[INFO 21:18:16] absl Connecting to: ws://127.0.0.1:42501/sc2api, attempt: 0, running: True
+[INFO 21:18:16] absl Connecting to: ws://127.0.0.1:39975/sc2api, attempt: 0, running: True
+[INFO 21:18:16] absl Connecting to: ws://127.0.0.1:44941/sc2api, attempt: 0, running: True
+Version: B75689 (SC2.4.10)
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Build: Aug 12 2019 17:16:57
+Command Line: '"/root/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 42501 -dataDir /root/StarCraftII/ -tempDir /tmp/sc-7ch8pqu2/'
+Command Line: '"/root/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 39975 -dataDir /root/StarCraftII/ -tempDir /tmp/sc-0cx6uove/'
+Command Line: '"/root/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 44941 -dataDir /root/StarCraftII/ -tempDir /tmp/sc-j7gvb9ve/'
+Starting up...
+Starting up...
+Starting up...
+Starting up...
+Startup Phase 1 complete
+Startup Phase 1 complete
+Startup Phase 1 complete
+Startup Phase 1 complete
+[INFO 21:18:17] absl Connecting to: ws://127.0.0.1:44111/sc2api, attempt: 1, running: True
+[INFO 21:18:17] absl Connecting to: ws://127.0.0.1:42501/sc2api, attempt: 1, running: True
+[INFO 21:18:17] absl Connecting to: ws://127.0.0.1:39975/sc2api, attempt: 1, running: True
+[INFO 21:18:17] absl Connecting to: ws://127.0.0.1:44941/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Startup Phase 2 complete
+Creating stub renderer...
+Startup Phase 2 complete
+Creating stub renderer...
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:44941
+Startup Phase 3 complete. Ready for commands.
+Listening on: 127.0.0.1:39975
+Listening on: 127.0.0.1:42501
+Startup Phase 3 complete. Ready for commands.
+Startup Phase 3 complete. Ready for commands.
+Listening on: 127.0.0.1:44111
+Startup Phase 3 complete. Ready for commands.
+[INFO 21:18:18] absl Connecting to: ws://127.0.0.1:44111/sc2api, attempt: 2, running: True
+ConnectHandler: Request from 127.0.0.1:46952 accepted
+ReadyHandler: 127.0.0.1:46952 ready
+[INFO 21:18:18] absl Connecting to: ws://127.0.0.1:42501/sc2api, attempt: 2, running: True
+ConnectHandler: Request from 127.0.0.1:33912 accepted
+ReadyHandler: 127.0.0.1:33912 ready
+[INFO 21:18:18] absl Connecting to: ws://127.0.0.1:39975/sc2api, attempt: 2, running: True
+[INFO 21:18:18] absl Connecting to: ws://127.0.0.1:44941/sc2api, attempt: 2, running: True
+ConnectHandler: Request from 127.0.0.1:57718 accepted
+ReadyHandler: 127.0.0.1:57718 ready
+ConnectHandler: Request from 127.0.0.1:55770 accepted
+ReadyHandler: 127.0.0.1:55770 ready
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Next launch phase started: 2
+Next launch phase started: 3
+Launching next game.
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Using default stable ids, none found at: /root/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Sending ResponseJoinGame
+Game has started.
+Using default stable ids, none found at: /root/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Sending ResponseJoinGame
+Game has started.
+Using default stable ids, none found at: /root/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Sending ResponseJoinGame
+Game has started.
+Using default stable ids, none found at: /root/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Sending ResponseJoinGame
+/workspace/feat_pymarl/workspace/src/components/episode_buffer.py:109: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  v = th.tensor(v, dtype=dtype, device=self.device)
+[INFO 21:18:24] my_main t_env: 210 / 1000000
+[INFO 21:18:24] my_main Estimated time left: 12 minutes, 55 seconds. Time passed: 7 seconds
+Avg cost 23.70106077194214 seconds
+Avg cost 23.36673367023468 seconds
+Avg cost 19.160662174224854 seconds
+Avg cost 20.139640033245087 seconds
+Avg cost 20.77625193595886 seconds
+Avg cost 18.769126216570534 seconds
+Avg cost 17.284568071365353 seconds
+Avg cost 18.0569913983345 seconds
+Avg cost 17.026468488905163 seconds
+Avg cost 17.699934482574463 seconds
+Avg cost 18.273625373840332 seconds
+Avg cost 18.748137056827545 seconds
+Avg cost 19.14086411549495 seconds
+Avg cost 18.429911068507604 seconds
+Avg cost 18.762435785929362 seconds
+[INFO 21:24:34] my_main Recent Stats | t_env:      10065 | Episode:      184
+battle_won_mean:           0.0000	dead_allies_mean:          9.0000	dead_enemies_mean:         0.7500	ep_length_mean:           52.5000
+episode_in_buffer:       184.0000	epsilon:                   1.0000	grad_norm:                 3.3655	loss_td:                   0.2565
+q_taken_mean:              0.0041	return_max:                6.3476	return_mean:               6.1006	return_min:                5.5053
+return_std:                0.3463	target_mean:               0.0679	td_error_abs:              0.2565	test_battle_won_mean:      0.0000
+test_dead_allies_mean:     9.0000	test_dead_enemies_mean:    1.3750	test_ep_length_mean:      54.8750	test_return_max:           6.3824
+test_return_mean:          4.8461	test_return_min:           0.0000	test_return_std:           1.1174	
+Avg cost 18.16094461083412 seconds
+[INFO 21:24:45] my_main t_env: 10265 / 1000000
+[INFO 21:24:45] my_main Estimated time left: 10 hours, 25 minutes, 11 seconds. Time passed: 6 minutes, 29 seconds
+Avg cost 18.512510706396665 seconds
+Avg cost 18.832068350580006 seconds
+Avg cost 19.095315782647386 seconds
+[INFO 21:26:18] my_main Updated target network
+Avg cost 18.569935297966005 seconds
+Avg cost 18.829218262717838 seconds
+Avg cost 19.050311381166633 seconds
+Avg cost 19.26106275682864 seconds
+Avg cost 18.83185550570488 seconds
+Avg cost 18.430823678970338 seconds
+Avg cost 18.628527632126442 seconds
+Avg cost 18.28323079921581 seconds
+Avg cost 18.485430666378566 seconds
+Avg cost 18.718862854201216 seconds
+Avg cost 18.42499731381734 seconds

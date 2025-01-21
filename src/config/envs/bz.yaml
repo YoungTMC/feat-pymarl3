@@ -1,0 +1,44 @@
+env: bz
+
+env_args:
+  env_name: "bz"
+  start_port: 8080
+  config_num: 1
+  map_name: "senario2.yaml"
+  n_rollout_threads: 2
+  number_rounds_total: 500
+  set_speed: 256
+  one_step_multi_steps: 10
+  red_move_control_freq: 15
+  blue_move_control_freq: 25
+  aircraft_speed: 1500
+  one_game_max_step: 20000
+
+  main_camp: 0
+  partner_camp: 1
+  red_action_type: "agent"
+  blue_action_type: "rule"
+  max_red_agent_num: 12
+  max_red_basic_info_len: 60
+  max_red_detections_for_one_equipment: 26
+  max_blue_agent_num: 12
+  max_blue_basic_info_len: 60
+  max_blue_detections_for_one_equipment: 26
+  max_missile_type_num: 3
+
+  single_action_dim_red: 32
+  single_action_dim_blue: 32
+  action_type: "Discrete"
+
+  device: "gpu"
+  num_env_steps: 30000000
+
+test_greedy: True
+test_nepisode: 32
+test_interval: 10000
+log_interval: 10000
+runner_log_interval: 10000
+learner_log_interval: 10000
+t_max: 2050000
+obs_agent_id: True # Include the agent's one_hot id in the observation
+obs_last_action: True # Include the agent's last action (one_hot) in the observation

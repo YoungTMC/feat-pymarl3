@@ -1,0 +1,3461 @@
+[INFO 10:11:08] pymarl Running command 'my_main'
+[INFO 10:11:08] pymarl Started run with ID "10"
+[DEBUG 10:11:08] pymarl Starting Heartbeat
+[DEBUG 10:11:08] my_main Started
+[INFO 10:11:08] my_main Experiment Parameters:
+[INFO 10:11:08] my_main 
+
+{   'action_selector': 'epsilon_greedy',
+    'agent': 'dnf_rnn',
+    'agent_output_type': 'q',
+    'asn_hidden_size': 32,
+    'batch_size': 64,
+    'batch_size_run': 4,
+    'buffer_cpu_only': True,
+    'buffer_size': 5000,
+    'checkpoint_path': '',
+    'core_agent_ratio': 0.7,
+    'core_extractor_layer_norm': False,
+    'core_extractor_type': 'svd',
+    'core_extractor_use_orthogonal': False,
+    'core_hidden_dim': 32,
+    'cpu_inference': True,
+    'critic_lr': 0.0005,
+    'double_q': True,
+    'enable_parallel_computing': False,
+    'env': 'sc2',
+    'env_args': {   'continuing_episode': False,
+                    'debug': False,
+                    'difficulty': '7',
+                    'game_version': None,
+                    'heuristic_ai': False,
+                    'heuristic_rest': False,
+                    'map_name': '6h_vs_8z',
+                    'move_amount': 2,
+                    'obs_all_health': True,
+                    'obs_instead_of_state': False,
+                    'obs_last_action': False,
+                    'obs_own_health': True,
+                    'obs_pathing_grid': False,
+                    'obs_terrain_height': False,
+                    'obs_timestep_number': False,
+                    'replay_dir': '',
+                    'replay_prefix': '',
+                    'reward_death_value': 10,
+                    'reward_defeat': 0,
+                    'reward_negative_scale': 0.5,
+                    'reward_only_positive': True,
+                    'reward_scale': True,
+                    'reward_scale_rate': 20,
+                    'reward_sparse': False,
+                    'reward_win': 200,
+                    'seed': 874057583,
+                    'state_last_action': True,
+                    'state_timestep_number': False,
+                    'step_mul': 8},
+    'epsilon_anneal_time': 300000,
+    'epsilon_finish': 0.05,
+    'epsilon_start': 1.0,
+    'evaluate': False,
+    'gain': 0.01,
+    'gamma': 0.99,
+    'grad_norm_clip': 10,
+    'hypernet_embed': 64,
+    'label': 'default_label',
+    'learner': 'nq_learner',
+    'learner_log_interval': 10000,
+    'load_step': 0,
+    'local_results_path': 'results',
+    'log_interval': 10000,
+    'lr': 0.001,
+    'mac': 'dnf_mac',
+    'mixer': 'qmix',
+    'mixing_embed_dim': 32,
+    'name': 'dnf',
+    'obs_agent_id': True,
+    'obs_last_action': True,
+    'optim_alpha': 0.99,
+    'optim_eps': 1e-05,
+    'optimizer': 'adam',
+    'per_alpha': 0.6,
+    'per_beta': 0.4,
+    'q_lambda': False,
+    'repeat_id': 1,
+    'return_priority': False,
+    'rnn_hidden_dim': 64,
+    'run': 'default',
+    'runner': 'parallel',
+    'runner_log_interval': 10000,
+    'save_model': True,
+    'save_model_interval': 2000000,
+    'save_replay': False,
+    'seed': 874057583,
+    't_max': 10050000,
+    'target_update_interval': 200,
+    'td_lambda': 0.3,
+    'test_greedy': True,
+    'test_interval': 10000,
+    'test_nepisode': 32,
+    'thread_num': 12,
+    'use_cuda': True,
+    'use_layer_norm': False,
+    'use_orthogonal': False,
+    'use_per': False,
+    'use_tensorboard': True}
+
+{'state_shape': 140, 'obs_shape': 78, 'n_actions': 14, 'n_agents': 6, 'n_enemies': 8, 'episode_limit': 150, 'n_normal_actions': 6, 'n_allies': 5, 'state_ally_feats_size': 4, 'state_enemy_feats_size': 4, 'obs_component': [4, (8, 6), (5, 5), 1], 'state_component': [24, 32, 84], 'map_type': 'hydralisks'}
+&&&&&&&&&&&&&&&&&&&&&& dnf_rnn 32.206K
+&&&&&&&&&&&&&&&&&&&&&& svd 32.206K
+dominators_idx: {}, followers_idx: {} tensor([0., 0., 0., 0., 0.]) tensor([0.])
+ &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& self.batch_device=cpu
+Mixer Size: 
+41.665K
+[INFO 10:11:11] my_main Beginning training for 10050000 timesteps
+[INFO 10:11:11] absl Launching SC2: /root/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 44325 -dataDir /root/StarCraftII/ -tempDir /tmp/sc-pzqaj7n7/
+[INFO 10:11:11] absl Launching SC2: /root/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 45669 -dataDir /root/StarCraftII/ -tempDir /tmp/sc-ehz6rws3/
+[INFO 10:11:11] absl Launching SC2: /root/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 38471 -dataDir /root/StarCraftII/ -tempDir /tmp/sc-h6w34pyq/
+[INFO 10:11:11] absl Launching SC2: /root/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 36699 -dataDir /root/StarCraftII/ -tempDir /tmp/sc-1wzdgycs/
+[INFO 10:11:11] absl Connecting to: ws://127.0.0.1:44325/sc2api, attempt: 0, running: True
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Command Line: '"/root/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 44325 -dataDir /root/StarCraftII/ -tempDir /tmp/sc-pzqaj7n7/'
+[INFO 10:11:11] absl Connecting to: ws://127.0.0.1:36699/sc2api, attempt: 0, running: True
+[INFO 10:11:11] absl Connecting to: ws://127.0.0.1:38471/sc2api, attempt: 0, running: True
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Command Line: '"/root/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 36699 -dataDir /root/StarCraftII/ -tempDir /tmp/sc-1wzdgycs/'
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Command Line: '"/root/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 38471 -dataDir /root/StarCraftII/ -tempDir /tmp/sc-h6w34pyq/'
+[INFO 10:11:11] absl Connecting to: ws://127.0.0.1:45669/sc2api, attempt: 0, running: True
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Command Line: '"/root/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 45669 -dataDir /root/StarCraftII/ -tempDir /tmp/sc-ehz6rws3/'
+Starting up...
+Starting up...
+Starting up...
+Startup Phase 1 complete
+Startup Phase 1 complete
+Startup Phase 1 complete
+Starting up...
+Startup Phase 1 complete
+[INFO 10:11:12] absl Connecting to: ws://127.0.0.1:44325/sc2api, attempt: 1, running: True
+[INFO 10:11:12] absl Connecting to: ws://127.0.0.1:36699/sc2api, attempt: 1, running: True
+[INFO 10:11:12] absl Connecting to: ws://127.0.0.1:38471/sc2api, attempt: 1, running: True
+[INFO 10:11:12] absl Connecting to: ws://127.0.0.1:45669/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Startup Phase 2 complete
+Startup Phase 2 complete
+Creating stub renderer...
+Creating stub renderer...
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:44325
+Startup Phase 3 complete. Ready for commands.
+Listening on: 127.0.0.1:38471
+Startup Phase 3 complete. Ready for commands.
+Listening on: 127.0.0.1:36699
+Startup Phase 3 complete. Ready for commands.
+Listening on: 127.0.0.1:45669
+Startup Phase 3 complete. Ready for commands.
+[INFO 10:11:13] absl Connecting to: ws://127.0.0.1:44325/sc2api, attempt: 2, running: True
+[INFO 10:11:13] absl Connecting to: ws://127.0.0.1:36699/sc2api, attempt: 2, running: True
+ConnectHandler: Request from 127.0.0.1:37318 accepted
+ReadyHandler: 127.0.0.1:37318 ready
+ConnectHandler: Request from 127.0.0.1:41498 accepted
+ReadyHandler: 127.0.0.1:41498 ready
+[INFO 10:11:13] absl Connecting to: ws://127.0.0.1:38471/sc2api, attempt: 2, running: True
+ConnectHandler: Request from 127.0.0.1:47022 accepted
+ReadyHandler: 127.0.0.1:47022 ready
+[INFO 10:11:13] absl Connecting to: ws://127.0.0.1:45669/sc2api, attempt: 2, running: True
+ConnectHandler: Request from 127.0.0.1:56368 accepted
+ReadyHandler: 127.0.0.1:56368 ready
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Next launch phase started: 2
+Next launch phase started: 3
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Using default stable ids, none found at: /root/StarCraftII/stableid.json
+Game has started.
+Using default stable ids, none found at: /root/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Sending ResponseJoinGame
+Sending ResponseJoinGame
+Game has started.
+Using default stable ids, none found at: /root/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Sending ResponseJoinGame
+Game has started.
+Using default stable ids, none found at: /root/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Sending ResponseJoinGame
+/workspace/feat_pymarl/workspace/src/components/episode_buffer.py:109: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  v = th.tensor(v, dtype=dtype, device=self.device)
+[INFO 10:11:17] my_main t_env: 96 / 10050000
+[INFO 10:11:17] my_main Estimated time left: 1 hours, 47 minutes, 19 seconds. Time passed: 6 seconds
+Avg cost 0.865215539932251 seconds
+Avg cost 0.5541015863418579 seconds
+Avg cost 0.46578208605448407 seconds
+Avg cost 0.42141449451446533 seconds
+Avg cost 0.38495168685913084 seconds
+Avg cost 0.3651949961980184 seconds
+Avg cost 0.3526019709450858 seconds
+Avg cost 0.34367993474006653 seconds
+Avg cost 0.33871157964070636 seconds
+Avg cost 0.3354424238204956 seconds
+Avg cost 0.33039858124472876 seconds
+Avg cost 0.32573868830998737 seconds
+Avg cost 0.32170178340031547 seconds
+Avg cost 0.3203858137130737 seconds
+Avg cost 0.3171374162038167 seconds
+Avg cost 0.31707882881164545 seconds
+Avg cost 0.31546303805182957 seconds
+Avg cost 0.3152610063552856 seconds
+Avg cost 0.3145080993050023 seconds
+Avg cost 0.31105556488037106 seconds
+Avg cost 0.3112203961326962 seconds
+Avg cost 0.3107331991195678 seconds
+Avg cost 0.3107501838518225 seconds
+Avg cost 0.3108189503351847 seconds
+Avg cost 0.3108636093139648 seconds
+Avg cost 0.3100969516313992 seconds
+Avg cost 0.30931458649811916 seconds
+Avg cost 0.3085237826619829 seconds
+Avg cost 0.3074915491301437 seconds
+Avg cost 0.30746568044026684 seconds
+Avg cost 0.30669303094187084 seconds
+Avg cost 0.3049964010715484 seconds
+Avg cost 0.30373281421083387 seconds
+Avg cost 0.30401747366961307 seconds
+Avg cost 0.3036176545279366 seconds
+[INFO 10:11:55] my_main Updated target network
+Avg cost 0.3031891584396362 seconds
+Avg cost 0.30281682272215144 seconds
+Avg cost 0.3025196602469996 seconds
+Avg cost 0.30230580232082266 seconds
+Avg cost 0.3023793995380401 seconds
+Avg cost 0.30185434294909963 seconds
+Avg cost 0.30155689943404423 seconds
+Avg cost 0.30108322099197743 seconds
+Avg cost 0.2999342950907621 seconds
+Avg cost 0.29976849026150176 seconds
+Avg cost 0.29930095568947174 seconds
+Avg cost 0.29867357396064925 seconds
+Avg cost 0.2981381714344025 seconds
+Avg cost 0.29743145436656726 seconds
+Avg cost 0.29660990715026864 seconds
+Avg cost 0.29571360700270716 seconds
+Avg cost 0.2952297238203196 seconds
+Avg cost 0.29457177306121257 seconds
+Avg cost 0.29420105174735744 seconds
+Avg cost 0.293685700676658 seconds
+Avg cost 0.2934595899922508 seconds
+Avg cost 0.2934262334254751 seconds
+Avg cost 0.29303962608863576 seconds
+Avg cost 0.29292701058468584 seconds
+Avg cost 0.2930811564127605 seconds
+Avg cost 0.29248507687302894 seconds
+Avg cost 0.29263309124977366 seconds
+Avg cost 0.29279932143196236 seconds
+Avg cost 0.2926425263285638 seconds
+Avg cost 0.29256346409137446 seconds
+Avg cost 0.2926982352227877 seconds
+Avg cost 0.29278158073994665 seconds
+Avg cost 0.29296035275739796 seconds
+Avg cost 0.2933810828388602 seconds
+Avg cost 0.29356583867754266 seconds
+Avg cost 0.293509516917484 seconds
+Avg cost 0.2933937112490337 seconds
+Avg cost 0.2933596127653776 seconds
+Avg cost 0.2931602001190186 seconds
+Avg cost 0.2931822808583578 seconds
+Avg cost 0.29391459101124817 seconds
+Avg cost 0.29424470430844796 seconds
+Avg cost 0.29429786021892845 seconds
+Avg cost 0.2942217301718797 seconds
+Avg cost 0.2943314731121064 seconds
+Avg cost 0.29465707143147796 seconds
+Avg cost 0.29469311818843946 seconds
+Avg cost 0.29483489243381006 seconds
+Avg cost 0.2947097874823072 seconds
+Avg cost 0.29468855857849136 seconds
+[INFO 10:12:33] my_main Updated target network
+Avg cost 0.2948777703351754 seconds
+Avg cost 0.2946663505729589 seconds
+Avg cost 0.2946801890026441 seconds
+Avg cost 0.29420949635880733 seconds
+Avg cost 0.29418906900617825 seconds
+Avg cost 0.29414078691503515 seconds
+Avg cost 0.2941032674001612 seconds
+[INFO 10:12:39] my_main Recent Stats | t_env:      10008 | Episode:      428
+battle_won_mean:           0.0000	dead_allies_mean:          6.0000	dead_enemies_mean:         0.0000	ep_length_mean:           24.0000
+episode_in_buffer:       428.0000	epsilon:                   1.0000	grad_norm:                 1.6266	loss_td:                   0.1774
+q_taken_mean:              0.0203	return_max:                6.3243	return_mean:               5.5680	return_min:                4.7973
+return_std:                0.5809	target_mean:               0.1034	td_error_abs:              0.1774	test_battle_won_mean:      0.0000
+test_dead_allies_mean:     6.0000	test_dead_enemies_mean:    0.0000	test_ep_length_mean:      20.8750	test_return_max:           0.0000
+test_return_mean:          0.0000	test_return_min:           0.0000	test_return_std:           0.0000	
+Avg cost 0.2936915736044608 seconds
+[INFO 10:12:40] my_main t_env: 10103 / 10050000
+[INFO 10:12:40] my_main Estimated time left: 22 hours, 55 minutes, 6 seconds. Time passed: 1 minutes, 28 seconds
+Avg cost 0.2931438278644644 seconds
+Avg cost 0.2925755576083536 seconds
+Avg cost 0.2926493411262831 seconds
+Avg cost 0.29219536928786455 seconds
+Avg cost 0.2922978157899819 seconds
+Avg cost 0.2923976748880715 seconds
+Avg cost 0.292504484653473 seconds
+Avg cost 0.2924747160165618 seconds
+Avg cost 0.29238265168433103 seconds
+Avg cost 0.2924183364053375 seconds
+Avg cost 0.2923872677179484 seconds
+Avg cost 0.2923712117331369 seconds
+Avg cost 0.29257838006289505 seconds
+Avg cost 0.2926865894103719 seconds
+Avg cost 0.2927058714407462 seconds
+Avg cost 0.2927748369514396 seconds
+Avg cost 0.2927864313125611 seconds
+Avg cost 0.29278224652951906 seconds
+Avg cost 0.29300901506628313 seconds
+Avg cost 0.2931217894089961 seconds
+Avg cost 0.29296918082655526 seconds
+Avg cost 0.29284225546795395 seconds
+Avg cost 0.29284092681161294 seconds
+Avg cost 0.29289262518923515 seconds
+Avg cost 0.29289770530442066 seconds
+Avg cost 0.2930229351300152 seconds
+Avg cost 0.29302374521891283 seconds
+Avg cost 0.2929935179466059 seconds
+Avg cost 0.292985239966971 seconds
+Avg cost 0.29296225454749136 seconds
+Avg cost 0.29307664017523494 seconds
+Avg cost 0.29305270957946783 seconds
+Avg cost 0.29316513122074195 seconds
+Avg cost 0.2931556063374197 seconds
+Avg cost 0.2931584287434817 seconds
+Avg cost 0.2931230844453324 seconds
+Avg cost 0.2932244575940646 seconds
+Avg cost 0.29318650260226425 seconds
+Avg cost 0.29321991674827813 seconds
+Avg cost 0.2932087622190777 seconds
+Avg cost 0.29326890297790076 seconds
+Avg cost 0.2932588488967331 seconds
+[INFO 10:13:15] my_main Updated target network
+Avg cost 0.2932540108175839 seconds
+Avg cost 0.2932355369094515 seconds
+Avg cost 0.2934084543283435 seconds
+Avg cost 0.29348934125557224 seconds
+Avg cost 0.29357204266956877 seconds
+Avg cost 0.29354335568475387 seconds
+Avg cost 0.2934301655057451 seconds
+Avg cost 0.2934135006857919 seconds
+Avg cost 0.2934027943346236 seconds
+Avg cost 0.29343440121617814 seconds
+Avg cost 0.2935182362386625 seconds
+Avg cost 0.29329511421878324 seconds
+Avg cost 0.29336289618466355 seconds
+Avg cost 0.2929913901642665 seconds
+Avg cost 0.293102453549703 seconds
+Avg cost 0.2931762846889875 seconds
+Avg cost 0.2932249856622596 seconds
+Avg cost 0.29303183119281445 seconds
+Avg cost 0.2927557895709942 seconds
+Avg cost 0.292449555858489 seconds
+Avg cost 0.2925370625960521 seconds
+Avg cost 0.292627079471661 seconds
+Avg cost 0.29237070264695564 seconds
+Avg cost 0.2924568713086206 seconds
+Avg cost 0.2924486577510833 seconds
+Avg cost 0.29245276332641973 seconds
+Avg cost 0.29255479206273577 seconds
+Avg cost 0.29251988387546646 seconds
+Avg cost 0.2925204663741878 seconds
+Avg cost 0.292503210992524 seconds
+Avg cost 0.2924215176019323 seconds
+Avg cost 0.2924227957240121 seconds
+Avg cost 0.29258563121159864 seconds
+Avg cost 0.29266897602194153 seconds
+Avg cost 0.29254757516524366 seconds
+Avg cost 0.29257344363028537 seconds
+Avg cost 0.2925644600114156 seconds
+Avg cost 0.29263413848215436 seconds
+Avg cost 0.2926685631960287 seconds
+Avg cost 0.29272562435695093 seconds
+Avg cost 0.2926418713547966 seconds
+Avg cost 0.29263271046223605 seconds
+Avg cost 0.2926518461677465 seconds
+Avg cost 0.2924713928606256 seconds
+Avg cost 0.29250199794769277 seconds
+Avg cost 0.2924992524457899 seconds
+Avg cost 0.29238930901328275 seconds
+Avg cost 0.29250577238739506 seconds
+Avg cost 0.2924596757992453 seconds
+Avg cost 0.29249310106844506 seconds
+[INFO 10:13:54] my_main Updated target network
+Avg cost 0.29256837086010995 seconds
+Avg cost 0.2925122855181362 seconds
+Avg cost 0.29250575887395974 seconds
+Avg cost 0.2925474946461026 seconds
+Avg cost 0.29258017665461483 seconds
+Avg cost 0.29244113592577226 seconds
+Avg cost 0.29244337106744445 seconds
+Avg cost 0.2924394274005 seconds
+Avg cost 0.2922239573960451 seconds
+Avg cost 0.29220197139642173 seconds
+Avg cost 0.29221974951880314 seconds
+Avg cost 0.29200506089302486 seconds
+Avg cost 0.2917752663294474 seconds
+Avg cost 0.29142433554682895 seconds
+Avg cost 0.29142761230468744 seconds
+[INFO 10:14:05] my_main Recent Stats | t_env:      20067 | Episode:      860
+battle_won_mean:           0.0000	dead_allies_mean:          6.0000	dead_enemies_mean:         0.0000	ep_length_mean:           23.3808
+episode_in_buffer:       860.0000	epsilon:                   0.9683	grad_norm:                 0.2330	loss_td:                   0.0127
+q_taken_mean:              0.1998	return_max:                7.1081	return_mean:               5.4400	return_min:                4.0135
+return_std:                0.5178	target_mean:               0.2071	td_error_abs:              0.0127	test_battle_won_mean:      0.0000
+test_dead_allies_mean:     6.0000	test_dead_enemies_mean:    2.0625	test_ep_length_mean:      22.2188	test_return_max:           8.5270
+test_return_mean:          7.5386	test_return_min:           6.6757	test_return_std:           0.4535	
+Avg cost 0.29136682861479946 seconds
+[INFO 10:14:06] my_main t_env: 20157 / 10050000
+[INFO 10:14:06] my_main Estimated time left: 23 hours, 58 minutes, 26 seconds. Time passed: 2 minutes, 55 seconds
+Avg cost 0.2911593736988482 seconds
+Avg cost 0.29097816861909 seconds
+Avg cost 0.2909174947177661 seconds
+Avg cost 0.2908859206408988 seconds
+Avg cost 0.29087802738819296 seconds
+Avg cost 0.29085181531122906 seconds
+Avg cost 0.29075207733190966 seconds
+Avg cost 0.2908750321876488 seconds
+Avg cost 0.2908735332034882 seconds
+Avg cost 0.2907975025086605 seconds
+Avg cost 0.29071375446499503 seconds
+Avg cost 0.29046581720522296 seconds
+Avg cost 0.29017357514283354 seconds
+Avg cost 0.29002891363099553 seconds
+Avg cost 0.2897426806114337 seconds
+Avg cost 0.2894394364774501 seconds
+Avg cost 0.28927890970072606 seconds
+Avg cost 0.2892071678213876 seconds
+Avg cost 0.2891843633218244 seconds
+Avg cost 0.2891178163468028 seconds
+Avg cost 0.28903674434971155 seconds
+Avg cost 0.2890130383016816 seconds
+Avg cost 0.28900191613606036 seconds
+Avg cost 0.2889330747392442 seconds
+Avg cost 0.2890503596415561 seconds
+Avg cost 0.2890243173170719 seconds
+Avg cost 0.28898821797287244 seconds
+Avg cost 0.2889594261302697 seconds
+Avg cost 0.2889446434767349 seconds
+Avg cost 0.2888764488748657 seconds
+Avg cost 0.2888865532546207 seconds
+Avg cost 0.2888445291396374 seconds
+Avg cost 0.2889333576218694 seconds
+Avg cost 0.28900706514399094 seconds
+[INFO 10:14:35] my_main Updated target network
+Avg cost 0.28912522429126797 seconds
+Avg cost 0.28916586702886005 seconds
+Avg cost 0.2891783263503002 seconds
+Avg cost 0.2891578963610916 seconds
+Avg cost 0.28912374079227443 seconds
+Avg cost 0.2889834469284754 seconds
+Avg cost 0.28891714545320873 seconds
+Avg cost 0.28885641706333237 seconds
+Avg cost 0.28892654180526733 seconds
+Avg cost 0.28893620238012196 seconds
+Avg cost 0.2890073380819181 seconds
+Avg cost 0.28910971846175093 seconds
+Avg cost 0.2891495891155735 seconds
+Avg cost 0.2891642702631203 seconds
+Avg cost 0.2891585311889648 seconds
+Avg cost 0.28914793934005184 seconds
+Avg cost 0.2891356367913503 seconds
+Avg cost 0.28914433694168507 seconds
+Avg cost 0.28913313009607505 seconds
+Avg cost 0.2891094366709391 seconds
+Avg cost 0.28915410768240685 seconds
+Avg cost 0.28914147777780014 seconds
+Avg cost 0.28899809556413986 seconds
+Avg cost 0.2890452095900723 seconds
+Avg cost 0.28889410128960236 seconds
+Avg cost 0.28890122124975204 seconds
+Avg cost 0.28890034078641696 seconds
+Avg cost 0.288933517361775 seconds
+Avg cost 0.2890300795887455 seconds
+Avg cost 0.28907415551959337 seconds
+Avg cost 0.28912722974791555 seconds
+Avg cost 0.28895239169231507 seconds
+Avg cost 0.2888720845108601 seconds
+Avg cost 0.2888728437813684 seconds
+Avg cost 0.2888897242369475 seconds
+Avg cost 0.28892072892277 seconds
+Avg cost 0.2889781287487815 seconds
+Avg cost 0.2890735074277325 seconds
+Avg cost 0.28908274730626676 seconds
+Avg cost 0.2891284890608353 seconds
+Avg cost 0.2891692761061847 seconds
+Avg cost 0.28921965571517105 seconds
+Avg cost 0.28925011655409544 seconds
+Avg cost 0.28930642613373336 seconds
+Avg cost 0.2893379654203141 seconds
+Avg cost 0.2892915082571768 seconds
+Avg cost 0.28932389638102635 seconds
+Avg cost 0.2892332304492855 seconds
+Avg cost 0.28917985566904836 seconds
+Avg cost 0.2890185013152004 seconds
+[INFO 10:15:14] my_main Updated target network
+Avg cost 0.28900665086466104 seconds
+Avg cost 0.2889612418849293 seconds
+Avg cost 0.2889810734324984 seconds
+Avg cost 0.2889365729163674 seconds
+Avg cost 0.28892234440507547 seconds
+Avg cost 0.2889776795180801 seconds
+Avg cost 0.28890399491950247 seconds
+Avg cost 0.2888400709262886 seconds
+Avg cost 0.2888020228366462 seconds
+Avg cost 0.2887853008205607 seconds
+Avg cost 0.28862443646869135 seconds
+Avg cost 0.28856436411539704 seconds
+Avg cost 0.2885226443309911 seconds
+Avg cost 0.2884994677476659 seconds
+Avg cost 0.2884797612826029 seconds
+Avg cost 0.28839911178893024 seconds
+Avg cost 0.288329251554628 seconds
+Avg cost 0.2883545801584476 seconds
+Avg cost 0.28813398276504715 seconds
+Avg cost 0.2879627907862429 seconds
+Avg cost 0.28801635277816673 seconds
+Avg cost 0.28803104608765645 seconds
+Avg cost 0.28790655693450534 seconds
+[INFO 10:15:31] my_main Recent Stats | t_env:      30094 | Episode:     1292
+battle_won_mean:           0.0000	dead_allies_mean:          6.0000	dead_enemies_mean:         0.0023	ep_length_mean:           23.2731
+episode_in_buffer:       1292.0000	epsilon:                   0.9365	grad_norm:                 0.2258	loss_td:                   0.0097
+q_taken_mean:              0.3003	return_max:                7.1081	return_mean:               5.5019	return_min:                3.8108
+return_std:                0.5188	target_mean:               0.3059	td_error_abs:              0.0097	test_battle_won_mean:      0.0000
+test_dead_allies_mean:     6.0000	test_dead_enemies_mean:    1.8438	test_ep_length_mean:      22.2812	test_return_max:           8.5676
+test_return_mean:          7.5238	test_return_min:           6.5405	test_return_std:           0.5435	
+Avg cost 0.2879102777894647 seconds
+[INFO 10:15:32] my_main t_env: 30192 / 10050000
+[INFO 10:15:32] my_main Estimated time left: 23 hours, 43 minutes, 17 seconds. Time passed: 4 minutes, 20 seconds
+Avg cost 0.28788338168974853 seconds
+Avg cost 0.2878419900630449 seconds
+Avg cost 0.2878509148573265 seconds
+Avg cost 0.2878599357300293 seconds
+Avg cost 0.28790023448360963 seconds
+Avg cost 0.2878412087758383 seconds
+Avg cost 0.28778253552279903 seconds
+Avg cost 0.2878201368855378 seconds
+Avg cost 0.2878116376744877 seconds
+Avg cost 0.2878091155922152 seconds
+Avg cost 0.28776497766375553 seconds
+Avg cost 0.2877680616586752 seconds
+Avg cost 0.287715138115498 seconds
+Avg cost 0.28777065734745194 seconds
+Avg cost 0.2876776802686999 seconds
+Avg cost 0.28768899257366487 seconds
+Avg cost 0.28776699633686104 seconds
+Avg cost 0.28777092093721457 seconds
+Avg cost 0.2878038752369766 seconds
+Avg cost 0.28775818297203565 seconds
+Avg cost 0.28771011106895694 seconds
+Avg cost 0.2876581331754381 seconds
+Avg cost 0.28759409146136566 seconds
+Avg cost 0.287577409286041 seconds
+Avg cost 0.287531472965629 seconds
+Avg cost 0.2875326896781354 seconds
+[INFO 10:15:55] my_main Updated target network
+Avg cost 0.2875777631998064 seconds
+Avg cost 0.28757157099353114 seconds
+Avg cost 0.28759190105122234 seconds
+Avg cost 0.2876648987289025 seconds
+Avg cost 0.2876915700295394 seconds
+Avg cost 0.2877420288376796 seconds
+Avg cost 0.2877221372392444 seconds
+Avg cost 0.2877845069062259 seconds
+Avg cost 0.28776489302169456 seconds
+Avg cost 0.28774963945582305 seconds
+Avg cost 0.2877676555876099 seconds
+Avg cost 0.28766222714690737 seconds
+Avg cost 0.2876114139611695 seconds
+Avg cost 0.28744846223760145 seconds
+Avg cost 0.287400166647775 seconds
+Avg cost 0.2873622250353171 seconds
+Avg cost 0.28733972460031526 seconds
+Avg cost 0.2872848064973741 seconds
+Avg cost 0.28723368604304444 seconds
+Avg cost 0.28720413799017264 seconds
+Avg cost 0.28719999482122716 seconds
+Avg cost 0.2871799455637359 seconds
+Avg cost 0.28717724637612296 seconds
+Avg cost 0.2872198451528311 seconds
+Avg cost 0.287227096160253 seconds
+Avg cost 0.2872397648660761 seconds
+Avg cost 0.28731335065641467 seconds
+Avg cost 0.2873252482453655 seconds
+Avg cost 0.28732482548598415 seconds
+Avg cost 0.28732993047531347 seconds
+Avg cost 0.28737020687978787 seconds
+Avg cost 0.28737036928493914 seconds
+Avg cost 0.2874073794354564 seconds
+Avg cost 0.28731727729321827 seconds
+Avg cost 0.2872673105549169 seconds
+Avg cost 0.2872859602668537 seconds
+Avg cost 0.28729786090953385 seconds
+Avg cost 0.28732231666830854 seconds
+Avg cost 0.2873280838849074 seconds
+Avg cost 0.2873675511678061 seconds
+Avg cost 0.2873827491668946 seconds
+Avg cost 0.28742210049211836 seconds
+Avg cost 0.28745830248272625 seconds
+Avg cost 0.28748554793385545 seconds
+Avg cost 0.2874684126753558 seconds
+Avg cost 0.28732832585732787 seconds
+Avg cost 0.28735283968960446 seconds
+Avg cost 0.2873421182209146 seconds
+Avg cost 0.28736989758908765 seconds
+Avg cost 0.28737900473854777 seconds
+[INFO 10:16:33] my_main Updated target network
+Avg cost 0.2872599029788083 seconds
+Avg cost 0.28730032363911334 seconds
+Avg cost 0.28726720441248016 seconds
+Avg cost 0.2871556465913828 seconds
+Avg cost 0.2870816200207443 seconds
+Avg cost 0.2870867014541042 seconds
+Avg cost 0.2871141810806431 seconds
+Avg cost 0.2871807567945875 seconds
+Avg cost 0.28717946098540653 seconds
+Avg cost 0.2871737166296079 seconds
+Avg cost 0.2870997900914665 seconds
+Avg cost 0.28706212908555045 seconds
+Avg cost 0.28707909044907925 seconds
+Avg cost 0.2871276764642625 seconds
+Avg cost 0.2871684873104096 seconds
+Avg cost 0.28720191886597446 seconds
+Avg cost 0.2872676879019287 seconds
+Avg cost 0.28726639936934634 seconds
+Avg cost 0.28729647516024 seconds
+Avg cost 0.2873436503940159 seconds
+Avg cost 0.2873362009161212 seconds
+Avg cost 0.28737386321552855 seconds
+Avg cost 0.2874069003497854 seconds
+Avg cost 0.28740943381722234 seconds
+Avg cost 0.28739789055614945 seconds
+Avg cost 0.2873654313331104 seconds
+Avg cost 0.2873706412546844 seconds
+Avg cost 0.2873783203937818 seconds
+Avg cost 0.2874087579008463 seconds
+Avg cost 0.28733615013490255 seconds
+Avg cost 0.28738843076504206 seconds
+[INFO 10:16:57] my_main Recent Stats | t_env:      40186 | Episode:     1724
+battle_won_mean:           0.0000	dead_allies_mean:          6.0000	dead_enemies_mean:         0.0023	ep_length_mean:           23.2292
+episode_in_buffer:       1724.0000	epsilon:                   0.9047	grad_norm:                 0.1797	loss_td:                   0.0094
+q_taken_mean:              0.3869	return_max:                7.3919	return_mean:               5.5428	return_min:                4.0000
+return_std:                0.5193	target_mean:               0.3901	td_error_abs:              0.0094	test_battle_won_mean:      0.0000
+test_dead_allies_mean:     6.0000	test_dead_enemies_mean:    1.8438	test_ep_length_mean:      21.8750	test_return_max:           9.0473
+test_return_mean:          7.5870	test_return_min:           6.8649	test_return_std:           0.5355	
+Avg cost 0.28734780329880394 seconds
+[INFO 10:16:57] my_main t_env: 40276 / 10050000
+[INFO 10:16:57] my_main Estimated time left: 23 hours, 40 minutes, 48 seconds. Time passed: 5 minutes, 46 seconds
+Avg cost 0.2872648518621638 seconds
+Avg cost 0.28726191110997906 seconds
+Avg cost 0.28724321921666474 seconds
+Avg cost 0.28723516713411973 seconds
+Avg cost 0.2872035187002608 seconds
+Avg cost 0.2872753368765469 seconds
+Avg cost 0.28726195445600555 seconds
+Avg cost 0.28727096501518706 seconds
+Avg cost 0.2873098732719959 seconds
+Avg cost 0.28730231537472734 seconds
+Avg cost 0.2873134094978048 seconds
+Avg cost 0.2873154381216268 seconds
+Avg cost 0.2873067628505619 seconds
+Avg cost 0.28724204138647386 seconds
+Avg cost 0.2872413253342665 seconds
+Avg cost 0.28723469672522434 seconds
+Avg cost 0.28722162785068645 seconds
+Avg cost 0.28724212536866645 seconds
+[INFO 10:17:15] my_main Updated target network
+Avg cost 0.28724191112255837 seconds
+Avg cost 0.28725006433046113 seconds
+Avg cost 0.2872392940738974 seconds
+Avg cost 0.28721006204435656 seconds
+Avg cost 0.2872375412420793 seconds
+Avg cost 0.287212633491914 seconds
+Avg cost 0.28717336773332963 seconds
+Avg cost 0.2871526525467297 seconds
+Avg cost 0.2871589150514688 seconds
+Avg cost 0.2871108247992697 seconds
+Avg cost 0.28713162116405666 seconds
+Avg cost 0.2871169937270332 seconds
+Avg cost 0.2870836944452353 seconds
+Avg cost 0.2870659918455875 seconds
+Avg cost 0.2870315954420301 seconds
+Avg cost 0.28700305934491543 seconds
+Avg cost 0.2869797718208448 seconds
+Avg cost 0.28697914266691565 seconds
+Avg cost 0.28702937979004983 seconds
+Avg cost 0.2870241778237479 seconds
+Avg cost 0.28702226490305177 seconds
+Avg cost 0.28701325892358687 seconds
+Avg cost 0.28702498939880633 seconds
+Avg cost 0.28701997426600234 seconds
+Avg cost 0.2869744637738103 seconds
+Avg cost 0.28703036070387167 seconds
+Avg cost 0.2870396473707058 seconds
+Avg cost 0.2870485911359024 seconds
+Avg cost 0.287031001058118 seconds
+Avg cost 0.28701558677099076 seconds
+Avg cost 0.28699783808171997 seconds
+Avg cost 0.28699652949543525 seconds
+Avg cost 0.287018672013894 seconds
+Avg cost 0.28705005706754566 seconds
+Avg cost 0.2870177573346076 seconds
+Avg cost 0.286989447923729 seconds
+Avg cost 0.28695651080648765 seconds
+Avg cost 0.28692468528263654 seconds
+Avg cost 0.28689819700104263 seconds
+Avg cost 0.28686846281352785 seconds
+Avg cost 0.2868737182697327 seconds
+Avg cost 0.2868284039527364 seconds
+Avg cost 0.28687886812696883 seconds
+Avg cost 0.2869017208792221 seconds
+Avg cost 0.2869050577282904 seconds
+Avg cost 0.28686108807268346 seconds
+Avg cost 0.2868673984440529 seconds
+Avg cost 0.28684693587245885 seconds
+Avg cost 0.28685394151151655 seconds
+Avg cost 0.2868349650471479 seconds
+[INFO 10:17:54] my_main Updated target network
+Avg cost 0.28683392059655816 seconds
+Avg cost 0.2868231361162 seconds
+Avg cost 0.28679684781637327 seconds
+Avg cost 0.2867735685258797 seconds
+Avg cost 0.28672777438650304 seconds
+Avg cost 0.28672556139058325 seconds
+Avg cost 0.286720383458021 seconds
+Avg cost 0.2868706735104139 seconds
+Avg cost 0.2868852914586239 seconds
+Avg cost 0.28681748467262325 seconds
+Avg cost 0.2868254179916072 seconds
+Avg cost 0.28681110760095835 seconds
+Avg cost 0.2867858280618505 seconds
+Avg cost 0.2867511307787081 seconds
+Avg cost 0.2867291364669798 seconds
+Avg cost 0.28670692967321565 seconds
+Avg cost 0.28669469147564386 seconds
+Avg cost 0.28671140794014577 seconds
+Avg cost 0.2867494159274629 seconds
+Avg cost 0.28677244611305747 seconds
+Avg cost 0.2867907040675165 seconds
+Avg cost 0.2867706090035521 seconds
+Avg cost 0.2866775956679515 seconds
+Avg cost 0.2866643543093516 seconds
+Avg cost 0.28664200212441215 seconds
+Avg cost 0.2866569629154091 seconds
+Avg cost 0.2867105691693721 seconds
+Avg cost 0.28670702296623224 seconds
+Avg cost 0.28669943095181216 seconds
+Avg cost 0.2866724417047591 seconds
+Avg cost 0.2866489300432129 seconds
+Avg cost 0.2866077575277773 seconds
+Avg cost 0.28657437337411396 seconds
+Avg cost 0.286594152909942 seconds
+Avg cost 0.28661032319068885 seconds
+Avg cost 0.2865931337945976 seconds
+Avg cost 0.2865837182121713 seconds
+Avg cost 0.28649506331857694 seconds
+Avg cost 0.28645040606724376 seconds
+Avg cost 0.2864629977090016 seconds
+[INFO 10:18:24] my_main Recent Stats | t_env:      50251 | Episode:     2160
+battle_won_mean:           0.0000	dead_allies_mean:          6.0000	dead_enemies_mean:         0.0278	ep_length_mean:           23.3426
+episode_in_buffer:       2160.0000	epsilon:                   0.8727	grad_norm:                 0.0804	loss_td:                   0.0076
+q_taken_mean:              0.4373	return_max:                7.1216	return_mean:               5.6470	return_min:                4.1892
+return_std:                0.5188	target_mean:               0.4355	td_error_abs:              0.0076	test_battle_won_mean:      0.0000
+test_dead_allies_mean:     6.0000	test_dead_enemies_mean:    2.7188	test_ep_length_mean:      22.5000	test_return_max:           8.7162
+test_return_mean:          7.3477	test_return_min:           6.1622	test_return_std:           0.5025	
+Avg cost 0.2864274389390254 seconds
+[INFO 10:18:25] my_main t_env: 50344 / 10050000
+[INFO 10:18:25] my_main Estimated time left: 1 days, 4 minutes, 1 seconds. Time passed: 7 minutes, 13 seconds
+Avg cost 0.28641902065819963 seconds
+Avg cost 0.28644869092738967 seconds
+Avg cost 0.2864326975521381 seconds
+Avg cost 0.2863977324287844 seconds
+Avg cost 0.28636683807085667 seconds
+Avg cost 0.28634694868460614 seconds
+Avg cost 0.28633929461967633 seconds
+Avg cost 0.28630900606233955 seconds
+Avg cost 0.2862869320628797 seconds
+[INFO 10:18:35] my_main Updated target network
+Avg cost 0.2862733856065947 seconds
+Avg cost 0.28623771578683954 seconds
+Avg cost 0.28620609740785485 seconds
+Avg cost 0.28617818634231346 seconds
+Avg cost 0.28608884369885457 seconds
+Avg cost 0.2860962538093381 seconds
+Avg cost 0.2861410885279467 seconds
+Avg cost 0.2861423044573534 seconds
+Avg cost 0.28615977001540777 seconds
+Avg cost 0.28619131079507504 seconds
+Avg cost 0.28620176786904783 seconds
+Avg cost 0.28618015798397844 seconds
+Avg cost 0.28615052682639885 seconds
+Avg cost 0.28617940748106996 seconds
+Avg cost 0.2861541414260862 seconds
+Avg cost 0.28614947280952996 seconds
+Avg cost 0.2861271051393036 seconds
+Avg cost 0.2861106529373801 seconds
+Avg cost 0.2859982897658638 seconds
+Avg cost 0.285929862872974 seconds
+Avg cost 0.2859120390398036 seconds
+Avg cost 0.28591957126528367 seconds
+Avg cost 0.2858826426194984 seconds
+Avg cost 0.28584496365037043 seconds
+Avg cost 0.2858001708984372 seconds
+Avg cost 0.2858432682227745 seconds
+Avg cost 0.2858439980876824 seconds
+Avg cost 0.28584774306993466 seconds
+Avg cost 0.2860878925796938 seconds
+Avg cost 0.28605817862316535 seconds
+Avg cost 0.2860381337863393 seconds
+Avg cost 0.28603649559895583 seconds
+Avg cost 0.286015624311608 seconds
+Avg cost 0.2859633249641509 seconds
+Avg cost 0.2859813125509961 seconds
+Avg cost 0.2859976801062211 seconds
+Avg cost 0.2859734872004365 seconds
+Avg cost 0.2859534218673303 seconds
+Avg cost 0.28593147216358217 seconds
+Avg cost 0.2859378441520356 seconds
+Avg cost 0.2862208233111431 seconds
+Avg cost 0.28621850807084126 seconds
+Avg cost 0.28624702407414493 seconds
+Avg cost 0.2862412744235495 seconds
+Avg cost 0.28624670176670436 seconds
+Avg cost 0.2862759252013106 seconds
+Avg cost 0.28624758277971685 seconds
+Avg cost 0.28622599572301083 seconds
+Avg cost 0.28622070240647796 seconds
+Avg cost 0.2862243664570341 seconds
+[INFO 10:19:13] my_main Updated target network
+Avg cost 0.2862467655956539 seconds
+Avg cost 0.286241233247305 seconds
+Avg cost 0.28625473238172955 seconds
+Avg cost 0.2862732766642025 seconds
+Avg cost 0.2862941046892583 seconds
+Avg cost 0.28631849619741134 seconds
+Avg cost 0.2863283012364359 seconds
+Avg cost 0.2863066132112857 seconds
+Avg cost 0.2862723652361215 seconds
+Avg cost 0.28624368475264833 seconds
+Avg cost 0.28621461967493833 seconds
+Avg cost 0.28643618876011495 seconds
+Avg cost 0.2863991416018939 seconds
+Avg cost 0.28639490218313757 seconds
+Avg cost 0.2863580807050066 seconds
+Avg cost 0.2863450927067911 seconds
+Avg cost 0.2862434498099391 seconds
+Avg cost 0.2862216675064059 seconds
+Avg cost 0.2861911922890616 seconds
+Avg cost 0.2861310549018794 seconds
+Avg cost 0.28612445053881125 seconds
+Avg cost 0.2861225931019914 seconds
+Avg cost 0.28609492786620766 seconds
+Avg cost 0.2860777581658071 seconds
+Avg cost 0.2860349608249349 seconds
+Avg cost 0.28601034261200875 seconds
+Avg cost 0.28598949254727807 seconds
+Avg cost 0.28597182900831686 seconds
+Avg cost 0.28589931373099137 seconds
+Avg cost 0.2858670583585411 seconds
+Avg cost 0.28586109427662615 seconds
+Avg cost 0.28586937272181556 seconds
+Avg cost 0.28586929785780896 seconds
+Avg cost 0.2858549812883858 seconds
+Avg cost 0.28581436987846104 seconds
+Avg cost 0.28578827423365966 seconds
+Avg cost 0.28574597413900177 seconds
+Avg cost 0.28569840275074065 seconds
+Avg cost 0.28567144312919696 seconds
+Avg cost 0.2856443111419676 seconds
+Avg cost 0.28562039308273734 seconds
+Avg cost 0.28561246984503086 seconds
+Avg cost 0.2855917469711059 seconds
+Avg cost 0.2855544260840725 seconds
+Avg cost 0.2855399165834698 seconds
+Avg cost 0.28553663116249517 seconds
+Avg cost 0.28551386806029294 seconds
+Avg cost 0.2854817026599322 seconds
+Avg cost 0.2854323180315997 seconds
+[INFO 10:19:49] my_main Recent Stats | t_env:      60284 | Episode:     2596
+battle_won_mean:           0.0000	dead_allies_mean:          6.0000	dead_enemies_mean:         0.0367	ep_length_mean:           23.0917
+episode_in_buffer:       2596.0000	epsilon:                   0.8409	grad_norm:                 0.2151	loss_td:                   0.0070
+q_taken_mean:              0.4578	return_max:                7.2568	return_mean:               5.7535	return_min:                4.0405
+return_std:                0.5081	target_mean:               0.4626	td_error_abs:              0.0070	test_battle_won_mean:      0.0000
+test_dead_allies_mean:     6.0000	test_dead_enemies_mean:    1.7812	test_ep_length_mean:      21.8750	test_return_max:           8.4054
+test_return_mean:          7.6301	test_return_min:           6.6757	test_return_std:           0.4734	
+Avg cost 0.2854135021450011 seconds
+[INFO 10:19:49] my_main Updated target network
+[INFO 10:19:49] my_main t_env: 60377 / 10050000
+[INFO 10:19:49] my_main Estimated time left: 23 hours, 24 minutes, 49 seconds. Time passed: 8 minutes, 38 seconds
+Avg cost 0.2854325209023816 seconds
+Avg cost 0.28560368831341065 seconds
+Avg cost 0.2855171962965243 seconds
+Avg cost 0.2854965516659014 seconds
+Avg cost 0.2854670271277426 seconds
+Avg cost 0.2854552123922266 seconds
+Avg cost 0.2853557825831236 seconds
+Avg cost 0.2852879797874674 seconds
+Avg cost 0.28522123424162754 seconds
+Avg cost 0.28515085065087586 seconds
+Avg cost 0.28507959399799054 seconds
+Avg cost 0.28501133388124233 seconds
+Avg cost 0.284980362948076 seconds
+Avg cost 0.2849093130079364 seconds
+Avg cost 0.28488070047818675 seconds
+Avg cost 0.28485985175805134 seconds
+Avg cost 0.28482767775014844 seconds
+Avg cost 0.284801043193519 seconds
+Avg cost 0.2847077139291557 seconds
+Avg cost 0.2849070792889775 seconds
+Avg cost 0.2848884906710646 seconds
+Avg cost 0.2848694534969473 seconds
+Avg cost 0.284848548721035 seconds
+Avg cost 0.28482455367926196 seconds
+Avg cost 0.2848163687821588 seconds
+Avg cost 0.28480381395741033 seconds
+Avg cost 0.28479919800945613 seconds
+Avg cost 0.28476607889431427 seconds
+Avg cost 0.2847672682928749 seconds
+Avg cost 0.2847742424871686 seconds
+Avg cost 0.2847570989940973 seconds
+Avg cost 0.2847571948478959 seconds
+Avg cost 0.2847326037412629 seconds
+Avg cost 0.2849277177733688 seconds
+Avg cost 0.28486564799920805 seconds
+Avg cost 0.28485462846770165 seconds
+Avg cost 0.2848732350837614 seconds
+Avg cost 0.2849054109819928 seconds
+Avg cost 0.28486646212173117 seconds
+Avg cost 0.28486032521283156 seconds
+Avg cost 0.28485771361187334 seconds
+Avg cost 0.2848351508863212 seconds
+Avg cost 0.2848263268625487 seconds
+Avg cost 0.28480538493228036 seconds
+Avg cost 0.2848429118885711 seconds
+Avg cost 0.2848305079030218 seconds
+Avg cost 0.2847944963013319 seconds
+Avg cost 0.2848178904018148 seconds
+Avg cost 0.28481069573184875 seconds
+Avg cost 0.28479958520318444 seconds
+[INFO 10:20:29] my_main Updated target network
+Avg cost 0.28475348351648155 seconds
+Avg cost 0.2847901803090233 seconds
+Avg cost 0.28477231049260404 seconds
+Avg cost 0.28477576889735673 seconds
+Avg cost 0.28475795241369695 seconds
+Avg cost 0.2847306176308438 seconds
+Avg cost 0.28467265133223757 seconds
+Avg cost 0.2846456375645006 seconds
+Avg cost 0.2846179575329209 seconds
+Avg cost 0.28459474543015706 seconds
+Avg cost 0.28457733509184274 seconds
+Avg cost 0.28456646845364647 seconds
+Avg cost 0.2845705699784022 seconds
+Avg cost 0.2847697953127311 seconds
+Avg cost 0.2847278870855056 seconds
+Avg cost 0.2848308222440099 seconds
+Avg cost 0.2848268037508013 seconds
+Avg cost 0.28476671100849754 seconds
+Avg cost 0.284727199849757 seconds
+Avg cost 0.2846996662464545 seconds
+Avg cost 0.28469783320980746 seconds
+Avg cost 0.2846826252539388 seconds
+Avg cost 0.2846445249298869 seconds
+Avg cost 0.2846115832604539 seconds
+Avg cost 0.2846047015257282 seconds
+Avg cost 0.28460456952767005 seconds
+Avg cost 0.2845766782090903 seconds
+Avg cost 0.2845340922035975 seconds
+Avg cost 0.28449746273478854 seconds
+Avg cost 0.2844779978265293 seconds
+Avg cost 0.2844731674514001 seconds
+Avg cost 0.28449481933519244 seconds
+Avg cost 0.2844948519571244 seconds
+Avg cost 0.28452493351921726 seconds
+Avg cost 0.28454739716317895 seconds
+Avg cost 0.28456339525283597 seconds
+Avg cost 0.28457056947692255 seconds
+Avg cost 0.2846167671235268 seconds
+Avg cost 0.2846162121598889 seconds
+Avg cost 0.2846145363511708 seconds
+Avg cost 0.28462390334809756 seconds
+Avg cost 0.2846108106012355 seconds
+Avg cost 0.28463473293807456 seconds
+Avg cost 0.28457147692456636 seconds
+Avg cost 0.2845748522510265 seconds
+Avg cost 0.28457656245877394 seconds
+Avg cost 0.2845823272981277 seconds
+Avg cost 0.28459282721536366 seconds
+Avg cost 0.2845742670002034 seconds
+Avg cost 0.28457193536823283 seconds
+[INFO 10:21:06] my_main Updated target network
+Avg cost 0.28455969496913563 seconds
+Avg cost 0.2845617401713107 seconds
+Avg cost 0.28458707927042215 seconds
+Avg cost 0.28460065115127237 seconds
+Avg cost 0.2845828249647809 seconds
+Avg cost 0.28463496531230376 seconds
+Avg cost 0.2846520220173014 seconds
+[INFO 10:21:11] my_main Recent Stats | t_env:      70341 | Episode:     3028
+battle_won_mean:           0.0000	dead_allies_mean:          6.0000	dead_enemies_mean:         0.0436	ep_length_mean:           23.0115
+episode_in_buffer:       3028.0000	epsilon:                   0.8091	grad_norm:                 0.2453	loss_td:                   0.0067
+q_taken_mean:              0.4822	return_max:                7.7280	return_mean:               5.8365	return_min:                4.3378
+return_std:                0.5178	target_mean:               0.4794	td_error_abs:              0.0067	test_battle_won_mean:      0.0000
+test_dead_allies_mean:     6.0000	test_dead_enemies_mean:    1.9375	test_ep_length_mean:      22.3125	test_return_max:           8.6622
+test_return_mean:          7.7927	test_return_min:           6.9730	test_return_std:           0.4427	
+Avg cost 0.28464323739504893 seconds
+[INFO 10:21:12] my_main t_env: 70432 / 10050000
+[INFO 10:21:12] my_main Estimated time left: 22 hours, 43 minutes, 59 seconds. Time passed: 10 minutes, 0 seconds
+Avg cost 0.28463908453141473 seconds
+Avg cost 0.2846226580190977 seconds
+Avg cost 0.2846092049621703 seconds
+Avg cost 0.2845917006573043 seconds
+Avg cost 0.28458476225960044 seconds
+Avg cost 0.28458957041853716 seconds
+Avg cost 0.2845901199976601 seconds
+Avg cost 0.2845435704435709 seconds
+Avg cost 0.28452286155934003 seconds
+Avg cost 0.28452466493583745 seconds
+Avg cost 0.28450143242388226 seconds
+Avg cost 0.28444327202853753 seconds
+Avg cost 0.2844449909275799 seconds
+Avg cost 0.28447454388264437 seconds
+Avg cost 0.2845106338762668 seconds
+Avg cost 0.2845221112368132 seconds
+Avg cost 0.28452540667433457 seconds
+Avg cost 0.2845552685069659 seconds
+Avg cost 0.2845631565634657 seconds
+Avg cost 0.2845771881418488 seconds
+Avg cost 0.2845862095892739 seconds
+Avg cost 0.28458585520974927 seconds
+Avg cost 0.28459716621329184 seconds
+Avg cost 0.2845808415245044 seconds
+Avg cost 0.28454948340853037 seconds
+Avg cost 0.28452937345665963 seconds
+Avg cost 0.2844871960677108 seconds
+Avg cost 0.28446794360218947 seconds
+Avg cost 0.2844652938101574 seconds
+Avg cost 0.2844849212666222 seconds
+Avg cost 0.2844972585830884 seconds
+Avg cost 0.28448078801555 seconds
+Avg cost 0.28451658247672384 seconds
+Avg cost 0.2845382754867139 seconds
+Avg cost 0.2845594368128051 seconds
+Avg cost 0.284580148995611 seconds
+Avg cost 0.28458582193423515 seconds
+Avg cost 0.28461011423802074 seconds
+Avg cost 0.2845949867497317 seconds
+Avg cost 0.2846135721657313 seconds
+Avg cost 0.2846374809741971 seconds
+Avg cost 0.28465515458659735 seconds
+[INFO 10:21:47] my_main Updated target network
+Avg cost 0.2846690522502091 seconds
+Avg cost 0.2846419856690692 seconds
+Avg cost 0.2846191038335033 seconds
+Avg cost 0.2846088889887122 seconds
+Avg cost 0.2846032821679415 seconds
+Avg cost 0.2846383994207368 seconds
+Avg cost 0.2845889233579537 seconds
+Avg cost 0.28460814823569125 seconds
+Avg cost 0.28461455698277527 seconds
+Avg cost 0.2846413816296077 seconds
+Avg cost 0.2846557045701758 seconds
+Avg cost 0.2846703140469385 seconds
+Avg cost 0.284678368640125 seconds
+Avg cost 0.28469057912671347 seconds
+Avg cost 0.2846635356545446 seconds
+Avg cost 0.28460383296161684 seconds
+Avg cost 0.2845958539672621 seconds
+Avg cost 0.2845662251801447 seconds
+Avg cost 0.284554607536069 seconds
+Avg cost 0.2845570099279745 seconds
+Avg cost 0.28449190343284114 seconds
+Avg cost 0.2844976631386718 seconds
+Avg cost 0.2844760258599081 seconds
+Avg cost 0.2844726028489534 seconds
+Avg cost 0.28467356157891527 seconds
+Avg cost 0.28464316410436274 seconds
+Avg cost 0.2846150862172318 seconds
+Avg cost 0.2846228932689182 seconds
+Avg cost 0.2845868909095369 seconds
+Avg cost 0.2845689375707707 seconds
+Avg cost 0.28458386279788656 seconds
+Avg cost 0.28451998026601527 seconds
+Avg cost 0.2844415183172248 seconds
+Avg cost 0.2844197485182019 seconds
+Avg cost 0.2844437901566667 seconds
+Avg cost 0.28443155712680596 seconds
+Avg cost 0.28444386630742785 seconds
+Avg cost 0.2844000702784967 seconds
+Avg cost 0.284352899176403 seconds
+Avg cost 0.28429625973556966 seconds
+Avg cost 0.2842347881695836 seconds
+Avg cost 0.2841669400340843 seconds
+Avg cost 0.2841647615755236 seconds
+Avg cost 0.2841799308077416 seconds
+Avg cost 0.2841798362961733 seconds
+Avg cost 0.2841731707255044 seconds
+Avg cost 0.2841833508931672 seconds
+Avg cost 0.2841836759308519 seconds
+Avg cost 0.2841909529207992 seconds
+Avg cost 0.28419474099210623 seconds
+[INFO 10:22:24] my_main Updated target network
+Avg cost 0.28416633178172485 seconds
+Avg cost 0.28416397238290425 seconds
+Avg cost 0.28414072199482326 seconds
+Avg cost 0.2840862862401695 seconds
+Avg cost 0.284054778871082 seconds
+Avg cost 0.2840225512292523 seconds
+Avg cost 0.2840017510706341 seconds
+Avg cost 0.28397056838654383 seconds
+Avg cost 0.2839447257078088 seconds
+Avg cost 0.28399158229489285 seconds
+Avg cost 0.2840042283349002 seconds
+Avg cost 0.28399182632653447 seconds
+Avg cost 0.284002327412929 seconds
+Avg cost 0.2840124650894541 seconds
+Avg cost 0.2840200469073126 seconds
+Avg cost 0.28403720928555215 seconds
+[INFO 10:22:36] my_main Recent Stats | t_env:      80385 | Episode:     3464
+battle_won_mean:           0.0000	dead_allies_mean:          6.0000	dead_enemies_mean:         0.1204	ep_length_mean:           23.2755
+episode_in_buffer:       3464.0000	epsilon:                   0.7773	grad_norm:                 0.1708	loss_td:                   0.0060
+q_taken_mean:              0.4728	return_max:                7.2568	return_mean:               5.8294	return_min:                4.4595
+return_std:                0.5292	target_mean:               0.4751	td_error_abs:              0.0060	test_battle_won_mean:      0.0000
+test_dead_allies_mean:     6.0000	test_dead_enemies_mean:    2.1562	test_ep_length_mean:      22.8750	test_return_max:           8.2297
+test_return_mean:          7.6386	test_return_min:           6.8902	test_return_std:           0.3666	
+Avg cost 0.2840415709455247 seconds
+[INFO 10:22:36] my_main t_env: 80481 / 10050000
+[INFO 10:22:36] my_main Estimated time left: 23 hours, 17 minutes, 5 seconds. Time passed: 11 minutes, 25 seconds
+Avg cost 0.2843093603744595 seconds
+Avg cost 0.2843047257608774 seconds
+Avg cost 0.28428667497913723 seconds
+Avg cost 0.2842900764162294 seconds
+Avg cost 0.2843085222789536 seconds
+Avg cost 0.2843201852344965 seconds
+Avg cost 0.28450790411934707 seconds
+Avg cost 0.28451088223346427 seconds
+Avg cost 0.28452872094653886 seconds
+Avg cost 0.28451087552267534 seconds
+Avg cost 0.28453301444114415 seconds
+Avg cost 0.2845302232437662 seconds
+Avg cost 0.2845122759052782 seconds
+Avg cost 0.28449575592684123 seconds
+Avg cost 0.284469713114262 seconds
+Avg cost 0.28444842424260836 seconds
+Avg cost 0.28444058601546185 seconds
+Avg cost 0.28442240665698854 seconds
+Avg cost 0.2844108155619535 seconds
+Avg cost 0.2843943760482541 seconds
+Avg cost 0.28438582726224026 seconds
+Avg cost 0.28438743792082116 seconds
+Avg cost 0.28436320686340316 seconds
+Avg cost 0.28433742153045777 seconds
+Avg cost 0.2842802259234228 seconds
+Avg cost 0.2842738555069663 seconds
+Avg cost 0.28428331848161875 seconds
+Avg cost 0.2842380913821132 seconds
+Avg cost 0.28418806218938564 seconds
+Avg cost 0.2841805544029286 seconds
+Avg cost 0.28415904255712543 seconds
+Avg cost 0.2841461570554188 seconds
+Avg cost 0.2841359954769327 seconds
+[INFO 10:23:05] my_main Updated target network
+Avg cost 0.28429442065564003 seconds
+Avg cost 0.28430529054686865 seconds
+Avg cost 0.2844759223160441 seconds
+Avg cost 0.284475394121305 seconds
+Avg cost 0.28450537799449427 seconds
+Avg cost 0.284482276265736 seconds
+Avg cost 0.2844884197808165 seconds
+Avg cost 0.2844939627011971 seconds
+Avg cost 0.2846401735173507 seconds
+Avg cost 0.2846409160997613 seconds
+Avg cost 0.28463652171194537 seconds
+Avg cost 0.2846247389696645 seconds
+Avg cost 0.2846164690094163 seconds
+Avg cost 0.2846025590504103 seconds
+Avg cost 0.28459872563680005 seconds
+Avg cost 0.2845813055811129 seconds
+Avg cost 0.28457532542243497 seconds
+Avg cost 0.2845317826318582 seconds
+Avg cost 0.28449883450449037 seconds
+Avg cost 0.28447829109529105 seconds
+Avg cost 0.2844584361870031 seconds
+Avg cost 0.2844800820292817 seconds
+Avg cost 0.2844876922699849 seconds
+Avg cost 0.28449301724911263 seconds
+Avg cost 0.2844960327986833 seconds
+Avg cost 0.2845023863925369 seconds
+Avg cost 0.2845130170646467 seconds
+Avg cost 0.284539098154676 seconds
+Avg cost 0.2845596518506107 seconds
+Avg cost 0.28455333423093376 seconds
+Avg cost 0.2845389080359947 seconds
+Avg cost 0.28454836322281074 seconds
+Avg cost 0.28456931410272146 seconds
+Avg cost 0.28458074438948117 seconds
+Avg cost 0.2845906869224881 seconds
+Avg cost 0.2845851683849622 seconds
+Avg cost 0.28457195820880826 seconds
+Avg cost 0.2845866197108707 seconds
+Avg cost 0.2845748549415953 seconds
+Avg cost 0.28453859690073385 seconds
+Avg cost 0.2845279737888609 seconds
+Avg cost 0.28447617219103977 seconds
+Avg cost 0.2844808045132408 seconds
+Avg cost 0.2844613137363234 seconds
+Avg cost 0.284419962924014 seconds
+Avg cost 0.2843848501445145 seconds
+Avg cost 0.2843674828054569 seconds
+Avg cost 0.28431658371724006 seconds
+Avg cost 0.28431065460343957 seconds
+Avg cost 0.28432454348885455 seconds
+[INFO 10:23:43] my_main Updated target network
+Avg cost 0.28433817956182705 seconds
+Avg cost 0.2843119357667841 seconds
+Avg cost 0.284274346792876 seconds
+Avg cost 0.28424097503970874 seconds
+Avg cost 0.28425557410463387 seconds
+Avg cost 0.28427087006482776 seconds
+Avg cost 0.28423333598296874 seconds
+Avg cost 0.28441630744731833 seconds
+Avg cost 0.28441804697958106 seconds
+Avg cost 0.28439295228826955 seconds
+Avg cost 0.28439373571827364 seconds
+Avg cost 0.2843405684296913 seconds
+Avg cost 0.2842878973433742 seconds
+Avg cost 0.2842538922051611 seconds
+Avg cost 0.28422338033977324 seconds
+Avg cost 0.28421556836799133 seconds
+Avg cost 0.284193843102255 seconds
+Avg cost 0.28416635232106857 seconds
+Avg cost 0.28416117282283654 seconds
+Avg cost 0.2841368403110207 seconds
+Avg cost 0.28410499465016664 seconds
+Avg cost 0.2841183018161214 seconds
+Avg cost 0.2841216485037438 seconds
+Avg cost 0.28409865451928124 seconds
+[INFO 10:24:00] my_main Recent Stats | t_env:      90445 | Episode:     3896
+battle_won_mean:           0.0000	dead_allies_mean:          6.0000	dead_enemies_mean:         0.1468	ep_length_mean:           23.0482
+episode_in_buffer:       3896.0000	epsilon:                   0.7454	grad_norm:                 0.1885	loss_td:                   0.0062
+q_taken_mean:              0.4815	return_max:                7.7027	return_mean:               5.9509	return_min:                4.5946
+return_std:                0.5260	target_mean:               0.4787	td_error_abs:              0.0062	test_battle_won_mean:      0.0000
+test_dead_allies_mean:     6.0000	test_dead_enemies_mean:    2.0938	test_ep_length_mean:      22.8438	test_return_max:           9.2973
+test_return_mean:          7.6919	test_return_min:           6.9730	test_return_std:           0.5093	
+Avg cost 0.28409856533010824 seconds
+[INFO 10:24:00] my_main t_env: 90540 / 10050000
+[INFO 10:24:00] my_main Estimated time left: 23 hours, 6 minutes, 1 seconds. Time passed: 12 minutes, 49 seconds
+Avg cost 0.2840610761176041 seconds
+Avg cost 0.2840483198542607 seconds
+Avg cost 0.2840090666975933 seconds
+Avg cost 0.2839885086934104 seconds
+Avg cost 0.2839774430724626 seconds
+Avg cost 0.28397920610495014 seconds
+Avg cost 0.28397699817629884 seconds
+Avg cost 0.2839616586354156 seconds
+Avg cost 0.28394169482653386 seconds
+Avg cost 0.28389443368026923 seconds
+Avg cost 0.28387682371601175 seconds
+Avg cost 0.2838545323889936 seconds
+Avg cost 0.2838243556047151 seconds
+Avg cost 0.2838251218658701 seconds
+Avg cost 0.2838080107860079 seconds
+Avg cost 0.2837980147756517 seconds
+Avg cost 0.28376140760423735 seconds
+Avg cost 0.2837351545965748 seconds
+Avg cost 0.28372197911006347 seconds
+Avg cost 0.28368913835408766 seconds
+Avg cost 0.2836772216812432 seconds
+Avg cost 0.28366624022209985 seconds
+Avg cost 0.2836544193547233 seconds
+Avg cost 0.283626115903622 seconds
+Avg cost 0.2835888119518457 seconds
+[INFO 10:24:20] my_main Updated target network
+Avg cost 0.2835387271993303 seconds
+Avg cost 0.2835537181919955 seconds
+Avg cost 0.2835346286596077 seconds
+Avg cost 0.28347977806029623 seconds
+Avg cost 0.28348315364182625 seconds
+Avg cost 0.28349409334354064 seconds
+Avg cost 0.28350104583847935 seconds
+Avg cost 0.28350490481711854 seconds
+Avg cost 0.2834985603988773 seconds
+Avg cost 0.28346011027618895 seconds
+Avg cost 0.28345919612899867 seconds
+Avg cost 0.2834408615632667 seconds
+Avg cost 0.2834282822026043 seconds
+Avg cost 0.28341252309782033 seconds
+Avg cost 0.283361868619919 seconds
+Avg cost 0.2833782009311491 seconds
+Avg cost 0.2833788178400129 seconds
+Avg cost 0.2833848104163159 seconds
+Avg cost 0.2833604584652116 seconds
+Avg cost 0.2833491735790501 seconds
+Avg cost 0.28331103523967294 seconds
+Avg cost 0.2832970432160274 seconds
+Avg cost 0.2832823849859693 seconds
+Avg cost 0.28324724070735224 seconds
+Avg cost 0.28325185870180053 seconds
+Avg cost 0.28324170022996564 seconds
+Avg cost 0.2832246088227737 seconds
+Avg cost 0.28322547279952914 seconds
+Avg cost 0.28319294494990077 seconds
+Avg cost 0.2832014509022531 seconds
+Avg cost 0.2832085684997831 seconds
+Avg cost 0.2831883603961538 seconds
+Avg cost 0.2831587273854406 seconds
+Avg cost 0.28313648618823556 seconds
+Avg cost 0.28313696361055585 seconds
+Avg cost 0.2831132857969998 seconds
+Avg cost 0.2831038336931145 seconds
+Avg cost 0.28306096320278157 seconds
+Avg cost 0.2830458418466153 seconds
+Avg cost 0.2830255440967841 seconds
+Avg cost 0.2830273970293489 seconds
+Avg cost 0.28302228415952585 seconds
+Avg cost 0.2830173426565031 seconds
+Avg cost 0.2830175762621378 seconds
+Avg cost 0.2829993183173024 seconds
+Avg cost 0.2829908062021903 seconds
+Avg cost 0.2829730388268022 seconds
+Avg cost 0.28296817491500004 seconds
+Avg cost 0.2829527451406367 seconds
+Avg cost 0.28295472693328144 seconds
+[INFO 10:24:55] my_main Updated target network
+Avg cost 0.2829663290940659 seconds
+Avg cost 0.28295753570049015 seconds
+Avg cost 0.2829405491981435 seconds
+Avg cost 0.28293174270027777 seconds
+Avg cost 0.28291696447592535 seconds
+Avg cost 0.28290662962467383 seconds
+Avg cost 0.28289876286219284 seconds
+Avg cost 0.2828991271391127 seconds
+Avg cost 0.2829043052205639 seconds
+Avg cost 0.2829092607543801 seconds
+Avg cost 0.28287530538001 seconds
+Avg cost 0.2828992635951003 seconds
+Avg cost 0.28289766530044225 seconds
+Avg cost 0.28291162317201474 seconds
+Avg cost 0.282909036818005 seconds
+Avg cost 0.28290949698066187 seconds
+Avg cost 0.2829037286029571 seconds
+Avg cost 0.2828832662116883 seconds
+Avg cost 0.2828874870767179 seconds
+Avg cost 0.28288634580458527 seconds
+Avg cost 0.2828905704346572 seconds
+Avg cost 0.2829047832831869 seconds
+Avg cost 0.28294034378289745 seconds
+Avg cost 0.2829493046707429 seconds
+Avg cost 0.28295617710869286 seconds
+Avg cost 0.282948325873545 seconds
+Avg cost 0.28294791452404267 seconds
+Avg cost 0.28294338713472805 seconds
+Avg cost 0.2830667529339183 seconds
+Avg cost 0.2830764407842934 seconds
+Avg cost 0.28308177620563924 seconds
+Avg cost 0.2830537784401235 seconds
+[INFO 10:25:18] my_main Recent Stats | t_env:     100456 | Episode:     4328
+battle_won_mean:           0.0000	dead_allies_mean:          6.0000	dead_enemies_mean:         0.2153	ep_length_mean:           23.2847
+episode_in_buffer:       4328.0000	epsilon:                   0.7136	grad_norm:                 0.0622	loss_td:                   0.0062
+q_taken_mean:              0.4847	return_max:                7.6622	return_mean:               6.0020	return_min:                4.1622
+return_std:                0.5235	target_mean:               0.4854	td_error_abs:              0.0062	test_battle_won_mean:      0.0000
+test_dead_allies_mean:     6.0000	test_dead_enemies_mean:    2.1875	test_ep_length_mean:      23.3750	test_return_max:           9.0118
+test_return_mean:          7.8313	test_return_min:           6.4054	test_return_std:           0.5495	
+Avg cost 0.2830265240276353 seconds
+[INFO 10:25:18] my_main t_env: 100551 / 10050000
+[INFO 10:25:18] my_main Estimated time left: 21 hours, 32 minutes, 46 seconds. Time passed: 14 minutes, 7 seconds
+Avg cost 0.2830247134109656 seconds
+Avg cost 0.282999149661198 seconds
+Avg cost 0.2829584656865881 seconds
+Avg cost 0.28291705740031925 seconds
+Avg cost 0.28289771191116164 seconds
+Avg cost 0.2828801066737825 seconds
+Avg cost 0.28286238759063026 seconds
+Avg cost 0.28286360896652973 seconds
+Avg cost 0.28283377676621135 seconds
+Avg cost 0.28280159759167633 seconds
+Avg cost 0.28281295951369534 seconds
+Avg cost 0.28283656901783427 seconds
+Avg cost 0.28283086824373016 seconds
+Avg cost 0.28289002741991714 seconds
+Avg cost 0.2829060239695007 seconds
+Avg cost 0.282884883264774 seconds
+Avg cost 0.28287748125841006 seconds
+[INFO 10:25:34] my_main Updated target network
+Avg cost 0.28285959851456405 seconds
+Avg cost 0.28287111407809024 seconds
+Avg cost 0.2828674535540975 seconds
+Avg cost 0.2828480930258312 seconds
+Avg cost 0.28285124892488545 seconds
+Avg cost 0.28287722603319776 seconds
+Avg cost 0.28288077238278525 seconds
+Avg cost 0.282878312514882 seconds
+Avg cost 0.2828817554975996 seconds
+Avg cost 0.2829064613063587 seconds
+Avg cost 0.2829208669871311 seconds
+Avg cost 0.28290995186637957 seconds
+Avg cost 0.2828819350032426 seconds
+Avg cost 0.28287004361486756 seconds
+Avg cost 0.2828403290835296 seconds
+Avg cost 0.28282171763906055 seconds
+Avg cost 0.28281962503755176 seconds
+Avg cost 0.2829096503184261 seconds
+Avg cost 0.2829067391761837 seconds
+Avg cost 0.28291273613321316 seconds
+Avg cost 0.2828885096969055 seconds
+Avg cost 0.28288805129405303 seconds
+Avg cost 0.2828908160275072 seconds
+Avg cost 0.28296597225371534 seconds
+Avg cost 0.2829709690970345 seconds
+Avg cost 0.28298822466475176 seconds
+Avg cost 0.28299270388033765 seconds
+Avg cost 0.28298570739184015 seconds
+Avg cost 0.2829835855768229 seconds
+Avg cost 0.28295618450695104 seconds
+Avg cost 0.28296034652272445 seconds
+Avg cost 0.28297000136243106 seconds
+Avg cost 0.2829701139163461 seconds
+Avg cost 0.28296786104599436 seconds
+Avg cost 0.28297045358589734 seconds
+Avg cost 0.28298611857867706 seconds
+Avg cost 0.2830443518259523 seconds
+Avg cost 0.28306202323757335 seconds
+Avg cost 0.28305941289854236 seconds
+Avg cost 0.28305547862582753 seconds
+Avg cost 0.28306762829131826 seconds
+Avg cost 0.2830747214692193 seconds
+Avg cost 0.28310213486353575 seconds
+Avg cost 0.2830841942526158 seconds
+Avg cost 0.2830723735083523 seconds
+Avg cost 0.28306971009488047 seconds
+Avg cost 0.2830511845464001 seconds
+Avg cost 0.283045778838492 seconds
+Avg cost 0.2830340483831983 seconds
+Avg cost 0.2830326750415014 seconds
+[INFO 10:26:11] my_main Updated target network
+Avg cost 0.28302162256039387 seconds
+Avg cost 0.28302815050646857 seconds
+Avg cost 0.28302735205484425 seconds
+Avg cost 0.28302526473999046 seconds
+Avg cost 0.28300953392396916 seconds
+Avg cost 0.2829922031248799 seconds
+Avg cost 0.28298574028416007 seconds
+Avg cost 0.2829793381878713 seconds
+Avg cost 0.28297716650095883 seconds
+Avg cost 0.28297172800422266 seconds
+Avg cost 0.28295478521217254 seconds
+Avg cost 0.2829417271934186 seconds
+Avg cost 0.28293115648243095 seconds
+Avg cost 0.2829302654150159 seconds
+Avg cost 0.28291598402935547 seconds
+Avg cost 0.28291445457862857 seconds
+Avg cost 0.28290130777491485 seconds
+Avg cost 0.28288569227054877 seconds
+Avg cost 0.2828728483289327 seconds
+Avg cost 0.28286129551016426 seconds
+Avg cost 0.28284465565400985 seconds
+Avg cost 0.2828257885490294 seconds
+Avg cost 0.2828211609357793 seconds
+Avg cost 0.282817374847386 seconds
+Avg cost 0.2828018636539067 seconds
+Avg cost 0.2827901197444974 seconds
+Avg cost 0.28283792395599966 seconds
+Avg cost 0.2828496740690514 seconds
+Avg cost 0.2828746417543735 seconds
+Avg cost 0.2828871115082837 seconds
+Avg cost 0.28289206584158344 seconds
+Avg cost 0.282906987673213 seconds
+Avg cost 0.28291029738236806 seconds
+Avg cost 0.2829210790841372 seconds
+Avg cost 0.28292387346936115 seconds
+Avg cost 0.28292065395645183 seconds
+Avg cost 0.2829415407603921 seconds
+Avg cost 0.2829485837964047 seconds
+Avg cost 0.2829445202468407 seconds
+Avg cost 0.28296916494978264 seconds
+[INFO 10:26:42] my_main Recent Stats | t_env:     110522 | Episode:     4760
+battle_won_mean:           0.0000	dead_allies_mean:          6.0000	dead_enemies_mean:         0.3403	ep_length_mean:           23.1736
+episode_in_buffer:       4760.0000	epsilon:                   0.6819	grad_norm:                 0.1033	loss_td:                   0.0068
+q_taken_mean:              0.4872	return_max:                7.6622	return_mean:               6.0827	return_min:                4.7432
+return_std:                0.5123	target_mean:               0.4860	td_error_abs:              0.0068	test_battle_won_mean:      0.0000
+test_dead_allies_mean:     6.0000	test_dead_enemies_mean:    2.2812	test_ep_length_mean:      23.7500	test_return_max:           9.5811
+test_return_mean:          8.1293	test_return_min:           7.0946	test_return_std:           0.5776	
+Avg cost 0.2829688783405592 seconds
+[INFO 10:26:43] my_main t_env: 110622 / 10050000
+[INFO 10:26:43] my_main Estimated time left: 23 hours, 6 minutes, 12 seconds. Time passed: 15 minutes, 31 seconds
+Avg cost 0.2829768710351135 seconds
+Avg cost 0.2829550514804085 seconds
+Avg cost 0.28294531544757384 seconds
+Avg cost 0.2829352930440744 seconds
+Avg cost 0.28293144289060357 seconds
+Avg cost 0.28291882798958173 seconds
+Avg cost 0.2829027103349909 seconds
+Avg cost 0.2829171976930389 seconds
+Avg cost 0.2829155859564933 seconds
+[INFO 10:26:53] my_main Updated target network
+Avg cost 0.2829304790818473 seconds
+Avg cost 0.28294605614261287 seconds
+Avg cost 0.2829283239062791 seconds
+Avg cost 0.2829369943216133 seconds
+Avg cost 0.28294179179087436 seconds
+Avg cost 0.28295121144888113 seconds
+Avg cost 0.2829514817903509 seconds
+Avg cost 0.28297388283824715 seconds
+Avg cost 0.2829830884134753 seconds
+Avg cost 0.2829985435038933 seconds
+Avg cost 0.2829992571802047 seconds
+Avg cost 0.28300152665491224 seconds
+Avg cost 0.2830045243137471 seconds
+Avg cost 0.283015232269122 seconds
+Avg cost 0.2830397321780526 seconds
+Avg cost 0.2830186062907303 seconds
+Avg cost 0.2830308580557244 seconds
+Avg cost 0.2830365013303308 seconds
+Avg cost 0.2830415558181335 seconds
+Avg cost 0.2830162277854828 seconds
+Avg cost 0.2830190696131139 seconds
+Avg cost 0.28302861208153285 seconds
+Avg cost 0.2830352648993995 seconds
+Avg cost 0.2830379387876832 seconds
+Avg cost 0.28302537015646984 seconds
+Avg cost 0.28303608512405953 seconds
+Avg cost 0.2830599827734948 seconds
+Avg cost 0.2830776977617688 seconds
+Avg cost 0.28309784670048965 seconds
+Avg cost 0.2830905435507194 seconds
+Avg cost 0.2830897965713555 seconds
+Avg cost 0.2831023041106881 seconds
+Avg cost 0.2831170737058271 seconds
+Avg cost 0.2831304212199365 seconds
+Avg cost 0.2831009026433605 seconds
+Avg cost 0.28312885536706267 seconds
+Avg cost 0.2831437312639681 seconds
+Avg cost 0.2831579673904336 seconds
+Avg cost 0.28316588203112325 seconds
+Avg cost 0.28318236234236777 seconds
+Avg cost 0.28319632190281224 seconds
+Avg cost 0.28320652445643185 seconds
+Avg cost 0.2832162733575036 seconds
+Avg cost 0.28322755562958474 seconds
+Avg cost 0.2832227454922068 seconds
+Avg cost 0.2832221498729546 seconds
+Avg cost 0.2832278684749236 seconds
+Avg cost 0.28323150763933236 seconds
+Avg cost 0.2832363357033881 seconds
+Avg cost 0.2832450295266839 seconds
+[INFO 10:27:32] my_main Updated target network
+Avg cost 0.2832554601928567 seconds
+Avg cost 0.28327104307126927 seconds
+Avg cost 0.2832700549496977 seconds
+Avg cost 0.28326809973943845 seconds
+Avg cost 0.28324821053012766 seconds
+Avg cost 0.28325963270078297 seconds
+Avg cost 0.28325038985161816 seconds
+Avg cost 0.2832647994556262 seconds
+Avg cost 0.2832570595373299 seconds
+Avg cost 0.28326280030859563 seconds
+Avg cost 0.2832565162193339 seconds
+Avg cost 0.2832562481773888 seconds
+Avg cost 0.2832556489186413 seconds
+Avg cost 0.2832709145221454 seconds
+Avg cost 0.2832761865615848 seconds
+Avg cost 0.28328450006260897 seconds
+Avg cost 0.2832999115173051 seconds
+Avg cost 0.28330239218326003 seconds
+Avg cost 0.28331912172277995 seconds
+Avg cost 0.2833210067445067 seconds
+Avg cost 0.28332545556080607 seconds
+Avg cost 0.28334236789906736 seconds
+Avg cost 0.2833383974096548 seconds
+Avg cost 0.28334849140206664 seconds
+Avg cost 0.2833526185580666 seconds
+Avg cost 0.2835763035833981 seconds
+Avg cost 0.28356238269201395 seconds
+Avg cost 0.2835248586967272 seconds
+Avg cost 0.2835172305378736 seconds
+Avg cost 0.2835301828949822 seconds
+Avg cost 0.2835439726074728 seconds
+Avg cost 0.2835504566484679 seconds
+Avg cost 0.2835592990417965 seconds
+Avg cost 0.28356283175090463 seconds
+Avg cost 0.28357379380173603 seconds
+Avg cost 0.28358058100324496 seconds
+Avg cost 0.28354881975635826 seconds
+Avg cost 0.28355185927505705 seconds
+Avg cost 0.28359932315592895 seconds
+Avg cost 0.28359963566649227 seconds
+Avg cost 0.283610092621986 seconds
+Avg cost 0.28360803666857914 seconds
+Avg cost 0.28360948764102595 seconds
+Avg cost 0.2836156484202731 seconds
+Avg cost 0.28361872415989675 seconds
+Avg cost 0.28362313571337366 seconds
+Avg cost 0.28361951077412184 seconds
+Avg cost 0.283622247394137 seconds
+[INFO 10:28:09] my_main Recent Stats | t_env:     120607 | Episode:     5192
+battle_won_mean:           0.0000	dead_allies_mean:          6.0000	dead_enemies_mean:         0.3495	ep_length_mean:           23.3125
+episode_in_buffer:       5000.0000	epsilon:                   0.6500	grad_norm:                 0.1909	loss_td:                   0.0078
+q_taken_mean:              0.4864	return_max:                7.7855	return_mean:               6.1782	return_min:                4.6081
+return_std:                0.5572	target_mean:               0.4886	td_error_abs:              0.0078	test_battle_won_mean:      0.0000
+test_dead_allies_mean:     6.0000	test_dead_enemies_mean:    2.2188	test_ep_length_mean:      23.8125	test_return_max:           8.6757
+test_return_mean:          7.8530	test_return_min:           7.0253	test_return_std:           0.4628	
+Avg cost 0.28360277544300916 seconds
+[INFO 10:28:10] my_main t_env: 120703 / 10050000
+[INFO 10:28:10] my_main Estimated time left: 23 hours, 51 minutes, 38 seconds. Time passed: 16 minutes, 58 seconds
+Avg cost 0.2836015545440559 seconds
+[INFO 10:28:14] my_main Updated target network
+Avg cost 0.2836163607578074 seconds
+Avg cost 0.28358941311602864 seconds
+Avg cost 0.2835881199155539 seconds
+Avg cost 0.2835877152539857 seconds
+Avg cost 0.2835800686547926 seconds
+Avg cost 0.2835888245787207 seconds
+Avg cost 0.2835826905150166 seconds
+Avg cost 0.2835829650719595 seconds
+Avg cost 0.2835584329858633 seconds
+Avg cost 0.28356908205393233 seconds
+Avg cost 0.2836341979327029 seconds
+Avg cost 0.2836317687008875 seconds
+Avg cost 0.28363540598718007 seconds
+Avg cost 0.2836368614384726 seconds
+Avg cost 0.2836256007047804 seconds
+Avg cost 0.28361491548566103 seconds
+Avg cost 0.2836267570929231 seconds
+Avg cost 0.28363487963848494 seconds
+Avg cost 0.28365675711924354 seconds
+Avg cost 0.2836720536038341 seconds
+Avg cost 0.2836782930455935 seconds
+Avg cost 0.28364837178768093 seconds
+Avg cost 0.28366591040876704 seconds
+Avg cost 0.28372528900892563 seconds
+Avg cost 0.28373831574243485 seconds
+Avg cost 0.28371340841123155 seconds
+Avg cost 0.2837223261594776 seconds
+Avg cost 0.283728518017539 seconds
+Avg cost 0.2837355394523079 seconds
+Avg cost 0.2837651209232929 seconds
+Avg cost 0.28376407047173213 seconds
+Avg cost 0.28376471299335865 seconds
+Avg cost 0.2837714566446404 seconds
+Avg cost 0.2837788776704273 seconds
+Avg cost 0.28378946257360094 seconds
+Avg cost 0.2838044895717905 seconds
+Avg cost 0.2838430570582222 seconds
+Avg cost 0.2838549821194792 seconds
+Avg cost 0.28385988949288815 seconds
+Avg cost 0.28386588132606405 seconds
+Avg cost 0.2838566598129852 seconds
+Avg cost 0.2838541800219404 seconds
+Avg cost 0.2838528317859378 seconds
+Avg cost 0.28385420828676516 seconds
+Avg cost 0.28385464965849033 seconds
+Avg cost 0.2838343022731266 seconds
+Avg cost 0.2838353199643778 seconds
+Avg cost 0.28384390041869334 seconds
+Avg cost 0.2838488579511289 seconds
+Avg cost 0.28383603006712993 seconds
+[INFO 10:28:52] my_main Updated target network
+Avg cost 0.2838508936459437 seconds
+Avg cost 0.2838632282964672 seconds
+Avg cost 0.2838744972853387 seconds
+Avg cost 0.28385576959685527 seconds
+Avg cost 0.28384892940521284 seconds
+Avg cost 0.2838574483446187 seconds
+Avg cost 0.2838650606072966 seconds
+Avg cost 0.2838678594320817 seconds
+Avg cost 0.28386029796231405 seconds
+Avg cost 0.28387318561511454 seconds
+Avg cost 0.2839964433375302 seconds
+Avg cost 0.2839751073671613 seconds
+Avg cost 0.28397329483258665 seconds
+Avg cost 0.2840058040053342 seconds
+Avg cost 0.2840076695548168 seconds
+Avg cost 0.28402300396290336 seconds
+Avg cost 0.2840316556614536 seconds
+Avg cost 0.2840321599688256 seconds
+Avg cost 0.2840421942875696 seconds
+Avg cost 0.28403669529735426 seconds
+Avg cost 0.2840348234218838 seconds
+Avg cost 0.2839986410049634 seconds
+Avg cost 0.2840271412185089 seconds
+Avg cost 0.2840355832055709 seconds
+Avg cost 0.28404854746425895 seconds
+Avg cost 0.28403784316046854 seconds
+Avg cost 0.28407930907699025 seconds
+Avg cost 0.28406833867683934 seconds
+Avg cost 0.2840567271380835 seconds
+Avg cost 0.28406557966938 seconds
+Avg cost 0.28405730598667583 seconds
+Avg cost 0.2840636690428599 seconds
+Avg cost 0.2840446238977873 seconds
+Avg cost 0.28405891708251474 seconds
+Avg cost 0.2840628342036789 seconds
+Avg cost 0.28407181274447507 seconds
+Avg cost 0.2840964248507091 seconds
+Avg cost 0.2841038156927549 seconds
+Avg cost 0.2841049929026091 seconds
+Avg cost 0.28410646386580085 seconds
+Avg cost 0.28409269140210314 seconds
+Avg cost 0.2840846199528762 seconds
+Avg cost 0.2840716388990299 seconds
+Avg cost 0.2840629191049383 seconds
+Avg cost 0.2840511425681741 seconds
+Avg cost 0.2840408786839981 seconds
+Avg cost 0.284024080905832 seconds
+Avg cost 0.28401933523165734 seconds
+Avg cost 0.2840089739402599 seconds
+Avg cost 0.2839997313943585 seconds
+[INFO 10:29:30] my_main Updated target network
+Avg cost 0.2839868166746004 seconds
+Avg cost 0.2839656018832651 seconds
+Avg cost 0.2839563305164969 seconds
+Avg cost 0.2839579305861652 seconds
+Avg cost 0.28396115011448536 seconds
+Avg cost 0.28394970355661253 seconds
+[INFO 10:29:34] my_main Recent Stats | t_env:     130673 | Episode:     5624
+battle_won_mean:           0.0000	dead_allies_mean:          6.0000	dead_enemies_mean:         0.3148	ep_length_mean:           23.3356
+episode_in_buffer:       5000.0000	epsilon:                   0.6181	grad_norm:                 0.1250	loss_td:                   0.0070
+q_taken_mean:              0.4721	return_max:                8.0152	return_mean:               6.2433	return_min:                4.5541
+return_std:                0.5440	target_mean:               0.4718	td_error_abs:              0.0070	test_battle_won_mean:      0.0000
+test_dead_allies_mean:     6.0000	test_dead_enemies_mean:    1.0000	test_ep_length_mean:      22.1250	test_return_max:           9.0270
+test_return_mean:          8.0051	test_return_min:           7.1892	test_return_std:           0.4664	
+Avg cost 0.2839305954075413 seconds
+[INFO 10:29:35] my_main t_env: 130762 / 10050000
+[INFO 10:29:35] my_main Estimated time left: 23 hours, 20 minutes, 50 seconds. Time passed: 18 minutes, 24 seconds
+Avg cost 0.28393154390750014 seconds
+Avg cost 0.2839280722644105 seconds
+Avg cost 0.2839335821008175 seconds
+Avg cost 0.28394872001385674 seconds
+Avg cost 0.28411248264435673 seconds
+Avg cost 0.2841037557872073 seconds
+Avg cost 0.2841027316406342 seconds
+Avg cost 0.2841192918164394 seconds
+Avg cost 0.28412885873510063 seconds
+Avg cost 0.28413402098901985 seconds
+Avg cost 0.2841400508785456 seconds
+Avg cost 0.2841389505272242 seconds
+Avg cost 0.2841382914166438 seconds
+Avg cost 0.2841395054908095 seconds
+Avg cost 0.28414503648591244 seconds
+Avg cost 0.2841614388268107 seconds
+Avg cost 0.28415891733298204 seconds
+Avg cost 0.2842118515190508 seconds
+Avg cost 0.28419942369197515 seconds
+Avg cost 0.2841951757585028 seconds
+Avg cost 0.28418876343556404 seconds
+Avg cost 0.2841923656692941 seconds
+Avg cost 0.28418633103791946 seconds
+Avg cost 0.2841634236823372 seconds
+Avg cost 0.28416456836331666 seconds
+Avg cost 0.2841568877565848 seconds
+Avg cost 0.284147493935035 seconds
+Avg cost 0.28413199824346663 seconds
+Avg cost 0.28410362425528346 seconds
+Avg cost 0.28408711922319674 seconds
+Avg cost 0.28412341250555706 seconds
+Avg cost 0.2841189215692246 seconds
+Avg cost 0.28411965972498887 seconds
+Avg cost 0.2841029921220032 seconds
+Avg cost 0.2840964381479269 seconds
+Avg cost 0.28409720652577636 seconds
+Avg cost 0.28408649403203073 seconds
+Avg cost 0.28408687314787157 seconds
+Avg cost 0.2840834553636599 seconds
+Avg cost 0.28407349999390547 seconds
+Avg cost 0.2840798794599326 seconds
+Avg cost 0.2841692787167755 seconds
+Avg cost 0.2841711085847866 seconds
+[INFO 10:30:12] my_main Updated target network
+Avg cost 0.28421086786849303 seconds
+Avg cost 0.28419362976058343 seconds
+Avg cost 0.28417887525200397 seconds
+Avg cost 0.28417053679942805 seconds
+Avg cost 0.28415710164441055 seconds
+Avg cost 0.28414991611742846 seconds
+Avg cost 0.28413829724104217 seconds
+Avg cost 0.28412907121913483 seconds
+Avg cost 0.2841189341862121 seconds
+Avg cost 0.2841139313258932 seconds
+Avg cost 0.2841067230058414 seconds
+Avg cost 0.28409518351947066 seconds
+Avg cost 0.2840914204305053 seconds
+Avg cost 0.284094863961367 seconds
+Avg cost 0.28409431441076916 seconds
+Avg cost 0.28410187464266506 seconds
+Avg cost 0.2841119180040916 seconds
+Avg cost 0.2841126259162524 seconds
+Avg cost 0.28411477517229045 seconds
+Avg cost 0.28410599780656265 seconds
+Avg cost 0.28410803109079974 seconds
+Avg cost 0.2841098159653898 seconds
+Avg cost 0.2841142564807577 seconds
+Avg cost 0.2841237460692674 seconds
+Avg cost 0.2841288458811098 seconds
+Avg cost 0.2840983250792271 seconds
+Avg cost 0.2841095206838631 seconds
+Avg cost 0.2841129555575101 seconds
+Avg cost 0.28410011953343506 seconds
+Avg cost 0.284099155399987 seconds
+Avg cost 0.2841108458429214 seconds
+Avg cost 0.28409277637068286 seconds
+Avg cost 0.28407881646455196 seconds
+Avg cost 0.284083627696911 seconds
+Avg cost 0.28408358875586115 seconds
+Avg cost 0.2841025839688263 seconds
+Avg cost 0.28410138967244575 seconds
+Avg cost 0.2841062646129067 seconds
+Avg cost 0.2841158603877846 seconds
+Avg cost 0.2841122501179329 seconds
+Avg cost 0.28412634425047023 seconds
+Avg cost 0.28411191011815007 seconds
+Avg cost 0.2841159016579516 seconds
+Avg cost 0.2841268041957631 seconds
+Avg cost 0.28412907059128273 seconds
+Avg cost 0.2841283858104147 seconds
+Avg cost 0.28413404144256277 seconds
+Avg cost 0.28413428877626706 seconds
+Avg cost 0.2841312469176532 seconds
+Avg cost 0.28413194309581463 seconds
+[INFO 10:30:50] my_main Updated target network
+Avg cost 0.2841344404348941 seconds
+Avg cost 0.28415700839362745 seconds
+Avg cost 0.2841430292014158 seconds
+Avg cost 0.28413653229610375 seconds
+Avg cost 0.2841287724923773 seconds
+Avg cost 0.28412139167888034 seconds
+Avg cost 0.28409654093811454 seconds
+Avg cost 0.28408591442274284 seconds
+Avg cost 0.28407421153552453 seconds
+Avg cost 0.2840746972074482 seconds
+Avg cost 0.2840600131667239 seconds
+Avg cost 0.28405210027395333 seconds
+Avg cost 0.2840346976497945 seconds
+[INFO 10:31:00] my_main Recent Stats | t_env:     140728 | Episode:     6052
+battle_won_mean:           0.0000	dead_allies_mean:          6.0000	dead_enemies_mean:         0.1713	ep_length_mean:           23.2847
+episode_in_buffer:       5000.0000	epsilon:                   0.5862	grad_norm:                 0.1934	loss_td:                   0.0065
+q_taken_mean:              0.4820	return_max:                7.9865	return_mean:               6.3116	return_min:                4.7162
+return_std:                0.5273	target_mean:               0.4843	td_error_abs:              0.0065	test_battle_won_mean:      0.0000
+test_dead_allies_mean:     6.0000	test_dead_enemies_mean:    1.8125	test_ep_length_mean:      24.4375	test_return_max:           9.1351
+test_return_mean:          8.1203	test_return_min:           7.4595	test_return_std:           0.3914	
+Avg cost 0.28402632598164446 seconds
+[INFO 10:31:01] my_main t_env: 140815 / 10050000
+[INFO 10:31:01] my_main Estimated time left: 23 hours, 31 minutes, 49 seconds. Time passed: 19 minutes, 50 seconds
+Avg cost 0.2840065050125127 seconds
+Avg cost 0.28399793042253496 seconds
+Avg cost 0.2839975812622461 seconds
+Avg cost 0.2840539463662503 seconds
+Avg cost 0.28402596680407877 seconds
+Avg cost 0.2840152228789477 seconds
+Avg cost 0.28398827410947486 seconds
+Avg cost 0.28397986045640006 seconds
+Avg cost 0.28395964659809797 seconds
+Avg cost 0.2839356606333682 seconds
+Avg cost 0.2839183531060129 seconds
+Avg cost 0.2839701448663985 seconds
+Avg cost 0.2839705414242219 seconds
+Avg cost 0.2839704921366916 seconds
+Avg cost 0.28397758555065894 seconds
+Avg cost 0.28397055411889655 seconds
+Avg cost 0.28397852009393343 seconds
+Avg cost 0.2839734151949601 seconds
+Avg cost 0.2839647861337478 seconds
+Avg cost 0.2839655657988623 seconds
+Avg cost 0.2839674096358455 seconds
+Avg cost 0.2839685455111597 seconds
+Avg cost 0.28397758436265713 seconds
+Avg cost 0.2839740874026849 seconds
+Avg cost 0.2839935680074021 seconds
+Avg cost 0.28395848696349146 seconds
+Avg cost 0.28392082023120696 seconds
+Avg cost 0.2838902453152125 seconds
+Avg cost 0.2838589238558769 seconds
+Avg cost 0.2838316071337548 seconds
+Avg cost 0.2838002959108046 seconds
+Avg cost 0.28387058692224554 seconds
+Avg cost 0.2838499897765122 seconds
+Avg cost 0.28385698180998115 seconds
+Avg cost 0.28386609339807356 seconds
+Avg cost 0.2838650639748346 seconds
+[INFO 10:31:31] my_main Updated target network
+Avg cost 0.28387158053616734 seconds
+Avg cost 0.28388991880199754 seconds
+Avg cost 0.28389489945261676 seconds
+Avg cost 0.28389902886359136 seconds
+Avg cost 0.2839091454233447 seconds
+Avg cost 0.2839033294234631 seconds
+Avg cost 0.2839084124596053 seconds
+Avg cost 0.28390918995603265 seconds
+Avg cost 0.2839127525764431 seconds
+Avg cost 0.28392561554523016 seconds
+Avg cost 0.28392634385616067 seconds
+Avg cost 0.283927081859567 seconds
+Avg cost 0.28394125244106183 seconds
+Avg cost 0.2839459680294981 seconds
+Avg cost 0.28394735259394555 seconds
+Avg cost 0.2839568237732648 seconds
+Avg cost 0.2839545873329818 seconds
+Avg cost 0.28395602861221486 seconds
+Avg cost 0.28395749887444405 seconds
+Avg cost 0.28395851632023233 seconds
+Avg cost 0.28396382705717965 seconds
+Avg cost 0.2839683540064942 seconds
+Avg cost 0.28398127228366005 seconds
+Avg cost 0.2839858654296275 seconds
+Avg cost 0.28398752564039054 seconds
+Avg cost 0.28398842891006487 seconds
+Avg cost 0.2839806681253242 seconds
+Avg cost 0.28398756514126483 seconds
+Avg cost 0.2839883241202222 seconds
+Avg cost 0.284011002775199 seconds
+Avg cost 0.28400506948907167 seconds
+Avg cost 0.2840008588071536 seconds
+Avg cost 0.2840092648961112 seconds
+Avg cost 0.2840294570509538 seconds
+Avg cost 0.28404693360541333 seconds
+Avg cost 0.2840520003128786 seconds
+Avg cost 0.28406319469592706 seconds
+Avg cost 0.28406355127891214 seconds
+Avg cost 0.28406815122921913 seconds
+Avg cost 0.284074207487561 seconds
+Avg cost 0.2840806384982197 seconds
+Avg cost 0.2840868267139157 seconds
+Avg cost 0.2840869612566877 seconds
+Avg cost 0.28409257170669383 seconds
+Avg cost 0.28409989906262795 seconds
+Avg cost 0.2841031203007567 seconds
+Avg cost 0.28410695506408196 seconds
+Avg cost 0.2841096258735782 seconds
+Avg cost 0.2840999984982042 seconds
+Avg cost 0.28410119874996387 seconds
+[INFO 10:32:11] my_main Updated target network
+Avg cost 0.2841038027447083 seconds
+Avg cost 0.28410471304453055 seconds
+Avg cost 0.284110179325796 seconds
+Avg cost 0.2841128512251074 seconds
+Avg cost 0.2841130157686634 seconds
+Avg cost 0.28411341957293734 seconds
+Avg cost 0.2840859535051954 seconds
+Avg cost 0.284083794290288 seconds
+Avg cost 0.28407479020553117 seconds
+Avg cost 0.284071994799432 seconds
+Avg cost 0.2840723180233092 seconds
+Avg cost 0.284058206889058 seconds
+Avg cost 0.2840564791043206 seconds
+Avg cost 0.284057665050142 seconds
+Avg cost 0.28405422627925914 seconds
+Avg cost 0.28406213641836864 seconds
+Avg cost 0.28405259521713017 seconds
+Avg cost 0.284056337044824 seconds
+Avg cost 0.2840609902752907 seconds
+Avg cost 0.2840645524200254 seconds
+[INFO 10:32:26] my_main Recent Stats | t_env:     150781 | Episode:     6480
+battle_won_mean:           0.0000	dead_allies_mean:          6.0000	dead_enemies_mean:         0.2477	ep_length_mean:           23.4883
+episode_in_buffer:       5000.0000	epsilon:                   0.5544	grad_norm:                 0.1167	loss_td:                   0.0063
+q_taken_mean:              0.4906	return_max:                8.1622	return_mean:               6.4478	return_min:                4.7432
+return_std:                0.5298	target_mean:               0.4887	td_error_abs:              0.0063	test_battle_won_mean:      0.0000
+test_dead_allies_mean:     6.0000	test_dead_enemies_mean:    1.3125	test_ep_length_mean:      23.4688	test_return_max:           9.1757
+test_return_mean:          8.0974	test_return_min:           7.0135	test_return_std:           0.5964	
+Avg cost 0.2840701248102442 seconds
+[INFO 10:32:27] my_main t_env: 150873 / 10050000
+[INFO 10:32:27] my_main Estimated time left: 23 hours, 26 minutes, 56 seconds. Time passed: 21 minutes, 15 seconds
+Avg cost 0.2840875586739374 seconds
+Avg cost 0.2840934149661472 seconds
+Avg cost 0.28411605626326203 seconds
+Avg cost 0.28415625732137595 seconds
+Avg cost 0.2841684090136598 seconds
+Avg cost 0.28418976186818623 seconds
+Avg cost 0.28420207416205734 seconds
+Avg cost 0.2841757249359456 seconds
+Avg cost 0.28416864288849764 seconds
+Avg cost 0.28417750086524735 seconds
+Avg cost 0.2841709036110508 seconds
+Avg cost 0.2841739846101064 seconds
+Avg cost 0.2841886038247124 seconds
+Avg cost 0.2841988765163189 seconds
+Avg cost 0.28419157077617546 seconds
+Avg cost 0.2842039238803928 seconds
+Avg cost 0.28421065708919613 seconds
+Avg cost 0.284207915144014 seconds
+Avg cost 0.28421359223585896 seconds
+Avg cost 0.28422214844130095 seconds
+Avg cost 0.28422501589816734 seconds
+Avg cost 0.28423657215198106 seconds
+Avg cost 0.28422864336701126 seconds
+Avg cost 0.2842371763627225 seconds
+Avg cost 0.2842395279321258 seconds
+Avg cost 0.284255426596193 seconds
+Avg cost 0.2842602313696355 seconds
+Avg cost 0.28426180460753636 seconds
+Avg cost 0.2842618978716185 seconds
+[INFO 10:32:53] my_main Updated target network
+Avg cost 0.28430634839027635 seconds
+Avg cost 0.28430485739967215 seconds
+Avg cost 0.2843232253823382 seconds
+Avg cost 0.28432732082271545 seconds
+Avg cost 0.2843394621116362 seconds
+Avg cost 0.2843451956145146 seconds
+Avg cost 0.2843451873103248 seconds
+Avg cost 0.2843484158785841 seconds
+Avg cost 0.2843635067742529 seconds
+Avg cost 0.28436845225766105 seconds
+Avg cost 0.2843730367113582 seconds
+Avg cost 0.28437052716902 seconds
+Avg cost 0.2843665657112902 seconds
+Avg cost 0.28436771459909144 seconds
+Avg cost 0.2843735177589188 seconds
+Avg cost 0.2843752802681882 seconds
+Avg cost 0.28438655184198547 seconds
+Avg cost 0.28438347523961033 seconds
+Avg cost 0.28438281263376836 seconds
+Avg cost 0.28438866793929296 seconds
+Avg cost 0.2843927787121946 seconds
+Avg cost 0.2843973456770094 seconds
+Avg cost 0.28440079686149927 seconds
+Avg cost 0.2844005336669501 seconds
+Avg cost 0.2843919453850714 seconds
+Avg cost 0.28439156066072363 seconds
+Avg cost 0.2844040679300451 seconds
+Avg cost 0.28441083983205157 seconds
+Avg cost 0.2844093380352628 seconds
+Avg cost 0.2843969180419283 seconds
+Avg cost 0.28439025976219984 seconds
+Avg cost 0.2843935890117664 seconds
+Avg cost 0.2843820862918738 seconds
+Avg cost 0.2843702836548092 seconds
+Avg cost 0.28437504982520034 seconds
+Avg cost 0.28437663722651824 seconds
+Avg cost 0.28437875318185024 seconds
+Avg cost 0.2843773962136025 seconds
+Avg cost 0.2843774757932167 seconds
+Avg cost 0.28436268649884155 seconds
+Avg cost 0.28439397217265777 seconds
+Avg cost 0.2843706815386362 seconds
+Avg cost 0.2843699308913715 seconds
+Avg cost 0.2843563961372129 seconds
+Avg cost 0.2843510698704496 seconds
+Avg cost 0.28435405119056895 seconds
+Avg cost 0.2843432277618212 seconds
+Avg cost 0.28434395450109284 seconds
+Avg cost 0.2843222349103446 seconds
+Avg cost 0.28431422080767293 seconds
+[INFO 10:33:31] my_main Updated target network
+Avg cost 0.28431232784425126 seconds
+Avg cost 0.28431245442601333 seconds
+Avg cost 0.2843080805658732 seconds
+Avg cost 0.284323442892749 seconds
+Avg cost 0.2843193009054875 seconds
+Avg cost 0.2843199763193703 seconds
+Avg cost 0.284324079681514 seconds
+Avg cost 0.2842832980462949 seconds
+Avg cost 0.2842817727340017 seconds
+Avg cost 0.2842825028748642 seconds
+Avg cost 0.2842857539653781 seconds
+Avg cost 0.2842925006527024 seconds
+Avg cost 0.284296577895067 seconds
+Avg cost 0.28430031228584735 seconds
+Avg cost 0.28439208605710226 seconds
+Avg cost 0.28439568590234854 seconds
+Avg cost 0.2844094157078854 seconds
+Avg cost 0.28439755448158277 seconds
+Avg cost 0.28440574930867146 seconds
+Avg cost 0.2844053924258506 seconds
+Avg cost 0.28440529142985754 seconds
+Avg cost 0.28447438724989377 seconds
+Avg cost 0.2844626476390582 seconds
+Avg cost 0.2844530148001149 seconds
+Avg cost 0.2844392800191692 seconds
+Avg cost 0.2844288462020725 seconds
+Avg cost 0.28440296942385584 seconds
+[INFO 10:33:51] my_main Recent Stats | t_env:     160814 | Episode:     6908
+battle_won_mean:           0.0000	dead_allies_mean:          6.0000	dead_enemies_mean:         0.2593	ep_length_mean:           23.5000
+episode_in_buffer:       5000.0000	epsilon:                   0.5225	grad_norm:                 0.1095	loss_td:                   0.0067
+q_taken_mean:              0.4987	return_max:                8.0270	return_mean:               6.5821	return_min:                5.3919
+return_std:                0.5123	target_mean:               0.4958	td_error_abs:              0.0067	test_battle_won_mean:      0.0000
+test_dead_allies_mean:     6.0000	test_dead_enemies_mean:    2.0625	test_ep_length_mean:      24.7812	test_return_max:           9.3108
+test_return_mean:          8.1159	test_return_min:           7.0270	test_return_std:           0.5574	
+Avg cost 0.2843911955388612 seconds
+[INFO 10:33:52] my_main t_env: 160903 / 10050000
+[INFO 10:33:52] my_main Estimated time left: 23 hours, 17 minutes, 42 seconds. Time passed: 22 minutes, 40 seconds
+Avg cost 0.2843841136266918 seconds
+Avg cost 0.2843773002179652 seconds
+Avg cost 0.2843602644257893 seconds
+Avg cost 0.28433516474053444 seconds
+Avg cost 0.28433075620076187 seconds
+Avg cost 0.2843246656909389 seconds
+Avg cost 0.28431325208309116 seconds
+Avg cost 0.28429196034663673 seconds
+Avg cost 0.28426873130111635 seconds
+Avg cost 0.2842493190090118 seconds
+Avg cost 0.2842447287521896 seconds
+Avg cost 0.28423246259274715 seconds
+Avg cost 0.28422481878331496 seconds
+Avg cost 0.28420652139373254 seconds
+Avg cost 0.28418850622795266 seconds
+Avg cost 0.28418713459877576 seconds
+Avg cost 0.28417622367770706 seconds
+Avg cost 0.2841546061684948 seconds
+Avg cost 0.284138878278314 seconds
+Avg cost 0.2841337368244805 seconds
+Avg cost 0.2841262707385777 seconds
+Avg cost 0.28412069175016663 seconds
+[INFO 10:34:10] my_main Updated target network
+Avg cost 0.2841164535641123 seconds
+Avg cost 0.28410270382909186 seconds
+Avg cost 0.2841087742971196 seconds
+Avg cost 0.2840943166481621 seconds
+Avg cost 0.2840860454515481 seconds
+Avg cost 0.28407118075336296 seconds
+Avg cost 0.2840471520900181 seconds
+Avg cost 0.2840465618424628 seconds
+Avg cost 0.28403133427331223 seconds
+Avg cost 0.2840169375127231 seconds
+Avg cost 0.2839755525840245 seconds
+Avg cost 0.28396079822752107 seconds
+Avg cost 0.2839645799292036 seconds
+Avg cost 0.2839393697512908 seconds
+Avg cost 0.2839044716698784 seconds
+Avg cost 0.28389048943990725 seconds
+Avg cost 0.28387456315837506 seconds
+Avg cost 0.2838374922361228 seconds
+Avg cost 0.2838118560229904 seconds
+Avg cost 0.28379320446242645 seconds
+Avg cost 0.2837596763782459 seconds
+Avg cost 0.28373797169176784 seconds
+Avg cost 0.28372410065213716 seconds
+Avg cost 0.28371843334759694 seconds
+Avg cost 0.2837123627012427 seconds
+Avg cost 0.2836899169800568 seconds
+Avg cost 0.28365637752714823 seconds
+Avg cost 0.28365205528380455 seconds
+Avg cost 0.28365799845481415 seconds
+Avg cost 0.283649982203843 seconds
+Avg cost 0.2836426296698549 seconds
+Avg cost 0.2836313046637268 seconds
+Avg cost 0.2836175182016728 seconds
+Avg cost 0.28360104547374476 seconds
+Avg cost 0.28358666654360515 seconds
+Avg cost 0.2835933476905243 seconds
+Avg cost 0.28359699437634417 seconds
+Avg cost 0.28358623662777577 seconds
+Avg cost 0.2835782095705913 seconds
+Avg cost 0.2835664757204729 seconds
+Avg cost 0.2835570332166312 seconds
+Avg cost 0.283545561298334 seconds
+Avg cost 0.28351462209184486 seconds
+Avg cost 0.2835061811476093 seconds
+Avg cost 0.2834872137294728 seconds
+Avg cost 0.28345927022133977 seconds
+Avg cost 0.28344451765687656 seconds
+Avg cost 0.28343360984318733 seconds
+Avg cost 0.28339789934757054 seconds
+Avg cost 0.28340325983298603 seconds
+[INFO 10:34:42] my_main Updated target network
+Avg cost 0.28337590745154856 seconds
+Avg cost 0.28335196156707243 seconds
+Avg cost 0.2833392377401093 seconds
+Avg cost 0.2833207619796592 seconds
+Avg cost 0.28330401788210746 seconds
+Avg cost 0.28327273190986646 seconds
+Avg cost 0.2832569984186974 seconds
+Avg cost 0.28323074113172464 seconds
+Avg cost 0.28320131426803785 seconds
+Avg cost 0.28318947776114384 seconds
+Avg cost 0.2831778535598637 seconds
+Avg cost 0.2831658258262979 seconds
+Avg cost 0.2831569872920851 seconds
+Avg cost 0.28314678545724437 seconds
+Avg cost 0.2831333998839062 seconds
+Avg cost 0.2831199737074375 seconds
+Avg cost 0.2830899339934169 seconds
+Avg cost 0.2830909924975252 seconds
+Avg cost 0.28308193435161455 seconds
+Avg cost 0.28307565942695606 seconds
+Avg cost 0.28307400642175357 seconds
+Avg cost 0.2830703887876122 seconds
+Avg cost 0.2830453496591181 seconds
+Avg cost 0.2830190371254521 seconds
+Avg cost 0.2830035913056433 seconds
+Avg cost 0.28300481774674024 seconds
+Avg cost 0.2829959239917613 seconds
+Avg cost 0.2829992310881156 seconds
+Avg cost 0.28299739434411547 seconds
+Avg cost 0.28298961085064694 seconds
+Avg cost 0.28297376186312045 seconds
+Avg cost 0.28296551129682823 seconds
+Avg cost 0.2829630715881114 seconds
+Avg cost 0.28297807476951775 seconds
+[INFO 10:35:04] my_main Recent Stats | t_env:     170825 | Episode:     7336
+battle_won_mean:           0.0000	dead_allies_mean:          6.0000	dead_enemies_mean:         0.3037	ep_length_mean:           23.4346
+episode_in_buffer:       5000.0000	epsilon:                   0.4908	grad_norm:                 0.0575	loss_td:                   0.0067
+q_taken_mean:              0.4829	return_max:                8.1875	return_mean:               6.6210	return_min:                4.6351
+return_std:                0.5678	target_mean:               0.4819	td_error_abs:              0.0067	test_battle_won_mean:      0.0000
+test_dead_allies_mean:     6.0000	test_dead_enemies_mean:    1.4688	test_ep_length_mean:      25.1250	test_return_max:           9.3378
+test_return_mean:          8.2370	test_return_min:           7.4730	test_return_std:           0.5113	
+Avg cost 0.2829827463233865 seconds
+[INFO 10:35:05] my_main t_env: 170916 / 10050000
+[INFO 10:35:05] my_main Estimated time left: 20 hours, 1 minutes, 18 seconds. Time passed: 23 minutes, 54 seconds
+Avg cost 0.2829842547804757 seconds
+Avg cost 0.2829776351983148 seconds
+Avg cost 0.2829732922362027 seconds
+Avg cost 0.282970818119091 seconds
+Avg cost 0.2829413240249844 seconds
+Avg cost 0.28291754171595007 seconds
+Avg cost 0.28289452823185846 seconds
+Avg cost 0.2828627510456863 seconds
+Avg cost 0.28285843495660445 seconds
+Avg cost 0.2828370149018336 seconds
+Avg cost 0.2828296924926493 seconds
+Avg cost 0.2828222091541542 seconds
+Avg cost 0.28281155103422306 seconds
+Avg cost 0.28280629547497715 seconds
+Avg cost 0.28280055750293387 seconds
+[INFO 10:35:19] my_main Updated target network
+Avg cost 0.28279292596451355 seconds
+Avg cost 0.28278141652492983 seconds
+Avg cost 0.2827753612084541 seconds
+Avg cost 0.28276503585226337 seconds
+Avg cost 0.2827331907075386 seconds
+Avg cost 0.2827114717005908 seconds
+Avg cost 0.28270504956136716 seconds
+Avg cost 0.28270042595886646 seconds
+Avg cost 0.2826914029628234 seconds
+Avg cost 0.28269115347203216 seconds
+Avg cost 0.282689873213887 seconds
+Avg cost 0.2826742249433584 seconds
+Avg cost 0.282669314316341 seconds
+Avg cost 0.28266935750817934 seconds
+Avg cost 0.2826603170343349 seconds
+Avg cost 0.28264635798095195 seconds
+Avg cost 0.2826442848528952 seconds
+Avg cost 0.2826412330108661 seconds
+Avg cost 0.2826411074676433 seconds
+Avg cost 0.28264675384583193 seconds
+Avg cost 0.28263487846686935 seconds
+Avg cost 0.28263148557902296 seconds
+Avg cost 0.28262592080591586 seconds
+Avg cost 0.28261927034727935 seconds
+Avg cost 0.28260328808138463 seconds
+Avg cost 0.2825979310168432 seconds
+Avg cost 0.28260141976025654 seconds
+Avg cost 0.28261492883269673 seconds
+Avg cost 0.2826207154810174 seconds
+Avg cost 0.2826242285823056 seconds
+Avg cost 0.2826228783189421 seconds
+Avg cost 0.2826220035297577 seconds
+Avg cost 0.28262857132346025 seconds
+Avg cost 0.28263366751775454 seconds
+Avg cost 0.2826642265931809 seconds
+Avg cost 0.28267150406911384 seconds
+Avg cost 0.28266188425895505 seconds
+Avg cost 0.2826527715429418 seconds
+Avg cost 0.28264183855616565 seconds
+Avg cost 0.2826365507761639 seconds
+Avg cost 0.28262755420924773 seconds
+Avg cost 0.28262001996860914 seconds
+Avg cost 0.28261303470030646 seconds
+Avg cost 0.282611445583772 seconds
+Avg cost 0.28260451910343587 seconds
+Avg cost 0.28260667269563255 seconds
+Avg cost 0.28260513611224974 seconds
+Avg cost 0.28262771802953895 seconds
+Avg cost 0.28262526505565455 seconds
+Avg cost 0.28261410247742036 seconds
+[INFO 10:35:57] my_main Updated target network
+Avg cost 0.28260472887773413 seconds
+Avg cost 0.28259385371246104 seconds
+Avg cost 0.28258336247023896 seconds
+Avg cost 0.2825705734998099 seconds
+Avg cost 0.28256686440220596 seconds
+Avg cost 0.2825575667925452 seconds
+Avg cost 0.28254896755198355 seconds
+Avg cost 0.2825404596404305 seconds
+Avg cost 0.2825403287770757 seconds
+Avg cost 0.28253428514525897 seconds
+Avg cost 0.2825482395882346 seconds
+Avg cost 0.2825533290505096 seconds
+Avg cost 0.28255111739055133 seconds
+Avg cost 0.28255179858697355 seconds
+Avg cost 0.28255960276252357 seconds
+Avg cost 0.2825626423959668 seconds
+Avg cost 0.2825684853282011 seconds
+Avg cost 0.2825725074824196 seconds
+Avg cost 0.28257659904095317 seconds
+Avg cost 0.28258820581311017 seconds
+Avg cost 0.28257033719846375 seconds
+Avg cost 0.28256790664224785 seconds
+Avg cost 0.2825696468353273 seconds
+Avg cost 0.2825682755225989 seconds
+Avg cost 0.28257281443211435 seconds
+Avg cost 0.282575156288207 seconds
+Avg cost 0.2825769414213413 seconds
+Avg cost 0.28256332830677355 seconds
+Avg cost 0.2825517395322476 seconds
+Avg cost 0.2825165289189113 seconds
+Avg cost 0.2825083799800197 seconds
+Avg cost 0.28249226377603603 seconds
+Avg cost 0.28246166211348017 seconds
+Avg cost 0.28245311817071794 seconds
+Avg cost 0.282450240602096 seconds
+Avg cost 0.2824207851503245 seconds
+Avg cost 0.28242548013204843 seconds
+Avg cost 0.28243927154699716 seconds
+Avg cost 0.28241368675925876 seconds
+Avg cost 0.28239285456669794 seconds
+Avg cost 0.2823900161378728 seconds
+[INFO 10:36:27] my_main Recent Stats | t_env:     180907 | Episode:     7764
+battle_won_mean:           0.0000	dead_allies_mean:          6.0000	dead_enemies_mean:         0.2827	ep_length_mean:           23.3949
+episode_in_buffer:       5000.0000	epsilon:                   0.4591	grad_norm:                 0.0343	loss_td:                   0.0063
+q_taken_mean:              0.4884	return_max:                8.8243	return_mean:               6.6980	return_min:                5.4189
+return_std:                0.5237	target_mean:               0.4891	td_error_abs:              0.0063	test_battle_won_mean:      0.0000
+test_dead_allies_mean:     6.0000	test_dead_enemies_mean:    1.8438	test_ep_length_mean:      24.5312	test_return_max:          10.2162
+test_return_mean:          8.0837	test_return_min:           6.7027	test_return_std:           0.6911	
+Avg cost 0.28240182539559305 seconds
+[INFO 10:36:28] my_main t_env: 181003 / 10050000
+[INFO 10:36:28] my_main Estimated time left: 22 hours, 34 minutes, 11 seconds. Time passed: 25 minutes, 17 seconds
+Avg cost 0.2824041205323089 seconds
+Avg cost 0.28240549150311683 seconds
+Avg cost 0.28241119298292566 seconds
+Avg cost 0.2824096266066454 seconds
+Avg cost 0.28238308577804094 seconds
+Avg cost 0.2823748868546582 seconds
+Avg cost 0.2823693873100715 seconds
+Avg cost 0.2823600520151222 seconds
+[INFO 10:36:37] my_main Updated target network
+Avg cost 0.2823490273853964 seconds
+Avg cost 0.28234792740368386 seconds
+Avg cost 0.2823392766671038 seconds
+Avg cost 0.2823136206937242 seconds
+Avg cost 0.2823067612254742 seconds
+Avg cost 0.2823071037599071 seconds
+Avg cost 0.28230264061634125 seconds
+Avg cost 0.2822696551550189 seconds
+Avg cost 0.2822706869845527 seconds
+Avg cost 0.2822617731854357 seconds
+Avg cost 0.2822555302348435 seconds
+Avg cost 0.28225630812603314 seconds
+Avg cost 0.28225149768089114 seconds
+Avg cost 0.2822438426480163 seconds
+Avg cost 0.28223537163856693 seconds
+Avg cost 0.28223028138990214 seconds
+Avg cost 0.28222357762641587 seconds
+Avg cost 0.2822217191724488 seconds
+Avg cost 0.2822145406641027 seconds
+Avg cost 0.2822095816092722 seconds
+Avg cost 0.28220508422832047 seconds
+Avg cost 0.2821894643498002 seconds
+Avg cost 0.28216141212704954 seconds
+Avg cost 0.2821480748360104 seconds
+Avg cost 0.2821668118846659 seconds
+Avg cost 0.2821443074823094 seconds
+Avg cost 0.2821394843063587 seconds
+Avg cost 0.2821346662874071 seconds
+Avg cost 0.28212143896553515 seconds
+Avg cost 0.28211845150430687 seconds
+Avg cost 0.28212112982663584 seconds
+Avg cost 0.28211599324764053 seconds
+Avg cost 0.28211127815207804 seconds
+Avg cost 0.2820995854144776 seconds
+Avg cost 0.2820958291213524 seconds
+Avg cost 0.28208449744500824 seconds
+Avg cost 0.28207530755300303 seconds
+Avg cost 0.2820667151080371 seconds
+Avg cost 0.28203840760595283 seconds
+Avg cost 0.2820264681079719 seconds
+Avg cost 0.28202264692619256 seconds
+Avg cost 0.28201893187558097 seconds
+Avg cost 0.2819950574570165 seconds
+Avg cost 0.2819842691069724 seconds
+Avg cost 0.2819723197908112 seconds
+Avg cost 0.28196321479724185 seconds
+Avg cost 0.281960815040904 seconds
+Avg cost 0.2819344487625483 seconds
+Avg cost 0.2819191531067894 seconds
+Avg cost 0.28190187567127134 seconds
+[INFO 10:37:13] my_main Updated target network
+Avg cost 0.2818903292774073 seconds
+Avg cost 0.28188328018246067 seconds
+Avg cost 0.2818860626316646 seconds
+Avg cost 0.28187696690413144 seconds
+Avg cost 0.2818726266448821 seconds
+Avg cost 0.28185418549043817 seconds
+Avg cost 0.28183911806608297 seconds
+Avg cost 0.2818259796902455 seconds
+Avg cost 0.2818208773851155 seconds
+Avg cost 0.2818008679793891 seconds
+Avg cost 0.2817949973987434 seconds
+Avg cost 0.2817810373301499 seconds
+Avg cost 0.2817910593431872 seconds
+Avg cost 0.28177665566849436 seconds
+Avg cost 0.28177911579608916 seconds
+Avg cost 0.2817620279072881 seconds
+Avg cost 0.2817320490216875 seconds
+Avg cost 0.2817226191847787 seconds
+Avg cost 0.2817194040663942 seconds
+Avg cost 0.2817602170673094 seconds
+Avg cost 0.2817537197443923 seconds
+Avg cost 0.2817560837645405 seconds
+Avg cost 0.2817590284157559 seconds
+Avg cost 0.2817651457665511 seconds
+Avg cost 0.2817596464014765 seconds
+Avg cost 0.2817565247171972 seconds
+Avg cost 0.2817631047478253 seconds
+Avg cost 0.28174808152090297 seconds
+Avg cost 0.2817358126588232 seconds
+Avg cost 0.28172732831230823 seconds
+Avg cost 0.28171992668556783 seconds
+Avg cost 0.281714974385887 seconds
+Avg cost 0.2817042316979293 seconds
+Avg cost 0.2816980932537076 seconds
+Avg cost 0.2817227632692544 seconds
+Avg cost 0.28170878329175575 seconds
+Avg cost 0.28171427160295126 seconds
+Avg cost 0.2817063555526544 seconds
+Avg cost 0.2816969116214706 seconds
+Avg cost 0.28168284816506456 seconds
+Avg cost 0.2816771506557106 seconds
+Avg cost 0.28165172601369537 seconds
+Avg cost 0.2816505355712694 seconds
+Avg cost 0.28165613835289177 seconds
+Avg cost 0.2816535799374133 seconds
+Avg cost 0.2816696637725078 seconds
+Avg cost 0.2816851982685524 seconds
+Avg cost 0.2816859876001285 seconds
+[INFO 10:37:45] my_main Recent Stats | t_env:     190910 | Episode:     8192
+battle_won_mean:           0.0000	dead_allies_mean:          6.0000	dead_enemies_mean:         0.3364	ep_length_mean:           23.5678
+episode_in_buffer:       5000.0000	epsilon:                   0.4271	grad_norm:                 0.2441	loss_td:                   0.0065
+q_taken_mean:              0.4923	return_max:                8.5557	return_mean:               6.7828	return_min:                5.0270
+return_std:                0.5448	target_mean:               0.4885	td_error_abs:              0.0065	test_battle_won_mean:      0.0000
+test_dead_allies_mean:     6.0000	test_dead_enemies_mean:    1.1562	test_ep_length_mean:      23.0625	test_return_max:           9.6757
+test_return_mean:          8.1445	test_return_min:           7.4865	test_return_std:           0.4965	
+Avg cost 0.2816822381146185 seconds
+[INFO 10:37:46] my_main t_env: 191007 / 10050000
+[INFO 10:37:46] my_main Estimated time left: 21 hours, 16 minutes, 9 seconds. Time passed: 26 minutes, 34 seconds
+Avg cost 0.28166755598944576 seconds
+[INFO 10:37:50] my_main Updated target network
+Avg cost 0.2816639758046342 seconds
+Avg cost 0.28163774550751125 seconds
+Avg cost 0.2816131110280254 seconds
+Avg cost 0.2816076723017371 seconds
+Avg cost 0.28160083387412266 seconds
+Avg cost 0.28158849387236623 seconds
+Avg cost 0.28157862183162663 seconds
+Avg cost 0.2815975099583203 seconds
+Avg cost 0.2816224962531236 seconds
+Avg cost 0.28160680978397273 seconds
+Avg cost 0.2815981178106566 seconds
+Avg cost 0.28158845794334825 seconds
+Avg cost 0.28159358503762616 seconds
+Avg cost 0.28157454086199435 seconds
+Avg cost 0.2815689633532266 seconds
+Avg cost 0.28156265952074466 seconds
+Avg cost 0.2815510265776054 seconds
+Avg cost 0.281549821060225 seconds
+Avg cost 0.28153661174922723 seconds
+Avg cost 0.2815455850893561 seconds
+Avg cost 0.28154647269137617 seconds
+Avg cost 0.2815442312441811 seconds
+Avg cost 0.28159522963914024 seconds
+Avg cost 0.28159197433994115 seconds
+Avg cost 0.28158187623162845 seconds
+Avg cost 0.2815776696082515 seconds
+Avg cost 0.28157168216316797 seconds
+Avg cost 0.2815840087119547 seconds
+Avg cost 0.28159047478391197 seconds
+Avg cost 0.2815963238261223 seconds
+Avg cost 0.2815923921598006 seconds
+Avg cost 0.28159158334792017 seconds
+Avg cost 0.28159213250564175 seconds
+Avg cost 0.28158358815443446 seconds
+Avg cost 0.2815827745170407 seconds
+Avg cost 0.28157685748164274 seconds
+Avg cost 0.28157842492965185 seconds
+Avg cost 0.2815738249906179 seconds
+Avg cost 0.2815738433582227 seconds
+Avg cost 0.2815763324140065 seconds
+Avg cost 0.28157986806766594 seconds
+Avg cost 0.2815817861414666 seconds
+Avg cost 0.2815877559439738 seconds
+Avg cost 0.28158964372243134 seconds
+Avg cost 0.2815872080050981 seconds
+Avg cost 0.2815895277625491 seconds
+Avg cost 0.2816005830691481 seconds
+Avg cost 0.28160605703015995 seconds
+Avg cost 0.2816048574539155 seconds
+Avg cost 0.28159933559042655 seconds
+[INFO 10:38:27] my_main Updated target network
+Avg cost 0.28160643566146215 seconds
+Avg cost 0.2816140409514386 seconds
+Avg cost 0.2816161529314472 seconds
+Avg cost 0.28161812330787406 seconds
+Avg cost 0.2816297452415576 seconds
+Avg cost 0.281630772600215 seconds
+Avg cost 0.28163041735698346 seconds
+Avg cost 0.28163878654556534 seconds
+Avg cost 0.28164351885958644 seconds
+Avg cost 0.28164501167424827 seconds
+Avg cost 0.28164954847506896 seconds
+Avg cost 0.28166555460146286 seconds
+Avg cost 0.2816607654378798 seconds
+Avg cost 0.2816593241498492 seconds
+Avg cost 0.2816675501778012 seconds
+Avg cost 0.2816669706047744 seconds
+Avg cost 0.28164842943142526 seconds
+Avg cost 0.28165197780571033 seconds
+Avg cost 0.28166222175717803 seconds
+Avg cost 0.2816467952275219 seconds
+Avg cost 0.28164933979907486 seconds
+Avg cost 0.28165300242075936 seconds
+Avg cost 0.2816608481434309 seconds
+Avg cost 0.2816657077197838 seconds
+Avg cost 0.28166225193801075 seconds
+Avg cost 0.28168204428177196 seconds
+Avg cost 0.2816784955335385 seconds
+Avg cost 0.2816794727630542 seconds
+Avg cost 0.28168434158404587 seconds
+Avg cost 0.281683808297412 seconds
+Avg cost 0.28167720147477204 seconds
+Avg cost 0.28169540532309884 seconds
+Avg cost 0.28168648385686396 seconds
+Avg cost 0.2816869516089144 seconds
+Avg cost 0.28168393598412567 seconds
+Avg cost 0.28166735290300726 seconds
+Avg cost 0.28167527054526914 seconds
+Avg cost 0.2816759739290472 seconds
+Avg cost 0.281688929726624 seconds
+Avg cost 0.2816922668008244 seconds
+Avg cost 0.2816858557407742 seconds
+Avg cost 0.2816983588603836 seconds
+Avg cost 0.28170498947900047 seconds
+Avg cost 0.28168838435128696 seconds
+Avg cost 0.28169801470259553 seconds
+Avg cost 0.28167714182058456 seconds
+Avg cost 0.28166569665941027 seconds
+Avg cost 0.28166508428714004 seconds
+Avg cost 0.2816542981379258 seconds
+Avg cost 0.2816462809363908 seconds
+[INFO 10:39:04] my_main Updated target network
+Avg cost 0.2816509633475029 seconds
+Avg cost 0.2816523960052833 seconds
+Avg cost 0.2817183906949492 seconds
+Avg cost 0.28169647774555906 seconds
+Avg cost 0.28167845200155384 seconds
+Avg cost 0.28168019765117136 seconds
+[INFO 10:39:09] my_main Recent Stats | t_env:     200982 | Episode:     8624
+battle_won_mean:           0.0000	dead_allies_mean:          6.0000	dead_enemies_mean:         0.5421	ep_length_mean:           23.3738
+episode_in_buffer:       5000.0000	epsilon:                   0.3955	grad_norm:                 0.0818	loss_td:                   0.0062
+q_taken_mean:              0.4929	return_max:                8.3784	return_mean:               6.8678	return_min:                5.5135
+return_std:                0.5107	target_mean:               0.4908	td_error_abs:              0.0062	test_battle_won_mean:      0.0000
+test_dead_allies_mean:     6.0000	test_dead_enemies_mean:    1.6250	test_ep_length_mean:      23.5000	test_return_max:           9.4324
+test_return_mean:          8.0462	test_return_min:           6.5405	test_return_std:           0.5819	
+Avg cost 0.28167159316920437 seconds
+[INFO 10:39:09] my_main t_env: 201072 / 10050000
+[INFO 10:39:09] my_main Estimated time left: 22 hours, 43 minutes, 59 seconds. Time passed: 27 minutes, 58 seconds
+Avg cost 0.281663021972343 seconds
+Avg cost 0.28166185697512847 seconds
+Avg cost 0.28166582256486095 seconds
+Avg cost 0.2816610138547388 seconds
+Avg cost 0.28170969200844986 seconds
+Avg cost 0.28168216652932343 seconds
+Avg cost 0.28166904678007465 seconds
+Avg cost 0.2816452361262123 seconds
+Avg cost 0.2816391232843901 seconds
+Avg cost 0.28162007748415935 seconds
+Avg cost 0.28160079412553357 seconds
+Avg cost 0.28159139238249525 seconds
+Avg cost 0.2815958644840392 seconds
+Avg cost 0.281586908011357 seconds
+Avg cost 0.2815882180319599 seconds
+Avg cost 0.28158112308070893 seconds
+Avg cost 0.2815907326159848 seconds
+Avg cost 0.2816018262395154 seconds
+Avg cost 0.28162612191288094 seconds
+Avg cost 0.2816146666203023 seconds
+Avg cost 0.2815925696906922 seconds
+Avg cost 0.2815826382081744 seconds
+Avg cost 0.28158248037994615 seconds
+Avg cost 0.2815814519082632 seconds
+Avg cost 0.2815886233663803 seconds
+Avg cost 0.28156899559101956 seconds
+Avg cost 0.2815747179705849 seconds
+Avg cost 0.2815676087058636 seconds
+Avg cost 0.2815731721559137 seconds
+Avg cost 0.2815675421533885 seconds
+Avg cost 0.28158329875031446 seconds
+Avg cost 0.28158172556535865 seconds
+Avg cost 0.2815948122397238 seconds
+Avg cost 0.281594316749012 seconds
+Avg cost 0.28159042186675753 seconds
+Avg cost 0.28160704101741174 seconds
+Avg cost 0.28161165997652704 seconds
+Avg cost 0.2816182326833045 seconds
+Avg cost 0.2816169231323846 seconds
+Avg cost 0.2816222593611694 seconds
+Avg cost 0.28162486008204207 seconds
+Avg cost 0.2816294282128962 seconds
+Avg cost 0.2816386137728836 seconds
+[INFO 10:39:45] my_main Updated target network
+Avg cost 0.2816469216717568 seconds
+Avg cost 0.2816507464192153 seconds
+Avg cost 0.28165494022683235 seconds
+Avg cost 0.2816571759110232 seconds
+Avg cost 0.28163893473202806 seconds
+Avg cost 0.2816375368319383 seconds
+Avg cost 0.2816496256494177 seconds
+Avg cost 0.28164655880682365 seconds
+Avg cost 0.28164386466729635 seconds
+Avg cost 0.2816337976477415 seconds
+Avg cost 0.2816238981995646 seconds
+Avg cost 0.2816256588027325 seconds
+Avg cost 0.28162965696437264 seconds
+Avg cost 0.2816367213321635 seconds
+Avg cost 0.2816514334895397 seconds
+Avg cost 0.28172756216299666 seconds
+Avg cost 0.28173064081155663 seconds
+Avg cost 0.2817340905808128 seconds
+Avg cost 0.2817254891845581 seconds
+Avg cost 0.2817297567856287 seconds
+Avg cost 0.2817293002404417 seconds
+Avg cost 0.28172912411847506 seconds
+Avg cost 0.2817358598113063 seconds
+Avg cost 0.2817387857173786 seconds
+Avg cost 0.281741089626675 seconds
+Avg cost 0.28172868800238776 seconds
+Avg cost 0.2817098337746014 seconds
+Avg cost 0.2816838766728062 seconds
+Avg cost 0.2816823403255944 seconds
+Avg cost 0.28167423717593526 seconds
+Avg cost 0.28167018595585347 seconds
+Avg cost 0.2816700164294213 seconds
+Avg cost 0.28167436518467065 seconds
+Avg cost 0.28166504763654376 seconds
+Avg cost 0.2816547630069494 seconds
+Avg cost 0.2816559382786038 seconds
+Avg cost 0.2816377020869356 seconds
+Avg cost 0.2816398299282006 seconds
+Avg cost 0.2816419954136981 seconds
+Avg cost 0.2816500016544644 seconds
+Avg cost 0.2816522634468526 seconds
+Avg cost 0.28165447000007665 seconds
+Avg cost 0.2816486417498154 seconds
+Avg cost 0.2816492252255729 seconds
+Avg cost 0.28165748055205775 seconds
+Avg cost 0.2816354891795422 seconds
+Avg cost 0.2816312023602081 seconds
+Avg cost 0.2816176322667098 seconds
+Avg cost 0.2816015766898544 seconds
+Avg cost 0.2816018589924381 seconds
+[INFO 10:40:22] my_main Updated target network
+Avg cost 0.2815786191730467 seconds
+Avg cost 0.2815578428293161 seconds
+Avg cost 0.28154883787395507 seconds
+Avg cost 0.2815256244426012 seconds
+Avg cost 0.2815137427832401 seconds
+Avg cost 0.28149875005086283 seconds
+Avg cost 0.2814856294432888 seconds
+Avg cost 0.28148192302807623 seconds
+Avg cost 0.281477383007553 seconds
+Avg cost 0.281471093566487 seconds
+Avg cost 0.28146354789088507 seconds
+Avg cost 0.2814604652474393 seconds
+Avg cost 0.28145264147439486 seconds
+[INFO 10:40:32] my_main Recent Stats | t_env:     211001 | Episode:     9052
+battle_won_mean:           0.0000	dead_allies_mean:          6.0000	dead_enemies_mean:         0.7708	ep_length_mean:           23.2986
+episode_in_buffer:       5000.0000	epsilon:                   0.3636	grad_norm:                 0.1127	loss_td:                   0.0065
+q_taken_mean:              0.4901	return_max:                8.9189	return_mean:               6.9116	return_min:                5.3919
+return_std:                0.5298	target_mean:               0.4920	td_error_abs:              0.0065	test_battle_won_mean:      0.0000
+test_dead_allies_mean:     6.0000	test_dead_enemies_mean:    1.6250	test_ep_length_mean:      22.7188	test_return_max:           9.5861
+test_return_mean:          8.0214	test_return_min:           7.1486	test_return_std:           0.6344	
+Avg cost 0.2814499762599976 seconds
+[INFO 10:40:33] my_main t_env: 211099 / 10050000
+[INFO 10:40:33] my_main Estimated time left: 22 hours, 41 minutes, 42 seconds. Time passed: 29 minutes, 21 seconds
+Avg cost 0.2814386035071481 seconds
+Avg cost 0.28141277761048417 seconds
+Avg cost 0.2813962368728003 seconds
+Avg cost 0.2813893495746789 seconds
+Avg cost 0.2813779981980415 seconds
+Avg cost 0.2813656833378018 seconds
+Avg cost 0.2813595704575805 seconds
+Avg cost 0.28135873799203637 seconds
+Avg cost 0.2813543757049252 seconds
+Avg cost 0.28134086027563354 seconds
+Avg cost 0.28131716494011694 seconds
+Avg cost 0.28130556007024227 seconds
+Avg cost 0.2812855529321392 seconds
+Avg cost 0.28128614364553256 seconds
+Avg cost 0.28135298355729366 seconds
+Avg cost 0.2813590802367426 seconds
+Avg cost 0.28135447300122285 seconds
+Avg cost 0.2813498536342562 seconds
+Avg cost 0.28134402785141455 seconds
+Avg cost 0.28133727181267804 seconds
+Avg cost 0.2813383067757026 seconds
+Avg cost 0.28134183020698855 seconds
+Avg cost 0.2813364657717695 seconds
+Avg cost 0.2813305827525554 seconds
+Avg cost 0.2813234644808475 seconds
+Avg cost 0.2813196655944157 seconds
+Avg cost 0.28131981107597853 seconds
+Avg cost 0.2813182078174298 seconds
+Avg cost 0.2813116164454463 seconds
+Avg cost 0.2813016707147097 seconds
+Avg cost 0.28129463478138605 seconds
+Avg cost 0.2812908459838576 seconds
+Avg cost 0.28128690859604916 seconds
+Avg cost 0.2812780972588133 seconds
+Avg cost 0.28127682344717264 seconds
+Avg cost 0.28127455074886293 seconds
+[INFO 10:41:03] my_main Updated target network
+Avg cost 0.28126982096924896 seconds
+Avg cost 0.2812636932745012 seconds
+Avg cost 0.2812570110484439 seconds
+Avg cost 0.28125160508095437 seconds
+Avg cost 0.2812440555689119 seconds
+Avg cost 0.2812345534732177 seconds
+Avg cost 0.28122897474761643 seconds
+Avg cost 0.28120961128963556 seconds
+Avg cost 0.28117917211760435 seconds
+Avg cost 0.28117036611685853 seconds
+Avg cost 0.2811672073831129 seconds
+Avg cost 0.2811584145699995 seconds
+Avg cost 0.28114936038449734 seconds
+Avg cost 0.2811471826877738 seconds
+Avg cost 0.28113266333289794 seconds
+Avg cost 0.281116757689223 seconds
+Avg cost 0.28111720312998484 seconds
+Avg cost 0.28111473498425193 seconds
+Avg cost 0.2811101239381567 seconds
+Avg cost 0.28111827409707046 seconds
+Avg cost 0.2811165259180129 seconds
+Avg cost 0.2811225982884284 seconds
+Avg cost 0.28111393581849886 seconds
+Avg cost 0.28111389035422774 seconds
+Avg cost 0.28110774151690615 seconds
+Avg cost 0.2811022856079724 seconds
+Avg cost 0.2810993516321415 seconds
+Avg cost 0.2810956640156947 seconds
+Avg cost 0.2810975818048807 seconds
+Avg cost 0.2810961743925356 seconds
+Avg cost 0.28109456549860257 seconds
+Avg cost 0.2810952243590902 seconds
+Avg cost 0.2810885361086408 seconds
+Avg cost 0.2810818559910626 seconds
+Avg cost 0.2810760703580134 seconds
+Avg cost 0.28107101965546366 seconds
+Avg cost 0.2810702234583617 seconds
+Avg cost 0.2810692644509273 seconds
+Avg cost 0.2810521837766324 seconds
+Avg cost 0.28105453788593265 seconds
+Avg cost 0.2810512526939374 seconds
+Avg cost 0.2810316839902557 seconds
+Avg cost 0.28101368448168973 seconds
+Avg cost 0.2810156259377048 seconds
+Avg cost 0.28101787208999185 seconds
+Avg cost 0.2809902580446157 seconds
+Avg cost 0.28103350345716277 seconds
+Avg cost 0.28103724795250346 seconds
+Avg cost 0.2810264923885121 seconds
+Avg cost 0.28102291973040505 seconds
+[INFO 10:41:40] my_main Updated target network
+Avg cost 0.28103307828511287 seconds
+Avg cost 0.28103726084639397 seconds
+Avg cost 0.281041934614614 seconds
+Avg cost 0.2810383707399602 seconds
+Avg cost 0.2810277041207013 seconds
+Avg cost 0.2810238413910539 seconds
+Avg cost 0.2810204314126815 seconds
+Avg cost 0.2810129962616685 seconds
+Avg cost 0.28100822962591687 seconds
+Avg cost 0.28100161349087144 seconds
+Avg cost 0.28100125360773465 seconds
+Avg cost 0.28099761173783044 seconds
+Avg cost 0.2809736826147701 seconds
+Avg cost 0.28097073906987424 seconds
+Avg cost 0.2809667010002949 seconds
+Avg cost 0.2809544009180691 seconds
+Avg cost 0.2809579974534562 seconds
+Avg cost 0.2809593205344562 seconds
+Avg cost 0.2809401704987533 seconds
+[INFO 10:41:54] my_main Recent Stats | t_env:     221019 | Episode:     9476
+battle_won_mean:           0.0000	dead_allies_mean:          6.0000	dead_enemies_mean:         0.8715	ep_length_mean:           23.4276
+episode_in_buffer:       5000.0000	epsilon:                   0.3318	grad_norm:                 0.1904	loss_td:                   0.0065
+q_taken_mean:              0.4916	return_max:                9.8142	return_mean:               7.0333	return_min:                5.3243
+return_std:                0.5682	target_mean:               0.4887	td_error_abs:              0.0065	test_battle_won_mean:      0.0000
+test_dead_allies_mean:     6.0000	test_dead_enemies_mean:    1.6562	test_ep_length_mean:      23.7500	test_return_max:          10.3801
+test_return_mean:          8.0683	test_return_min:           6.7162	test_return_std:           0.7101	
+Avg cost 0.2809414073919796 seconds
+[INFO 10:41:55] my_main t_env: 221116 / 10050000
+[INFO 10:41:55] my_main Estimated time left: 22 hours, 20 minutes, 57 seconds. Time passed: 30 minutes, 43 seconds
+Avg cost 0.2809314384727609 seconds
+Avg cost 0.2809327523689126 seconds
+Avg cost 0.2809447108738701 seconds
+Avg cost 0.28095048764541336 seconds
+Avg cost 0.28095716157202005 seconds
+Avg cost 0.2809613135748626 seconds
+Avg cost 0.28096255662580566 seconds
+Avg cost 0.28096404249164664 seconds
+Avg cost 0.2809762450442501 seconds
+Avg cost 0.28096060148001234 seconds
+Avg cost 0.28096764226737725 seconds
+Avg cost 0.2809771660465102 seconds
+Avg cost 0.28097866213804984 seconds
+Avg cost 0.2809732525899171 seconds
+Avg cost 0.2809666979664993 seconds
+Avg cost 0.2809638826216591 seconds
+Avg cost 0.28096005928657125 seconds
+Avg cost 0.28095665884279186 seconds
+Avg cost 0.2809594592429454 seconds
+Avg cost 0.28095874756260936 seconds
+Avg cost 0.28095376993269244 seconds
+Avg cost 0.28094815746495155 seconds
+Avg cost 0.28094194986120424 seconds
+Avg cost 0.28093987074455545 seconds
+Avg cost 0.2809370248257615 seconds
+Avg cost 0.280927132378602 seconds
+Avg cost 0.2809096087336442 seconds
+Avg cost 0.2809055569889264 seconds
+Avg cost 0.28089708749879944 seconds
+Avg cost 0.28089538180353274 seconds
+[INFO 10:42:21] my_main Updated target network
+Avg cost 0.28088975052621734 seconds
+Avg cost 0.2808864634057995 seconds
+Avg cost 0.2808825349687933 seconds
+Avg cost 0.2808746572017871 seconds
+Avg cost 0.280873772888503 seconds
+Avg cost 0.2808654735099319 seconds
+Avg cost 0.2808613544921813 seconds
+Avg cost 0.28085261540984807 seconds
+Avg cost 0.2808423022379355 seconds
+Avg cost 0.28083776611375927 seconds
+Avg cost 0.2808305514674754 seconds
+Avg cost 0.2808348567574335 seconds
+Avg cost 0.28083458386231125 seconds
+Avg cost 0.28084271905222474 seconds
+Avg cost 0.2808472017447156 seconds
+Avg cost 0.28084869515841254 seconds
+Avg cost 0.2808579829809174 seconds
+Avg cost 0.28085352081683024 seconds
+Avg cost 0.28085459577858773 seconds
+Avg cost 0.2808567916529097 seconds
+Avg cost 0.28085289106503813 seconds
+Avg cost 0.28084136471988086 seconds
+Avg cost 0.280834878104866 seconds
+Avg cost 0.2808297267342171 seconds
+Avg cost 0.28082331918581915 seconds
+Avg cost 0.2808276484587145 seconds
+Avg cost 0.2808303292315598 seconds
+Avg cost 0.2808313703714841 seconds
+Avg cost 0.28083352382852733 seconds
+Avg cost 0.28083273638849704 seconds
+Avg cost 0.2808293711073354 seconds
+Avg cost 0.280833198356392 seconds
+Avg cost 0.28083969257014 seconds
+Avg cost 0.2808421572755814 seconds
+Avg cost 0.28084956525771115 seconds
+Avg cost 0.2808497241586265 seconds
+Avg cost 0.2808543397413614 seconds
+Avg cost 0.2808594402576155 seconds
+Avg cost 0.28086121493440286 seconds
+Avg cost 0.2808714563822012 seconds
+Avg cost 0.2808770636144202 seconds
+Avg cost 0.28087578499616817 seconds
+Avg cost 0.28087464343185703 seconds
+Avg cost 0.2808777394732513 seconds
+Avg cost 0.28087863068521784 seconds
+Avg cost 0.2808875887544008 seconds
+Avg cost 0.28089690590767513 seconds
+Avg cost 0.2809035362552531 seconds
+Avg cost 0.280906540111332 seconds
+Avg cost 0.28090868045172435 seconds
+[INFO 10:42:58] my_main Updated target network
+Avg cost 0.28091516253983473 seconds
+Avg cost 0.2809190301069435 seconds
+Avg cost 0.2809211145765575 seconds
+Avg cost 0.28093166466666447 seconds
+Avg cost 0.2809276673637455 seconds
+Avg cost 0.28092410729489165 seconds
+Avg cost 0.28092687897365887 seconds
+Avg cost 0.2809323697513703 seconds
+Avg cost 0.28094675985764 seconds
+Avg cost 0.2809388686299083 seconds
+Avg cost 0.28094118584986144 seconds
+Avg cost 0.28094261209965754 seconds
+Avg cost 0.2809468858382284 seconds
+Avg cost 0.28098732921823116 seconds
+Avg cost 0.2809791539639846 seconds
+Avg cost 0.28098577842183264 seconds
+Avg cost 0.28099036887652756 seconds
+Avg cost 0.2809952521295003 seconds
+Avg cost 0.28100501655463617 seconds
+Avg cost 0.2810071325593474 seconds
+Avg cost 0.28101758343389094 seconds
+Avg cost 0.2810218799002639 seconds
+Avg cost 0.28102436833889954 seconds
+Avg cost 0.281021015292118 seconds
+Avg cost 0.28102295282410444 seconds
+Avg cost 0.28102240287303376 seconds
+[INFO 10:43:18] my_main Recent Stats | t_env:     231061 | Episode:     9904
+battle_won_mean:           0.0000	dead_allies_mean:          6.0000	dead_enemies_mean:         0.9481	ep_length_mean:           23.6250
+episode_in_buffer:       5000.0000	epsilon:                   0.3001	grad_norm:                 0.1015	loss_td:                   0.0061
+q_taken_mean:              0.4878	return_max:                8.7162	return_mean:               7.1863	return_min:                5.4730
+return_std:                0.5468	target_mean:               0.4868	td_error_abs:              0.0061	test_battle_won_mean:      0.0000
+test_dead_allies_mean:     6.0000	test_dead_enemies_mean:    1.6875	test_ep_length_mean:      22.8750	test_return_max:          10.9595
+test_return_mean:          8.0899	test_return_min:           7.0135	test_return_std:           0.7603	
+Avg cost 0.28105964455345056 seconds
+[INFO 10:43:19] my_main t_env: 231152 / 10050000
+[INFO 10:43:19] my_main Estimated time left: 22 hours, 48 minutes, 57 seconds. Time passed: 32 minutes, 7 seconds
+Avg cost 0.28104495740837104 seconds
+Avg cost 0.2810498049313375 seconds
+Avg cost 0.28104789561722426 seconds
+Avg cost 0.28104917566078264 seconds
+Avg cost 0.28105349129010787 seconds
+Avg cost 0.2810294134497066 seconds
+Avg cost 0.2810335410370334 seconds
+Avg cost 0.28103314401649787 seconds
+Avg cost 0.2810294181409999 seconds
+Avg cost 0.28102519336641835 seconds
+Avg cost 0.2810179093951311 seconds
+Avg cost 0.28101707352874966 seconds
+Avg cost 0.2810156719130703 seconds
+Avg cost 0.28101392988241974 seconds
+Avg cost 0.2810154646502712 seconds
+Avg cost 0.28100304953796085 seconds
+Avg cost 0.2809978337382159 seconds
+Avg cost 0.28099121018763557 seconds
+Avg cost 0.2809887049612337 seconds
+Avg cost 0.2809846337815627 seconds
+Avg cost 0.28100432573764833 seconds
+Avg cost 0.2810029090890567 seconds
+Avg cost 0.28099655750052116 seconds
+[INFO 10:43:39] my_main Updated target network
+Avg cost 0.28104304442555356 seconds
+Avg cost 0.2810453135755395 seconds
+Avg cost 0.2810629801734855 seconds
+Avg cost 0.28108117129248134 seconds
+Avg cost 0.2811333646735997 seconds
+Avg cost 0.2812019218550495 seconds
+Avg cost 0.28121553751285777 seconds
+Avg cost 0.28126053823508607 seconds
+Avg cost 0.2813321025063734 seconds
+Avg cost 0.2817329410560628 seconds
+Avg cost 0.28172796429731956 seconds
+Avg cost 0.2817292066397651 seconds
+Avg cost 0.28173910139845937 seconds
+Avg cost 0.28173328600391623 seconds
+Avg cost 0.28173621406555227 seconds
+Avg cost 0.2817423179692057 seconds
+Avg cost 0.2817439144845018 seconds
+Avg cost 0.28174551829689803 seconds
+Avg cost 0.2817470837896249 seconds
+Avg cost 0.2817528172643366 seconds
+Avg cost 0.28175531181448144 seconds
+Avg cost 0.2818233629218321 seconds
+Avg cost 0.281824349026171 seconds
+Avg cost 0.28183044575751715 seconds
+Avg cost 0.2818335690821315 seconds
+Avg cost 0.2818350225081728 seconds
+Avg cost 0.28183675742453124 seconds
+Avg cost 0.28183899303380167 seconds
+Avg cost 0.28183942193916756 seconds
+Avg cost 0.2818443968566232 seconds
+Avg cost 0.28184961808315384 seconds
+Avg cost 0.2818312377838758 seconds
+Avg cost 0.2818246500372797 seconds
+Avg cost 0.2818168275362923 seconds
+Avg cost 0.2818118746318519 seconds
+Avg cost 0.281800937860649 seconds
+Avg cost 0.2817849817018869 seconds
+Avg cost 0.2817772438353227 seconds
+Avg cost 0.2817741602234158 seconds
+Avg cost 0.28177085527099055 seconds
+Avg cost 0.28176268140003075 seconds
+Avg cost 0.2817589492254409 seconds
+Avg cost 0.28175364208372383 seconds
+Avg cost 0.2817505005557064 seconds
+Avg cost 0.2817483504299123 seconds
+Avg cost 0.28174398332563466 seconds
+Avg cost 0.2817421277740748 seconds
+Avg cost 0.2817430552690814 seconds
+Avg cost 0.2818181164733241 seconds
+Avg cost 0.28181941927772586 seconds
+[INFO 10:44:20] my_main Updated target network
+Avg cost 0.28182307148957525 seconds
+Avg cost 0.2818176351666784 seconds
+Avg cost 0.28181680222023603 seconds
+Avg cost 0.28181553844768964 seconds
+Avg cost 0.28180682180434746 seconds
+Avg cost 0.28180947420119534 seconds
+Avg cost 0.28180860966608196 seconds
+Avg cost 0.28180210730057315 seconds
+Avg cost 0.2818002520867118 seconds
+Avg cost 0.28179957505996234 seconds
+Avg cost 0.2817950722558804 seconds
+Avg cost 0.28178925190338905 seconds
+Avg cost 0.2817832970731491 seconds
+Avg cost 0.2817854880351284 seconds
+Avg cost 0.2817901752509327 seconds
+Avg cost 0.28178972433427457 seconds
+Avg cost 0.28178855758102 seconds
+Avg cost 0.2817925808245748 seconds
+Avg cost 0.2817974695490973 seconds
+Avg cost 0.28179346987879245 seconds
+Avg cost 0.2817898506476476 seconds
+Avg cost 0.2817899576611573 seconds
+Avg cost 0.2817870339348135 seconds
+Avg cost 0.28179073240571617 seconds
+Avg cost 0.28181205410510335 seconds
+Avg cost 0.28181025908357354 seconds
+Avg cost 0.28180455835790613 seconds
+Avg cost 0.28179895770861435 seconds
+Avg cost 0.2817913394264427 seconds
+Avg cost 0.2817692780820021 seconds
+RequestQuit command received.
+Closing Application...
+DataHandler: unable to parse websocket frame.
+CloseHandler: 127.0.0.1:47022 disconnected
+[INFO 10:44:43] absl Shutdown gracefully.
+[INFO 10:44:43] absl Shutdown with return code: -15
+[INFO 10:44:43] absl Launching SC2: /root/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 33997 -dataDir /root/StarCraftII/ -tempDir /tmp/sc-cbl0pyxo/
+[INFO 10:44:43] absl Connecting to: ws://127.0.0.1:33997/sc2api, attempt: 0, running: True
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Command Line: '"/root/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 33997 -dataDir /root/StarCraftII/ -tempDir /tmp/sc-cbl0pyxo/'
+Starting up...
+Startup Phase 1 complete
+[INFO 10:44:44] absl Connecting to: ws://127.0.0.1:33997/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:33997
+Startup Phase 3 complete. Ready for commands.
+[INFO 10:44:45] absl Connecting to: ws://127.0.0.1:33997/sc2api, attempt: 2, running: True
+ConnectHandler: Request from 127.0.0.1:53954 accepted
+ReadyHandler: 127.0.0.1:53954 ready
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Using default stable ids, none found at: /root/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Sending ResponseJoinGame
+Deferred error: 536936448 (0x20010000)
+Deferred error details: Bad profiling data. TimeMS: 6602875.000000 Conversion: 1.000000e-03
+Avg cost 0.2817654294700061 seconds
+Avg cost 0.28176197348097987 seconds
+Avg cost 0.28176267273329536 seconds
+Avg cost 0.2817638912475637 seconds
+[INFO 10:44:51] my_main Recent Stats | t_env:     241129 | Episode:    10336
+battle_won_mean:           0.0000	dead_allies_mean:          6.0000	dead_enemies_mean:         0.7967	ep_length_mean:           23.4486
+episode_in_buffer:       5000.0000	epsilon:                   0.2683	grad_norm:                 0.2598	loss_td:                   0.0061
+q_taken_mean:              0.4914	return_max:                9.8108	return_mean:               7.3232	return_min:                5.9730
+return_std:                0.6062	target_mean:               0.4952	td_error_abs:              0.0061	test_battle_won_mean:      0.0000
+test_dead_allies_mean:     6.0000	test_dead_enemies_mean:    1.7812	test_ep_length_mean:      23.2500	test_return_max:           9.7973
+test_return_mean:          8.3670	test_return_min:           7.1081	test_return_std:           0.5993	
+Avg cost 0.28176012549418916 seconds
+[INFO 10:44:52] my_main t_env: 241226 / 10050000
+[INFO 10:44:52] my_main Estimated time left: 1 days, 1 hours, 19 minutes, 12 seconds. Time passed: 33 minutes, 41 seconds
+RequestQuit command received.
+Closing Application...
+DataHandler: unable to parse websocket frame.
+CloseHandler: 127.0.0.1:37318 disconnected
+[INFO 10:44:53] absl Shutdown gracefully.
+[INFO 10:44:53] absl Shutdown with return code: -15
+[INFO 10:44:54] absl Launching SC2: /root/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 42961 -dataDir /root/StarCraftII/ -tempDir /tmp/sc-eocmzdez/
+[INFO 10:44:54] absl Connecting to: ws://127.0.0.1:42961/sc2api, attempt: 0, running: True
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Command Line: '"/root/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 42961 -dataDir /root/StarCraftII/ -tempDir /tmp/sc-eocmzdez/'
+Starting up...
+Startup Phase 1 complete
+[INFO 10:44:55] absl Connecting to: ws://127.0.0.1:42961/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:42961
+Startup Phase 3 complete. Ready for commands.
+[INFO 10:44:56] absl Connecting to: ws://127.0.0.1:42961/sc2api, attempt: 2, running: True
+ConnectHandler: Request from 127.0.0.1:59768 accepted
+ReadyHandler: 127.0.0.1:59768 ready
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Using default stable ids, none found at: /root/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Sending ResponseJoinGame
+RequestQuit command received.
+Closing Application...
+DataHandler: unable to parse websocket frame.
+CloseHandler: 127.0.0.1:41498 disconnected
+[INFO 10:45:02] absl Shutdown gracefully.
+[INFO 10:45:02] absl Shutdown with return code: -15
+[INFO 10:45:02] absl Launching SC2: /root/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 35759 -dataDir /root/StarCraftII/ -tempDir /tmp/sc-pmrru3ss/
+[INFO 10:45:02] absl Connecting to: ws://127.0.0.1:35759/sc2api, attempt: 0, running: True
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Command Line: '"/root/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 35759 -dataDir /root/StarCraftII/ -tempDir /tmp/sc-pmrru3ss/'
+Starting up...
+Startup Phase 1 complete
+[INFO 10:45:03] absl Connecting to: ws://127.0.0.1:35759/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:35759
+Startup Phase 3 complete. Ready for commands.
+[INFO 10:45:04] absl Connecting to: ws://127.0.0.1:35759/sc2api, attempt: 2, running: True
+ConnectHandler: Request from 127.0.0.1:37518 accepted
+ReadyHandler: 127.0.0.1:37518 ready
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Using default stable ids, none found at: /root/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Sending ResponseJoinGame
+Avg cost 0.2817596371004159 seconds
+Avg cost 0.2817542676235991 seconds
+RequestQuit command received.
+Closing Application...
+DataHandler: unable to parse websocket frame.
+CloseHandler: 127.0.0.1:56368 disconnected
+[INFO 10:45:09] absl Shutdown gracefully.
+[INFO 10:45:09] absl Shutdown with return code: -15
+[INFO 10:45:09] absl Launching SC2: /root/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 44049 -dataDir /root/StarCraftII/ -tempDir /tmp/sc-6v0x8tyk/
+[INFO 10:45:09] absl Connecting to: ws://127.0.0.1:44049/sc2api, attempt: 0, running: True
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Command Line: '"/root/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 44049 -dataDir /root/StarCraftII/ -tempDir /tmp/sc-6v0x8tyk/'
+Starting up...
+Startup Phase 1 complete
+[INFO 10:45:10] absl Connecting to: ws://127.0.0.1:44049/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:44049
+Startup Phase 3 complete. Ready for commands.
+[INFO 10:45:11] absl Connecting to: ws://127.0.0.1:44049/sc2api, attempt: 2, running: True
+ConnectHandler: Request from 127.0.0.1:53910 accepted
+ReadyHandler: 127.0.0.1:53910 ready
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Using default stable ids, none found at: /root/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Sending ResponseJoinGame
+Avg cost 0.2817523000400634 seconds
+Avg cost 0.2817585304344732 seconds
+Avg cost 0.28175951411423206 seconds
+Avg cost 0.281762155131524 seconds
+Avg cost 0.28177106718152944 seconds
+Avg cost 0.2817750421950208 seconds
+Avg cost 0.2817818199585189 seconds
+Avg cost 0.28178427006847206 seconds
+Avg cost 0.2817897672849035 seconds
+Avg cost 0.28178950569409933 seconds
+Avg cost 0.28179674650687775 seconds
+Avg cost 0.2817917659002195 seconds
+Avg cost 0.2817928448867063 seconds
+[INFO 10:45:24] my_main Updated target network
+Avg cost 0.2817965778194469 seconds
+Avg cost 0.28179859110504524 seconds
+Avg cost 0.2817991469890297 seconds
+Avg cost 0.2818046486391533 seconds
+Avg cost 0.2817991311025439 seconds
+Avg cost 0.2817893737717886 seconds
+Avg cost 0.28183023815537717 seconds
+Avg cost 0.2818343195269758 seconds
+Avg cost 0.2818297490580966 seconds
+Avg cost 0.2818404318050616 seconds
+Avg cost 0.2818376499074637 seconds
+Avg cost 0.2818350788258941 seconds
+Avg cost 0.2818387785354336 seconds
+Avg cost 0.28183897149796794 seconds
+Avg cost 0.2818436042162092 seconds
+Avg cost 0.2818481709488722 seconds
+Avg cost 0.2818478337624368 seconds
+Avg cost 0.28185754375553057 seconds
+Avg cost 0.28185881200474017 seconds
+Avg cost 0.28185816717239387 seconds
+Avg cost 0.28185950492952605 seconds
+Avg cost 0.281863331931919 seconds
+Avg cost 0.28186540168487256 seconds
+Avg cost 0.2818611508907148 seconds
+Avg cost 0.2818654977498844 seconds
+Avg cost 0.2818722725827686 seconds
+Avg cost 0.281876432037646 seconds
+Avg cost 0.28187808386448326 seconds
+Avg cost 0.2818771762162018 seconds
+Avg cost 0.2818755258337722 seconds
+Avg cost 0.28187845797713784 seconds
+Avg cost 0.2818822545498716 seconds
+Avg cost 0.2818811726624775 seconds
+Avg cost 0.2819149868321723 seconds
+Avg cost 0.28191717344386014 seconds
+Avg cost 0.28192729151280804 seconds
+Avg cost 0.2819338522277475 seconds
+Avg cost 0.28193616267155963 seconds
+Avg cost 0.2819398918711561 seconds
+Avg cost 0.2819443532852903 seconds
+Avg cost 0.2819482338673638 seconds
+Avg cost 0.28194958727124747 seconds
+Avg cost 0.2819509904497112 seconds
+Avg cost 0.281960679080016 seconds
+Avg cost 0.2819656201641826 seconds
+Avg cost 0.28196784988731033 seconds
+Avg cost 0.28200960095892597 seconds
+Avg cost 0.2820118983073515 seconds
+Avg cost 0.28201176220481866 seconds
+Avg cost 0.2820220160077151 seconds
+[INFO 10:46:02] my_main Updated target network
+Avg cost 0.28202612465176885 seconds
+Avg cost 0.2820224865033497 seconds
+Avg cost 0.28202511389387513 seconds
+Avg cost 0.282030713698231 seconds
+Avg cost 0.28203944699330796 seconds
+Avg cost 0.2820413634434927 seconds
+Avg cost 0.28204848917932995 seconds
+Avg cost 0.2820514314696957 seconds
+Avg cost 0.2820472609978764 seconds
+Avg cost 0.28202413485045724 seconds
+Avg cost 0.2820117507842306 seconds
+Avg cost 0.28200728532094377 seconds
+Avg cost 0.28200228840923053 seconds
+Avg cost 0.2819995468812156 seconds
+Avg cost 0.281999181981357 seconds
+Avg cost 0.2819956850888642 seconds
+Avg cost 0.28199734011746497 seconds
+Avg cost 0.2819851038818133 seconds
+Avg cost 0.28198507277697876 seconds
+Avg cost 0.28197045586652486 seconds
+Avg cost 0.2819708717695205 seconds
+Avg cost 0.28197315953304625 seconds
+Avg cost 0.2819750824756784 seconds
+Avg cost 0.2819767487860572 seconds
+Avg cost 0.28197092113638317 seconds
+Avg cost 0.2819628112524897 seconds
+Avg cost 0.28196421733572496 seconds
+Avg cost 0.2819706416873169 seconds
+Avg cost 0.2819650372764373 seconds
+Avg cost 0.28195319819852993 seconds
+Avg cost 0.28195216471506823 seconds
+Avg cost 0.2819582336083935 seconds
+Avg cost 0.2819467291481673 seconds
+Avg cost 0.28194392410812896 seconds
+Avg cost 0.2819497439745217 seconds
+Avg cost 0.2819406991592291 seconds
+Avg cost 0.28193974896462415 seconds
+Avg cost 0.281939784284393 seconds
+Avg cost 0.2819408685659956 seconds
+Avg cost 0.28194129311035765 seconds
+Avg cost 0.28193416937584337 seconds
+Avg cost 0.2819412129558557 seconds
+Avg cost 0.2819451028682835 seconds
+[INFO 10:46:34] my_main Recent Stats | t_env:     251184 | Episode:    10772
+battle_won_mean:           0.0000	dead_allies_mean:          5.9861	dead_enemies_mean:         0.9861	ep_length_mean:           23.3194
+episode_in_buffer:       5000.0000	epsilon:                   0.2364	grad_norm:                 0.0483	loss_td:                   0.0067
+q_taken_mean:              0.4992	return_max:                9.3514	return_mean:               7.4159	return_min:                5.7838
+return_std:                0.6015	target_mean:               0.5009	td_error_abs:              0.0067	test_battle_won_mean:      0.0000
+test_dead_allies_mean:     5.8125	test_dead_enemies_mean:    1.8125	test_ep_length_mean:      23.0938	test_return_max:           9.6351
+test_return_mean:          8.1537	test_return_min:           7.1892	test_return_std:           0.4797	
+Avg cost 0.2819479733716649 seconds
+[INFO 10:46:34] my_main t_env: 251277 / 10050000
+[INFO 10:46:34] my_main Estimated time left: 1 days, 3 hours, 41 minutes, 34 seconds. Time passed: 35 minutes, 23 seconds
+Avg cost 0.2819485377909536 seconds
+Avg cost 0.28192978721641454 seconds
+Avg cost 0.28193257443501324 seconds
+Avg cost 0.2819320107857064 seconds
+Avg cost 0.28193426327627247 seconds
+Avg cost 0.28193531151812423 seconds
+[INFO 10:46:42] my_main Updated target network
+Avg cost 0.2819220063762711 seconds
+Avg cost 0.2819258849062708 seconds
+Avg cost 0.281925642330732 seconds
+Avg cost 0.2819106124865165 seconds
+Avg cost 0.2819113277591297 seconds
+Avg cost 0.28191220525559446 seconds
+Avg cost 0.28191569283671075 seconds
+Avg cost 0.2819186291905352 seconds
+Avg cost 0.28191871411196845 seconds
+Avg cost 0.2819110075927624 seconds
+Avg cost 0.2819155321984336 seconds
+Avg cost 0.28191586454842 seconds
+Avg cost 0.28192292839796856 seconds
+Avg cost 0.2819234250695145 seconds
+Avg cost 0.2819225014580623 seconds
+Avg cost 0.28192075364283414 seconds
+Avg cost 0.2819312704130072 seconds
+Avg cost 0.2819135543641189 seconds
+Avg cost 0.28191567904497766 seconds
+Avg cost 0.2819181310050811 seconds
+Avg cost 0.28191839159636367 seconds
+Avg cost 0.2819258603038586 seconds
+Avg cost 0.2819269474711343 seconds
+Avg cost 0.2819739040214228 seconds
+Avg cost 0.28197461960500475 seconds
+Avg cost 0.2819777799681606 seconds
+Avg cost 0.28198661538703623 seconds
+Avg cost 0.2819872144135963 seconds
+Avg cost 0.2819954699774219 seconds
+Avg cost 0.28199900123076344 seconds
+Avg cost 0.28200053896573946 seconds
+Avg cost 0.28199865890856757 seconds
+Avg cost 0.28199988529031306 seconds
+Avg cost 0.28200227699546365 seconds
+Avg cost 0.28199624857481803 seconds
+Avg cost 0.2819906137130666 seconds
+Avg cost 0.2819920813310332 seconds
+Avg cost 0.28199264979563887 seconds
+Avg cost 0.28199393528673633 seconds
+Avg cost 0.2819946127200347 seconds
+Avg cost 0.2819953095099548 seconds
+Avg cost 0.2819962183284726 seconds
+Avg cost 0.28199669517729653 seconds
+Avg cost 0.28200061507345614 seconds
+Avg cost 0.28199761752243896 seconds
+Avg cost 0.2819986861950748 seconds
+Avg cost 0.2820070878129405 seconds
+Avg cost 0.2820055180314781 seconds
+Avg cost 0.2820062027765874 seconds
+Avg cost 0.2820106762636733 seconds
+[INFO 10:47:20] my_main Updated target network
+Avg cost 0.28201847911229616 seconds
+Avg cost 0.28202160666970655 seconds
+Avg cost 0.282025131541852 seconds
+Avg cost 0.28202370476139516 seconds
+Avg cost 0.2820224647104306 seconds
+Avg cost 0.28201972042196477 seconds
+Avg cost 0.2820185762874234 seconds
+Avg cost 0.28202068366754074 seconds
+Avg cost 0.2820229175834545 seconds
+Avg cost 0.2820278496907275 seconds
+Avg cost 0.28203291017819915 seconds
+Avg cost 0.28202456988809244 seconds
+Avg cost 0.28203271205768843 seconds
+Avg cost 0.28209308963899143 seconds
+Avg cost 0.2820945562882857 seconds
+Avg cost 0.28209880350806943 seconds
+Avg cost 0.28210283235408545 seconds
+Avg cost 0.28210663830112476 seconds
+Avg cost 0.2821055848960351 seconds
+Avg cost 0.2821150643855821 seconds
+Avg cost 0.2821189414261042 seconds
+Avg cost 0.2821174156505819 seconds
+Avg cost 0.28212420269576777 seconds
+Avg cost 0.2821273959257673 seconds
+Avg cost 0.28212751720262613 seconds
+Avg cost 0.28212874836353496 seconds
+Avg cost 0.28213016707166916 seconds
+Avg cost 0.282130287990508 seconds
+Avg cost 0.2821287424795535 seconds
+Avg cost 0.2821309831215719 seconds
+Avg cost 0.2821294910564685 seconds
+Avg cost 0.2821260748850468 seconds
+Avg cost 0.28213151488345484 seconds
+Avg cost 0.28212480495104336 seconds
+Avg cost 0.2821326898753858 seconds
+Avg cost 0.2821315427585355 seconds
+Avg cost 0.28214089479969345 seconds
+Avg cost 0.28214383245675173 seconds
+Avg cost 0.2821452872909568 seconds

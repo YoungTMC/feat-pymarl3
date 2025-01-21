@@ -1,0 +1,123 @@
+{
+  "artifacts": [],
+  "command": "my_main",
+  "experiment": {
+    "base_dir": "/workspace/feat_pymarl/workspace/src",
+    "dependencies": [
+      "numpy==1.23.2",
+      "PyYAML==5.3.1",
+      "sacred==0.8.5",
+      "torch==1.8.2"
+    ],
+    "mainfile": "main.py",
+    "name": "pymarl",
+    "repositories": [],
+    "sources": [
+      [
+        "main.py",
+        "_sources/main_6a04d924bd17b93327b3ff91735ef4ff.py"
+      ],
+      [
+        "utils/logging.py",
+        "_sources/logging_f71df6d788e929fac28afdf951d63d54.py"
+      ]
+    ]
+  },
+  "fail_trace": [
+    "Traceback (most recent call last):\n",
+    "  File \"/root/anaconda3/envs/pymarl/lib/python3.8/site-packages/sacred/config/captured_function.py\", line 42, in captured_function\n    result = wrapped(*args, **kwargs)\n",
+    "  File \"/workspace/feat_pymarl/workspace/src/main.py\", line 43, in my_main\n    run_REGISTRY[_config['run']](_run, config, _log)\n",
+    "  File \"/workspace/feat_pymarl/workspace/src/run/run.py\", line 129, in run\n    run_sequential(args=args, logger=logger)\n",
+    "  File \"/workspace/feat_pymarl/workspace/src/run/run.py\", line 281, in run_sequential\n    learner.train(episode_sample, runner.t_env, episode)\n",
+    "  File \"/workspace/feat_pymarl/workspace/src/learners/nq_learner.py\", line 121, in train\n    agent_outs = self.mac.forward(batch, t=t)\n",
+    "  File \"/workspace/feat_pymarl/workspace/src/controllers/dnf_controller.py\", line 28, in forward\n    self.dominators_idx, self.followers_idx = self.agent.extractor_forward(agent_inputs)\n",
+    "  File \"/workspace/feat_pymarl/workspace/src/modules/agents/dnf_rnn_agent.py\", line 57, in extractor_forward\n    extractor_output = self.core_extractor(s)\n",
+    "  File \"/root/anaconda3/envs/pymarl/lib/python3.8/site-packages/torch/nn/modules/module.py\", line 889, in _call_impl\n    result = self.forward(*input, **kwargs)\n",
+    "  File \"/root/anaconda3/envs/pymarl/lib/python3.8/site-packages/torch/nn/modules/container.py\", line 119, in forward\n    input = module(input)\n",
+    "  File \"/root/anaconda3/envs/pymarl/lib/python3.8/site-packages/torch/nn/modules/module.py\", line 889, in _call_impl\n    result = self.forward(*input, **kwargs)\n",
+    "  File \"/root/anaconda3/envs/pymarl/lib/python3.8/site-packages/torch/nn/modules/linear.py\", line 94, in forward\n    return F.linear(input, self.weight, self.bias)\n",
+    "  File \"/root/anaconda3/envs/pymarl/lib/python3.8/site-packages/torch/nn/functional.py\", line 1753, in linear\n    return torch._C._nn.linear(input, weight, bias)\n",
+    "RuntimeError: Tensor for argument #2 'mat1' is on CPU, but expected it to be on GPU (while checking arguments for addmm)\n"
+  ],
+  "heartbeat": "2024-10-11T08:12:15.705087",
+  "host": {
+    "ENV": {},
+    "cpu": "Intel(R) Xeon(R) Platinum 8358 CPU @ 2.60GHz",
+    "gpus": {
+      "driver_version": "560.35.03",
+      "gpus": [
+        {
+          "model": "NVIDIA L40",
+          "persistence_mode": false,
+          "total_memory": 46068
+        }
+      ]
+    },
+    "hostname": "job-8b446618-b82nd",
+    "os": [
+      "Linux",
+      "Linux-5.15.0-122-generic-x86_64-with-glibc2.17"
+    ],
+    "python_version": "3.8.19"
+  },
+  "meta": {
+    "command": "my_main",
+    "config_updates": {
+      "batch_size": 128,
+      "batch_size_run": 8,
+      "buffer_size": 5000,
+      "env_args": {
+        "map_name": "5m_vs_6m"
+      },
+      "epsilon_anneal_time": 100000,
+      "obs_agent_id": true,
+      "obs_last_action": true,
+      "runner": "parallel",
+      "t_max": 10050000,
+      "td_lambda": 0.6
+    },
+    "named_configs": [],
+    "options": {
+      "--beat-interval": null,
+      "--capture": null,
+      "--comment": null,
+      "--debug": false,
+      "--enforce_clean": false,
+      "--file_storage": null,
+      "--force": false,
+      "--help": false,
+      "--id": null,
+      "--loglevel": null,
+      "--mongo_db": null,
+      "--name": null,
+      "--pdb": false,
+      "--print-config": false,
+      "--priority": null,
+      "--queue": false,
+      "--s3": null,
+      "--sql": null,
+      "--tiny_db": null,
+      "--unobserved": false,
+      "COMMAND": null,
+      "UPDATE": [
+        "env_args.map_name=5m_vs_6m",
+        "obs_agent_id=True",
+        "obs_last_action=True",
+        "runner=parallel",
+        "batch_size_run=8",
+        "buffer_size=5000",
+        "t_max=10050000",
+        "epsilon_anneal_time=100000",
+        "batch_size=128",
+        "td_lambda=0.6"
+      ],
+      "help": false,
+      "with": true
+    }
+  },
+  "resources": [],
+  "result": null,
+  "start_time": "2024-10-11T08:11:45.833288",
+  "status": "FAILED",
+  "stop_time": "2024-10-11T08:12:15.721631"
+}
