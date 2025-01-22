@@ -260,7 +260,7 @@ map_param_registry = {
     "50m": {
         "n_agents": 50,
         "n_enemies": 50,
-        "limit"; 150,
+        "limit": 150,
         "a_race": "T",
         "b_race": "T",
         "unit_type_bits": 0,
