@@ -26,30 +26,19 @@
 
 ### 实验结果
 #### 多场景对比（SMACv1）
-| 场景名称              | 算法对比图                                                  |
-|-----------------------|--------------------------------------------------------|
-| **3s_vs_5z**         | ![3s_vs_5z](./src/pic/3s_vs_5z.png)                    |
-| **6h_vs_8z**         | ![6h_vs_8z](./src/pic/6h_vs_8z.png)                    |
-| **5m_vs_6m**         | ![5m_vs_6m](./src/pic/5m_vs_6m.png)                    |
-| **8m_vs_9m**         | ![8m_vs_9m](./src/pic/8m_vs_9m.png)                    |
-| **2c_vs_64zg**       | ![2c_vs_64zg](./src/pic/2c_vs_64zg.png)                |
-| **so_many_baneling** | ![so_many_baneling](./src/pic/so_many_baneling.png) |
-| **MMM2**             | ![MMM2](./src/pic/MMM2.png)             |
-| **corridor**         | ![corridor](./src/pic/corridor.png)         |
-| **1c3s5z**           | ![1c3s5z](./src/pic/1c3s5z.png)           |
+| ![3s_vs_5z](./src/pic/3s_vs_5z.png)   | ![6h_vs_8z](./src/pic/6h_vs_8z.png) | ![5m_vs_6m](./src/pic/5m_vs_6m.png) |
+|-------------------------------------|--------------------------------|--------------------------------|
+| ![8m_vs_9m](./src/pic/8m_vs_9m.png) | ![2c_vs_64zg](./src/pic/2c_vs_64zg.png) | ![so_many_baneling](./src/pic/so_many_baneling.png) |
+| ![MMM2](./src/pic/MMM2.png) | ![corridor](./src/pic/corridor.png) | ![1c3s5z](./src/pic/1c3s5z.png) |
 
 ---
 
 ## 实验1-2 (DNF-DNF-Random-DNF-SVD-QMIX在SMACv1上的对比实验)
 
 ### 实验结果
-| 场景名称      | 算法对比图                    |
-|---------------|------------------------------|
-| **3m**       | ![3m](./src/pic/3m.png) |
-| **8m**       | ![8m](/src/pic/8m.png) |
-| **2m_vs_1z** | ![2m_vs_1z](/src/pic/2m_vs_1z.png) |
-| **2s3z**     | ![2s3z](/src/pic/2s3z.png) |
-| **3s_vs_4z** | ![3s_vs_4z](/src/pic/3s_vs_4z.png) |
+| ![3m](./src/pic/3m.png)   | ![8m](./src/pic/8m.png) | ![2m_vs_1z](./src/pic/2m_vs_1z.png) |
+|-------------------------------------|--------------------------------|--------------------------------|
+| ![2s3z](./src/pic/2s3z.png) | ![3s_vs_4z](./src/pic/3s_vs_4z.png) |  |
 
 ---
 
@@ -57,5 +46,5 @@
 
 ### 实验结果
 | 场景名称         | 算法对比图                    |
-|--------------|------------------------------|
-| **50m**      | ![图1](./src/pic/3m.png) |
+|--------------|--------------------------|
+| **50m**      | ![图1](./src/pic/50m.png) |
