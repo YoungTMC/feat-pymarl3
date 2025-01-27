@@ -15,12 +15,12 @@
 ---
 
 ### 算法框架对比
-| 算法名称       | 框架图                                                                 | 参考文献                                                                 |
-|----------------|------------------------------------------------------------------------|--------------------------------------------------------------------------|
-| **QMIX**       | ![QMIX](https://pic2.zhimg.com/v2-d03d9d93cb31a14a43ff5956528e5159_1440w.jpg) | [论文链接](https://arxiv.org/abs/1803.11485)                             |
-| **QPLEX**      | ![QPLEX](https://pica.zhimg.com/v2-f4deda2809e53f4df44e2c08948bc704_1440w.jpg) | [论文链接](https://arxiv.org/pdf/2008.01062)                             |
-| **HPN-QMIX**   | ![HPN-QMIX](https://pic3.zhimg.com/v2-5ad94ea8b6195d0563d8d5755b39a2e0_1440w.jpg) | [论文链接](https://openreview.net/pdf?id=OxNQXyZK-K8)                    |
-| **DNF**        | ![DNF](D:\Study\硕士毕设材料\DNF.png)                                  | [本地文档](D:\Study\硕士毕设材料\ICCC 2024\第三稿.docm)                  |
+| 算法名称       | 框架图                                                                               | 参考文献                                              |
+|----------------|-----------------------------------------------------------------------------------|---------------------------------------------------|
+| **QMIX**       | ![QMIX](https://pic2.zhimg.com/v2-d03d9d93cb31a14a43ff5956528e5159_1440w.jpg)     | [论文链接](https://arxiv.org/abs/1803.11485)          |
+| **QPLEX**      | ![QPLEX](https://pica.zhimg.com/v2-f4deda2809e53f4df44e2c08948bc704_1440w.jpg)    | [论文链接](https://arxiv.org/pdf/2008.01062)          |
+| **HPN-QMIX**   | ![HPN-QMIX](https://pic3.zhimg.com/v2-5ad94ea8b6195d0563d8d5755b39a2e0_1440w.jpg) | [论文链接](https://openreview.net/pdf?id=OxNQXyZK-K8) |
+| **DNF**        | ![DNF](./src/pic/DNF.png)                                                         | 待更新                                               |
 
 ---
 
