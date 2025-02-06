@@ -3,6 +3,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 from utils.th_utils import orthogonal_init_
 from torch.nn import LayerNorm
+from src.modules.layer.mat import Encoder
 import math
 
 
@@ -21,11 +22,9 @@ class CoreRNNAgent(nn.Module):
             nn.ReLU(),
             nn.Linear(args.core_hidden_dim, args.n_agents)
         )
-        # encoder
-        # self.encoder = nn.Sequential(
-        #
-        # )
-        # agent
+        self.encoder = Encoder(
+            
+        )
         self.fc1 = nn.Linear(input_shape, args.rnn_hidden_dim)
         self.rnn = nn.GRUCell(args.rnn_hidden_dim, args.rnn_hidden_dim)
         self.fc2 = nn.Linear(args.rnn_hidden_dim, args.n_actions)
@@ -60,19 +59,15 @@ class CoreRNNAgent(nn.Module):
         followers_idx = sorted_idx[:, self.dominators:]
         return dominators_idx, followers_idx
 
-    def dominator_forward(self, inputs, hidden_state):
+    def dominator_forward(self, inputs, hidden_state, follower_actions):
+        v_local, inputs_representation = self.encoder.forward(inputs, follower_actions)
+        return self._forward(inputs_representation, hidden_state)
+
+    def follower_forward(self, inputs, hidden_state):
         return self._forward(inputs, hidden_state)
 
-    def follower_forward(self, dominators_actions, dominators_inputs, followers_inputs, hidden_state):
-        # inputs = self.encode(dominators_actions, dominators_inputs, followers_inputs)
-        return self._forward(followers_inputs, hidden_state)
-
-    def encode(self, dominators_actions, dominators_inputs, followers_inputs):
-        # todo encoder module
-        return followers_inputs
-
     def _forward(self, inputs, hidden_state):
-        # todo the inputs of followers maybe None.
+        # TODO the inputs of followers maybe None.
         b, a, e = inputs.size()
 
         inputs = inputs.view(-1, e)

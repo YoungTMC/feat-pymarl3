@@ -33,6 +33,14 @@
 
 ---
 
+### 实验启动方法
+
+```bash
+CUDA_VISIBLE_DEVICES="0" nohup python src/main.py --config={algo_name} --env-config=sc2 with env_args.map_name={map_name} obs_agent_id=True obs_last_action=False runner=parallel batch_size_run={parallel_num} buffer_size=5000 t_max={t_max} epsilon_anneal_time=100000 batch_size=128 td_lambda=0.6
+```
+
+---
+
 ## 实验1-2 (DNF-DNF-Random-DNF-SVD-QMIX在SMACv1上的对比实验)
 
 ### 实验结果
@@ -48,3 +56,10 @@
 | 场景名称         | 算法对比图                    |
 |--------------|--------------------------|
 | **50m**      | ![图1](./src/pic/50m.png) |
+
+### 实验启动方法
+
+```bash
+# 50m
+CUDA_VISIBLE_DEVICES="0" nohup python src/main.py --config=qplex --env-config=sc2 with env_args.map_name=50m obs_agent_id=True obs_last_action=False runner=parallel batch_size_run=2 buffer_size=5000 t_max=1000000 epsilon_anneal_time=100000 batch_size=128 td_lambda=0.6 > 50m_QPLEX.out &
+```
