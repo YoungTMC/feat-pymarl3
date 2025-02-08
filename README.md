@@ -60,6 +60,12 @@ CUDA_VISIBLE_DEVICES="0" nohup python src/main.py --config={algo_name} --env-con
 ### 实验启动方法
 
 ```bash
-# 50m
+# 50m run on same configs
+CUDA_VISIBLE_DEVICES="0" nohup python src/main.py --config=qmix --env-config=sc2 with env_args.map_name=50m obs_agent_id=True obs_last_action=False runner=parallel batch_size_run=2 buffer_size=5000 t_max=1000000 epsilon_anneal_time=100000 batch_size=128 td_lambda=0.6 > 50m_QPLEX.out &
+
 CUDA_VISIBLE_DEVICES="0" nohup python src/main.py --config=qplex --env-config=sc2 with env_args.map_name=50m obs_agent_id=True obs_last_action=False runner=parallel batch_size_run=2 buffer_size=5000 t_max=1000000 epsilon_anneal_time=100000 batch_size=128 td_lambda=0.6 > 50m_QPLEX.out &
+
+CUDA_VISIBLE_DEVICES="0" nohup python src/main.py --config=hpn_qmix --env-config=sc2 with env_args.map_name=50m obs_agent_id=True obs_last_action=False runner=parallel batch_size_run=2 buffer_size=5000 t_max=1000000 epsilon_anneal_time=100000 batch_size=128 td_lambda=0.6 > 50m_HPN_QMIX.out &
+
+CUDA_VISIBLE_DEVICES="0" nohup python src/main.py --config=dnf --env-config=sc2 with env_args.map_name=50m obs_agent_id=True obs_last_action=False runner=parallel batch_size_run=2 buffer_size=5000 t_max=1000000 epsilon_anneal_time=100000 batch_size=128 td_lambda=0.6 core_extractor_type=nn core_agent_ratio=0.7 > 50m_DNF.out &
 ```

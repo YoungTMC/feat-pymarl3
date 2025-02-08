@@ -1,17 +1,30 @@
+import torch
 import torch.nn as nn
 import torch.nn.functional as F
-
 from utils.th_utils import orthogonal_init_
 from torch.nn import LayerNorm
+from src.modules.layer.mat import Encoder
+import math
 
 
 class CoreRNNAgent(nn.Module):
     def __init__(self, input_shape, args):
         super(CoreRNNAgent, self).__init__()
         self.args = args
-        # todo encoder
+        # core extraction module
+        self.dominators = math.ceil(args.core_agent_ratio * args.n_agents)
+        self.followers = args.n_agents - self.dominators
+        # [1, n_agents, obs_dim] -> [1, n_agents]
+        self.core_extractor = nn.Sequential(
+            nn.Linear(args.n_agents, args.core_hidden_dim),
+            nn.ReLU(),
+            nn.Linear(args.core_hidden_dim, args.core_hidden_dim),
+            nn.ReLU(),
+            nn.Linear(args.core_hidden_dim, args.n_agents)
+        )
+        self.encoder = Encoder(
 
-        # agent
+        )
         self.fc1 = nn.Linear(input_shape, args.rnn_hidden_dim)
         self.rnn = nn.GRUCell(args.rnn_hidden_dim, args.rnn_hidden_dim)
         self.fc2 = nn.Linear(args.rnn_hidden_dim, args.n_actions)
@@ -27,19 +40,34 @@ class CoreRNNAgent(nn.Module):
         # make hidden states on same device as model
         return self.fc1.weight.new(1, self.args.rnn_hidden_dim).zero_()
 
-    def dominator_forward(self, inputs, hidden_state):
+    def extractor_forward(self, inputs):
+        """
+        return: dominators obs & followers obs as agent network's input
+        """
+        b, a, e = inputs.size()
+        # SVD
+        s = torch.zeros([b, a], device=inputs.device)
+        for i in range(b):
+            uu, ss, vv = torch.linalg.svd(inputs[i])
+            s.index_put_((torch.tensor([i]),), ss)
+        extractor_output = self.core_extractor(s)
+
+        sorted_s, sorted_idx = torch.sort(extractor_output, dim=-1, descending=True)
+        # [1, dominators_num]
+        dominators_idx = sorted_idx[:, :self.dominators]
+        # [1, followers_num]
+        followers_idx = sorted_idx[:, self.dominators:]
+        return dominators_idx, followers_idx
+
+    def dominator_forward(self, inputs, hidden_state, follower_actions):
+        v_local, inputs_representation = self.encoder.forward(inputs, follower_actions)
+        return self._forward(inputs_representation, hidden_state)
+
+    def follower_forward(self, inputs, hidden_state):
         return self._forward(inputs, hidden_state)
 
-    def follower_forward(self, dominators_actions, dominators_inputs, followers_inputs, hidden_state):
-        # inputs = self.encode(dominators_actions, dominators_inputs, followers_inputs)
-        return self._forward(followers_inputs, hidden_state)
-
-    def encode(self, dominators_actions, dominators_inputs, followers_inputs):
-        # todo encoder module
-        return followers_inputs
-
     def _forward(self, inputs, hidden_state):
-        # todo the inputs of followers maybe None.
+        # TODO the inputs of followers maybe None.
         b, a, e = inputs.size()
 
         inputs = inputs.view(-1, e)
