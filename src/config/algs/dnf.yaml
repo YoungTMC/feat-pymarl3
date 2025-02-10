@@ -46,10 +46,17 @@ return_priority: False
 #name: "qmix_env=8_adam_td_lambda"
 name: "dnf"
 
-# new
+# dnf
 core_hidden_dim: 32
 core_agent_ratio: 0.7
 core_extractor_type: "nn"# nn svd random
 core_extractor_layer_norm: False
 core_extractor_use_orthogonal: False
 dnf_joint_layer: "encoder"
+
+# encoder
+encode_state: False
+n_block: 1
+n_embd: 64 
+n_head: 1
+use_rule_follower: False
