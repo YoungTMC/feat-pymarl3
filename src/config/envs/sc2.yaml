@@ -27,8 +27,8 @@ env_args:
   state_timestep_number: False
   step_mul: 8
   seed: null
-  heuristic_ai: False
-  heuristic_rest: False
+  heuristic_ai: True # rule based followers: True
+  heuristic_rest: True # rule based followers: True, otherwise would get unavailable action.
   debug: False
 
 test_greedy: True

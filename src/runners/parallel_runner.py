@@ -17,9 +17,12 @@ class ParallelRunner:
         self.batch_size = self.args.batch_size_run
 
         # Make subprocesses for the envs
+        # 创建连接父子进程的管道
+        # parent_conns: 父进程, worker_conns: 子进程
         self.parent_conns, self.worker_conns = zip(*[Pipe() for _ in range(self.batch_size)])
         env_fn = env_REGISTRY[self.args.env]
         self.ps = []
+        # 将env_worker作为目标函数传递给子进程
         for i, worker_conn in enumerate(self.worker_conns):
             ps = Process(target=env_worker,
                          args=(worker_conn, CloudpickleWrapper(partial(env_fn, **self.args.env_args))))
@@ -110,12 +113,17 @@ class ParallelRunner:
         final_env_infos = []  # may store extra stats like battle won. this is filled in ORDER OF TERMINATION
 
         save_probs = getattr(self.args, "save_probs", False)
+        use_rule_follower = getattr(self.args, "use_rule_follower", False)
         while True:
             # Pass the entire batch of experiences up till now to the agents
             # Receive the actions for each agent at this timestep in a batch for each un-terminated env
             if save_probs:
                 actions, probs = self.mac.select_actions(self.batch, t_ep=self.t, t_env=self.t_env,
                                                          bs=envs_not_terminated, test_mode=test_mode)
+            elif use_rule_follower:
+                actions = self.mac.select_actions(self.batch, t_ep=self.t, t_env=self.t_env,
+                                                  bs=envs_not_terminated,test_mode=test_mode,
+                                                  ps=self.parent_conns)
             else:
                 actions = self.mac.select_actions(self.batch, t_ep=self.t, t_env=self.t_env, bs=envs_not_terminated,
                                                   test_mode=test_mode)
@@ -289,6 +297,10 @@ def env_worker(remote, env_fn):
             remote.send(env.get_env_info())
         elif cmd == "get_stats":
             remote.send(env.get_stats())
+        elif cmd == "get_agent_action_heuristic":
+            agent_id, action = data
+            sc_action, action = env.get_agent_action_heuristic(agent_id, action)
+            remote.send(action)
         else:
             raise NotImplementedError
 

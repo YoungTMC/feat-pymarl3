@@ -10,9 +10,11 @@ class CoreMAC(BasicMAC):
         super(CoreMAC, self).__init__(scheme, groups, args)
         self.dominators_idx, self.followers_idx = self._init_idx()
 
-    def select_actions(self, ep_batch, t_ep, t_env, bs=slice(None), test_mode=False):
+    def select_actions(self, ep_batch, t_ep, t_env, bs=slice(None), test_mode=False, ps=None):
         if t_ep == 0:
             self.set_evaluation_mode()
+        if ps is not None:
+            self.ps = ps
         # Only select actions for the selected batch elements in bs
         avail_actions = ep_batch["avail_actions"][:, t_ep]
         qvals = self.forward(ep_batch, t_ep, test_mode=test_mode, use_rule_follower=self.args.use_rule_follower)
@@ -45,13 +47,18 @@ class CoreMAC(BasicMAC):
                     agent_id = self.followers_idx[f_idx].item()
                     # 获取当前follower的观察
                     obs = followers_inputs[b_idx, f_idx].cpu().numpy()
-                    # 使用SMAC的规则智能体API获取动作
-                    action = ep_batch.env.get_heuristic_action(agent_id, obs)
+                    # 通过已存在的进程管道发送请求获取规则动作
+                    if hasattr(self, 'ps') and self.ps is not None:
+                        parent_conn = self.ps[b_idx]
+                        parent_conn.send(("get_agent_action_heuristic", (agent_id, None)))
+                        action = parent_conn.recv()
+                    else:
+                        raise RuntimeError("Process connections not initialized. Make sure ps is set.")
                     batch_actions.append(action)
                 followers_actions.append(batch_actions)
             
-            # 转换为tensor
-            followers_actions = torch.tensor(followers_actions, dtype=torch.long, device=device)
+            # 转换为三维tensor: [batch_size, n_followers, 1]
+            followers_actions = torch.tensor(followers_actions, dtype=torch.float, device=device).unsqueeze(-1)
             
             # 主导者用agent_network决策，但输入中包含跟随者的动作
             outputs, _ = self.agent.dominator_forward(

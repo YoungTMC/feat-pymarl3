@@ -118,12 +118,13 @@ class DecodeBlock(nn.Module):
 
 class Encoder(nn.Module):
 
-    def __init__(self, state_dim, obs_dim, action_dim, n_block, n_embd, n_head, n_agent, encode_state):
+    def __init__(self, state_dim, obs_dim, action_dim, input_shape, n_block, n_embd, n_head, n_agent, encode_state):
         super(Encoder, self).__init__()
 
         self.state_dim = state_dim
         self.obs_dim = obs_dim
         self.action_dim = action_dim
+        self.input_shape = input_shape
         self.n_embd = n_embd
         self.n_agent = n_agent
         self.encode_state = encode_state
@@ -133,50 +134,67 @@ class Encoder(nn.Module):
                                            init_(nn.Linear(state_dim, n_embd), activate=True), nn.GELU())
         self.obs_encoder = nn.Sequential(nn.LayerNorm(obs_dim),
                                          init_(nn.Linear(obs_dim, n_embd), activate=True), nn.GELU())
-        self.ln = nn.LayerNorm(n_embd)
-        self.blocks = nn.Sequential(*[EncodeBlock(n_embd, n_head, n_agent) for _ in range(n_block)])
-        self.head = nn.Sequential(init_(nn.Linear(n_embd, n_embd), activate=True), nn.GELU(), nn.LayerNorm(n_embd),
+        self.ln = nn.LayerNorm(input_shape)
+        self.blocks = nn.Sequential(*[EncodeBlock(input_shape, n_head, n_agent) for _ in range(n_block)])
+        self.head = nn.Sequential(init_(nn.Linear(input_shape, n_embd), activate=True), nn.GELU(), nn.LayerNorm(n_embd),
                                   init_(nn.Linear(n_embd, 1)))
         
         # 添加信息融合层
         self.action_fusion = nn.Sequential(
-            nn.Linear(action_dim, n_embd),
+            nn.Linear(1, n_embd),  # 动作维度为1，因为我们是对每个动作单独处理
             nn.GELU(),
             nn.LayerNorm(n_embd)
         )
         
         self.obs_fusion = nn.Sequential(
-            nn.Linear(obs_dim, n_embd),
+            nn.Linear(obs_dim + n_agent, n_embd),
             nn.GELU(),
             nn.LayerNorm(n_embd)
         )
         # 添加交叉注意力融合层
         self.cross_attention = nn.MultiheadAttention(
             embed_dim=n_embd,
-            num_heads=n_head,
-            batch_first=True
+            num_heads=n_head
         )
+
+        # 添加输出转换层
+        self.output_proj = nn.Linear(n_embd, input_shape)
 
     def fuse_information(self, action, obs):
         """
         融合followers的动作信息和dominators的观察信息
         
         Args:
-            action: shape (batch, n_followers, action_dim)
-            obs: shape (batch, n_dominators, obs_dim)
+            action: shape (batch, n_followers, 1)
+            obs: shape (batch, n_dominators, obs_dim + n_agent)
         Returns:
-            fused_rep: shape (batch, n_dominators, n_embd)
+            fused_rep: shape (batch, n_dominators, obs_dim + n_agent)
         """
-        # 转换维度
-        action_emb = self.action_fusion(action)  # (batch, n_followers, n_embd)
-        obs_emb = self.obs_fusion(obs)      # (batch, n_dominators, n_embd)
+        batch_size = action.size(0)
+        n_dominators = obs.size(1)
+        
+        # 处理action: (batch, n_followers, 1) -> (batch, n_followers, n_embd)
+        action_emb = self.action_fusion(action.view(-1, 1))  # (batch*n_followers, n_embd)
+        action_emb = action_emb.view(batch_size, -1, self.n_embd)  # (batch, n_followers, n_embd)
+        
+        # 处理obs
+        obs_emb = self.obs_fusion(obs.view(-1, self.input_shape))
+        obs_emb = obs_emb.view(batch_size, -1, self.n_embd)  # (batch, n_dominators, n_embd)
+        
+        # 调整维度顺序以适应MultiheadAttention的输入要求: (seq_len, batch, n_embd)
+        obs_emb = obs_emb.transpose(0, 1)
+        action_emb = action_emb.transpose(0, 1)
         
         # 使用交叉注意力机制将followers的信息融入到dominators中
         fused_rep, _ = self.cross_attention(
-            query=obs_emb,          # dominators作为query
-            key=action_emb,         # followers的信息作为key
-            value=action_emb        # followers的信息作为value
+            query=obs_emb,          # (n_dominators, batch, n_embd)
+            key=action_emb,         # (n_followers, batch, n_embd)
+            value=action_emb        # (n_followers, batch, n_embd)
         )
+
+        # 将注意力输出转换为所需维度
+        fused_rep = self.output_proj(fused_rep.transpose(0, 1))  # (batch, n_dominators, obs_dim + n_agent)
+        
         return fused_rep
 
     def forward(self, state, obs, actions):
@@ -184,7 +202,7 @@ class Encoder(nn.Module):
         Args:
             state: (batch, n_agent, state_dim)
             obs: (batch, n_dominators, obs_dim)
-            actions: (batch, n_followers, action_dim)
+            actions: (batch, n_followers, 1)
         Returns:
             v_loc: (batch, n_dominators, 1)
             rep: (batch, n_dominators, n_embd)
