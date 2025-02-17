@@ -48,7 +48,7 @@ name: "dnf"
 
 # dnf
 core_hidden_dim: 32
-core_agent_ratio: 0.7
+dominator_num: 15
 core_extractor_type: "nn"# nn svd random
 core_extractor_layer_norm: False
 core_extractor_use_orthogonal: False

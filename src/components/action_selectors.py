@@ -125,7 +125,7 @@ class EpsilonGreedyActionSelector():
                                               decay="linear")
         self.epsilon = self.schedule.eval(0)
 
-    def select_action(self, agent_inputs, avail_actions, t_env, test_mode=False):
+    def select_action(self, agent_inputs, avail_actions, t_env, test_mode=False, use_rule_follower=False, dominators_idx=None):
         # Assuming agent_inputs is a batch of Q-Values for each agent bav
         self.epsilon = self.schedule.eval(t_env)
 
@@ -135,15 +135,30 @@ class EpsilonGreedyActionSelector():
 
         # mask actions that are excluded from selection
         masked_q_values = agent_inputs.clone()
-        masked_q_values[avail_actions == 0] = -float("inf")  # should never be selected!
+        if use_rule_follower:
+            assert dominators_idx is not None, "dominators_idx must be provided when use_rule_follower is True"
+            # 构建dominators的可用动作tensor
+            batch_size, _, action_dim = avail_actions.shape
+            n_dominators = dominators_idx.shape[1]
+            dominators_avail = th.zeros((batch_size, n_dominators, action_dim),
+                                        dtype=avail_actions.dtype,
+                                        device=avail_actions.device)
+            # 填充dominators的可用动作
+            for b_idx in range(batch_size):
+                for d_idx in range(n_dominators):
+                    agent_id = dominators_idx[b_idx][d_idx].item()
+                    dominators_avail[b_idx, d_idx] = avail_actions[b_idx, agent_id]
+
+            avail_actions = dominators_avail
+            
+        masked_q_values[avail_actions == 0] = -float("inf")
 
         # random_numbers = th.rand_like(agent_inputs[:, :, 0])  # TODO: 为啥GPU和CPU model inference结果不同
         random_numbers = th.rand(size=agent_inputs[:, :, 0].size(), dtype=th.float32, device="cpu").to(
             agent_inputs.device)
 
         pick_random = (random_numbers < self.epsilon).long()
-        # random_actions = Categorical(avail_actions.float()).sample().long()
-        random_actions = Categorical(avail_actions.cpu().float()).sample().long().to(avail_actions.device)
+        random_actions = Categorical(avail_actions.float()).sample().long()
 
         picked_actions = pick_random * random_actions + (1 - pick_random) * masked_q_values.max(dim=2)[1]
         return picked_actions

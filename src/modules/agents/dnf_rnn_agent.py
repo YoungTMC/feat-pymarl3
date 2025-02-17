@@ -3,7 +3,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 from utils.th_utils import orthogonal_init_
 from torch.nn import LayerNorm
-from src.modules.layer.mat import Encoder
+from modules.layer.mat import Encoder
 import math
 
 
@@ -12,7 +12,7 @@ class CoreRNNAgent(nn.Module):
         super(CoreRNNAgent, self).__init__()
         self.args = args
         # core extraction module
-        self.dominators = math.ceil(args.core_agent_ratio * args.n_agents)
+        self.dominators = math.ceil(args.dominator_num)
         self.followers = args.n_agents - self.dominators
         # [1, n_agents, obs_dim] -> [1, n_agents]
         self.core_extractor = nn.Sequential(

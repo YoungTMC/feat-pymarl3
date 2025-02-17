@@ -11,7 +11,7 @@ class CoreExtractor(nn.Module):
         super(CoreExtractor, self).__init__()
         self.args = args
         # core extraction module
-        self.dominators = math.ceil(args.core_agent_ratio * args.n_agents)
+        self.dominators = args.dominator_num
         self.followers = args.n_agents - self.dominators
 
         if args.core_extractor_type == 'random':
