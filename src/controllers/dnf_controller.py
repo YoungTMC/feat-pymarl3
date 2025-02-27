@@ -2,6 +2,7 @@ import torch
 import math
 
 from .basic_controller import BasicMAC
+from ..modules.layer.core_extractor import CoreExtractor
 
 
 # This multi-agent controller shares parameters between agents
@@ -56,7 +57,7 @@ class CoreMAC(BasicMAC):
         # [batch_size, agent_num, obs_dim + (agent_id_num)]
         b, a, e = agent_inputs.size()
         # get dominators and followers
-        self.dominators_idx, self.followers_idx = self.agent.extractor_forward(agent_inputs)
+        self.dominators_idx, self.followers_idx = self.core_extractor.forward(agent_inputs)
         d_mask = torch.zeros(agent_inputs.shape[:2], dtype=torch.bool, device=device)
         d_mask.scatter_(1, self.dominators_idx, True)
         f_mask = torch.zeros(agent_inputs.shape[:2], dtype=torch.bool, device=device)

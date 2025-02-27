@@ -24,7 +24,7 @@ class BasicMAC:
         self.hidden_states = None
 
         if self.args.mac == 'dnf_mac':
-            self._build_core_extractor(self.input_shape)
+            self._build_core_extractor()
 
     def select_actions(self, ep_batch, t_ep, t_env, bs=slice(None), test_mode=False, ps=None):
         if t_ep == 0:
@@ -124,6 +124,6 @@ class BasicMAC:
 
         return input_shape
 
-    def _build_core_extractor(self, input_shape):
-        self.core_extractor = CoreExtractor(input_shape, self.args)
+    def _build_core_extractor(self):
+        self.core_extractor = CoreExtractor(self.input_shape, self.args)
         print("&&&&&&&&&&&&&&&&&&&&&&", self.args.core_extractor_type, get_parameters_num(self.parameters()))

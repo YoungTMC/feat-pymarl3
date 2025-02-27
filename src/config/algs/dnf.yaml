@@ -49,7 +49,7 @@ name: "dnf"
 # dnf
 core_hidden_dim: 32
 dominator_num: 15
-core_extractor_type: "nn"# nn svd random
+core_extractor_type: "nn" # nn svd random
 core_extractor_layer_norm: False
 core_extractor_use_orthogonal: False
 dnf_joint_layer: "encoder"
