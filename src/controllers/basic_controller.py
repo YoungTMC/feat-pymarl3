@@ -72,6 +72,8 @@ class BasicMAC:
 
     def load_state(self, other_mac):
         self.agent.load_state_dict(other_mac.agent.state_dict())
+        if self.args.mac == 'dnf_mac':
+            self.core_extractor.load_state_dict(other_mac.core_extractor.state_dict())
 
     def cuda(self):
         self.agent.cuda()
@@ -88,9 +90,13 @@ class BasicMAC:
 
     def save_models(self, path):
         th.save(self.agent.state_dict(), "{}/agent.th".format(path))
+        if self.args.mac == 'dnf_mac':
+            th.save(self.core_extractor.state_dict(), "{}/ce.th".format(path))
 
     def load_models(self, path):
         self.agent.load_state_dict(th.load("{}/agent.th".format(path), map_location=lambda storage, loc: storage))
+        if self.args.mac == 'dnf_mac':
+            self.core_extractor.load_state_dict(th.load("{}/ce.th".format(path), map_location=lambda storage, loc: storage))
 
     def _build_agents(self, input_shape):
         self.agent = agent_REGISTRY[self.args.agent](input_shape, self.args)
