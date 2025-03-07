@@ -1,5 +1,5 @@
-# 毕设论文《基于优先级划分的大规模多智能体强化学习决策方法研究》实验部分展示
-
+[//]: # (# 毕设论文《基于优先级划分的大规模多智能体强化学习决策方法研究》实验部分展示)
+# 实验部分展示
 ## 目录
 - [实验1-1](#实验1-1-dnf-qmix-qplex-hpnqmix在smacv1上的对比实验)
 - [实验1-2](#实验1-2-dnf-dnf-random-dnf-svd-qmix在smacv1上的对比实验)
@@ -39,7 +39,13 @@
 # VDN 1c3s5z
 CUDA_VISIBLE_DEVICES="0" nohup python src/main.py --config=VDN --env-config=sc2 with env_args.map_name=1c3s5z obs_agent_id=True obs_last_action=False runner=parallel batch_size_run=8 buffer_size=5000 t_max=10500000 epsilon_anneal_time=100000 batch_size=128 td_lambda=0.6
 # VDN 5m_vs_6m
-CUDA_VISIBLE_DEVICES="0" nohup python src/main.py --config=VDN --env-config=sc2 with env_args.map_name=5m_vs_6m obs_agent_id=True obs_last_action=False runner=parallel batch_size_run=8 buffer_size=5000 t_max=10500000 epsilon_anneal_time=100000 batch_size=128 td_lambda=0.6
+CUDA_VISIBLE_DEVICES="0" nohup python src/main.py --config=vdn --env-config=sc2 with env_args.map_name=5m_vs_6m obs_agent_id=True obs_last_action=False runner=parallel batch_size_run=8 buffer_size=5000 t_max=10500000 epsilon_anneal_time=100000 batch_size=128 td_lambda=0.6
+# VDN 3s_vs_4z
+CUDA_VISIBLE_DEVICES="0" nohup python src/main.py --config=vdn --env-config=sc2 with env_args.map_name=3s_vs_4z obs_agent_id=True obs_last_action=False runner=parallel batch_size_run=8 buffer_size=5000 t_max=5000000 epsilon_anneal_time=100000 batch_size=128 td_lambda=0.6
+# MMM2
+CUDA_VISIBLE_DEVICES="0" nohup python src/main.py --config=vdn --env-config=sc2 with env_args.map_name=MMM2 obs_agent_id=True obs_last_action=False runner=parallel batch_size_run=8 buffer_size=5000 t_max=5000000 epsilon_anneal_time=100000 batch_size=128 td_lambda=0.6
+# 2c_vs_64zg
+CUDA_VISIBLE_DEVICES="0" nohup python src/main.py --config=vdn --env-config=sc2 with env_args.map_name=2c_vs_64zg obs_agent_id=True obs_last_action=False runner=parallel batch_size_run=8 buffer_size=5000 t_max=10500000 epsilon_anneal_time=100000 batch_size=128 td_lambda=0.6
 
 CUDA_VISIBLE_DEVICES="0" nohup python src/main.py --config={algo_name} --env-config=sc2 with env_args.map_name={map_name} obs_agent_id=True obs_last_action=False runner=parallel batch_size_run={parallel_num} buffer_size=5000 t_max={t_max} epsilon_anneal_time=100000 batch_size=128 td_lambda=0.6
 ```
